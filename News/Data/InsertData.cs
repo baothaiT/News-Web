@@ -90,6 +90,19 @@ namespace News.Data
                     PasswordHash = hasher.HashPassword(null, "123456Aa@"),
                     SecurityStamp = Guid.NewGuid().ToString(),
                     DoB = new DateTime(2022, 02, 02)
+                },
+                new AppUser()
+                {
+                    Id = userId3,
+                    UserName = "Staff2",
+                    LastName = "Staff2",
+                    NormalizedUserName = "STAFF2@GMAIL.COM",
+                    NormalizedEmail = "STAFF2@GMAIL.COM",
+                    Email = "staff2@gmail.com",
+                    EmailConfirmed = true,
+                    PasswordHash = hasher.HashPassword(null, "123456Aa@"),
+                    SecurityStamp = Guid.NewGuid().ToString(),
+                    DoB = new DateTime(2022, 02, 02)
                 }
                 );
 

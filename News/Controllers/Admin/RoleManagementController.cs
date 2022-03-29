@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using News.Data;
+using News.Entities;
 
 namespace News.Controllers.Admin
 {
@@ -20,12 +21,17 @@ namespace News.Controllers.Admin
         }
 
         // GET: RoleManagementController/Details/5
-        public ActionResult Details(int id)
+        [Route("/rolemanagement/details")]
+        [HttpGet]
+        public ActionResult Details(string id)
         {
-            return View();
+            var query = _context.AppRole.Find(id);
+            return View(query);
         }
 
         // GET: RoleManagementController/Create
+        [Route("/rolemanagement/create")]
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
@@ -38,6 +44,7 @@ namespace News.Controllers.Admin
         {
             try
             {
+                
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -47,18 +54,31 @@ namespace News.Controllers.Admin
         }
 
         // GET: RoleManagementController/Edit/5
-        public ActionResult Edit(int id)
+        [Route("/rolemanagement/edit")]
+        [HttpGet]
+        public ActionResult Edit(string id)
         {
-            return View();
+            var query = _context.AppRole.Find(id);
+            return View(query);
         }
 
         // POST: RoleManagementController/Edit/5
+        [Route("/rolemanagement/edit")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(string id, AppRole appRole)
         {
             try
             {
+                var query = _context.AppRole.Find(appRole.Id);
+                query.Name = appRole.Name;
+                query.Description = appRole.Description;
+                query.NormalizedName = appRole.NormalizedName;
+                query.ConcurrencyStamp = appRole.ConcurrencyStamp;
+
+                _context.AppRole.Update(query);
+                _context.SaveChanges();
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -68,18 +88,26 @@ namespace News.Controllers.Admin
         }
 
         // GET: RoleManagementController/Delete/5
-        public ActionResult Delete(int id)
+        [Route("/rolemanagement/delete")]
+        [HttpGet]
+        public ActionResult Delete(string id)
         {
-            return View();
+            var query = _context.AppRole.Find(id);
+            return View(query);
         }
 
         // POST: RoleManagementController/Delete/5
+        [Route("/rolemanagement/delete")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
         {
             try
             {
+                var query = _context.AppRole.Find(id);
+                _context.AppRole.Remove(query);
+                _context.SaveChanges();
+
                 return RedirectToAction(nameof(Index));
             }
             catch
