@@ -1,0 +1,66 @@
+﻿@model IEnumerable<News.Entities.Idea>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.idea_Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idea_Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idea_UpdateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.categoriesFK)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AcademicYearFK)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.appUserFK)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idea_Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idea_Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idea_UpdateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.categoriesFK.category_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AcademicYearFK.academicYear_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.appUserFK.Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.idea_Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.idea_Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.idea_Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

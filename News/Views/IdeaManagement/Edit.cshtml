@@ -1,0 +1,60 @@
+﻿@model News.Entities.Idea
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Edit</h2>
+
+<h4>Idea</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="idea_Id" />
+            <div class="form-group">
+                <label asp-for="idea_Title" class="control-label"></label>
+                <input asp-for="idea_Title" class="form-control" />
+                <span asp-validation-for="idea_Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="idea_Description" class="control-label"></label>
+                <input asp-for="idea_Description" class="form-control" />
+                <span asp-validation-for="idea_Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="idea_UpdateTime" class="control-label"></label>
+                <input asp-for="idea_UpdateTime" class="form-control" />
+                <span asp-validation-for="idea_UpdateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="idea_CategoryId" class="control-label"></label>
+                <select asp-for="idea_CategoryId" class="form-control" asp-items="ViewBag.idea_CategoryId"></select>
+                <span asp-validation-for="idea_CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="idea_AcademicYearId" class="control-label"></label>
+                <select asp-for="idea_AcademicYearId" class="form-control" asp-items="ViewBag.idea_AcademicYearId"></select>
+                <span asp-validation-for="idea_AcademicYearId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="idea_UserId" class="control-label"></label>
+                <select asp-for="idea_UserId" class="form-control" asp-items="ViewBag.idea_UserId"></select>
+                <span asp-validation-for="idea_UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@*@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}*@

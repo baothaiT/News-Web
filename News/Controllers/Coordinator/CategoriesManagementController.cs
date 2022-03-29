@@ -2,36 +2,38 @@
 using Microsoft.AspNetCore.Mvc;
 using News.Data;
 
-namespace News.Controllers.Admin
+namespace News.Controllers.Coordinator
 {
-    public class UserManagementController : Controller
+    public class CategoriesManagementController : Controller
     {
+
         private ApplicationDbContext _context;
-        public UserManagementController(ApplicationDbContext context)
+        public CategoriesManagementController(ApplicationDbContext context)
         {
             _context = context;
         }
-        // GET: UserManagementController
-        [Route("usermanagement")]
+
+        // GET: CategoriesManagementController
+        [Route("categoriesmanagement")]
         public ActionResult Index()
         {
-            var query = _context.AppUser;
+            var query = _context.Categories;
             return View(query);
         }
 
-        // GET: UserManagementController/Details/5
-        public ActionResult Details(string id)
+        // GET: CategoriesManagementController/Details/5
+        public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: UserManagementController/Create
+        // GET: CategoriesManagementController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: UserManagementController/Create
+        // POST: CategoriesManagementController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -46,13 +48,13 @@ namespace News.Controllers.Admin
             }
         }
 
-        // GET: UserManagementController/Edit/5
+        // GET: CategoriesManagementController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: UserManagementController/Edit/5
+        // POST: CategoriesManagementController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -67,13 +69,13 @@ namespace News.Controllers.Admin
             }
         }
 
-        // GET: UserManagementController/Delete/5
+        // GET: CategoriesManagementController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: UserManagementController/Delete/5
+        // POST: CategoriesManagementController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

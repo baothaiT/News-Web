@@ -4,34 +4,34 @@ using News.Data;
 
 namespace News.Controllers.Admin
 {
-    public class UserManagementController : Controller
+    public class RoleManagementController : Controller
     {
         private ApplicationDbContext _context;
-        public UserManagementController(ApplicationDbContext context)
+        public RoleManagementController(ApplicationDbContext context)
         {
             _context = context;
         }
-        // GET: UserManagementController
-        [Route("usermanagement")]
+        // GET: RoleManagementController
+        [Route("/rolemanagement")]
         public ActionResult Index()
         {
-            var query = _context.AppUser;
+            var query = _context.AppRole;
             return View(query);
         }
 
-        // GET: UserManagementController/Details/5
-        public ActionResult Details(string id)
+        // GET: RoleManagementController/Details/5
+        public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: UserManagementController/Create
+        // GET: RoleManagementController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: UserManagementController/Create
+        // POST: RoleManagementController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -46,13 +46,13 @@ namespace News.Controllers.Admin
             }
         }
 
-        // GET: UserManagementController/Edit/5
+        // GET: RoleManagementController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: UserManagementController/Edit/5
+        // POST: RoleManagementController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -67,13 +67,13 @@ namespace News.Controllers.Admin
             }
         }
 
-        // GET: UserManagementController/Delete/5
+        // GET: RoleManagementController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: UserManagementController/Delete/5
+        // POST: RoleManagementController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
