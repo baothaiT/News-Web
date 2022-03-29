@@ -4,36 +4,32 @@ using News.Data;
 
 namespace News.Controllers.Admin
 {
-    public class AdminController : Controller
+    public class UserManagementController : Controller
     {
         private ApplicationDbContext _context;
-        public AdminController(ApplicationDbContext context)
+        public UserManagementController(ApplicationDbContext context)
         {
             _context = context;
         }
-
-
-        // GET: AdminController
-        [Route("/admin")]
+        // GET: UserManagementController
         public ActionResult Index()
         {
-
             return View();
         }
 
-        // GET: AdminController/Details/5
+        // GET: UserManagementController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: AdminController/Create
+        // GET: UserManagementController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: AdminController/Create
+        // POST: UserManagementController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -48,13 +44,13 @@ namespace News.Controllers.Admin
             }
         }
 
-        // GET: AdminController/Edit/5
+        // GET: UserManagementController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: AdminController/Edit/5
+        // POST: UserManagementController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -69,13 +65,13 @@ namespace News.Controllers.Admin
             }
         }
 
-        // GET: AdminController/Delete/5
+        // GET: UserManagementController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: AdminController/Delete/5
+        // POST: UserManagementController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
