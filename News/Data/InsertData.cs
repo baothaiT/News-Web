@@ -133,8 +133,74 @@ namespace News.Data
                 }
                 );
 
+            //Academic Year Data 
+            var academicYearId1 = Guid.NewGuid().ToString();
 
-            
+            builder.Entity<AcademicYear>().HasData(
+                new AcademicYear()
+                {
+                    academicYear_Id = academicYearId1,
+                    academicYear_Name = "AcademicYear1",
+                    academicYear_Description = "AcademicYear1",
+                    academicYear_StartTime = new DateTime(2021, 02, 02),
+                    academicYear_DueTime = new DateTime(2023, 02, 02)
+                }
+                );
+
+            //Idea Data
+            var ideaId1 = Guid.NewGuid().ToString();
+            var ideaId2 = Guid.NewGuid().ToString();
+            var ideaId3 = Guid.NewGuid().ToString();
+
+            builder.Entity<Idea>().HasData(
+                new Idea()
+                {
+                    idea_Id = ideaId1,
+                    idea_Title = "Title1",
+                    idea_Description = "Description1",
+                    idea_UpdateTime = new DateTime(2022, 02, 02),
+                    idea_CategoryId = categoryId1,
+                    idea_AcademicYearId = academicYearId1,
+                    idea_UserId = userId2
+                },
+                new Idea()
+                {
+                    idea_Id = ideaId2,
+                    idea_Title = "Title2",
+                    idea_Description = "Description2",
+                    idea_UpdateTime = new DateTime(2022, 02, 03),
+                    idea_CategoryId = categoryId2,
+                    idea_AcademicYearId = academicYearId1,
+                    idea_UserId = userId2
+                },
+                new Idea()
+                {
+                    idea_Id = ideaId3,
+                    idea_Title = "Title3",
+                    idea_Description = "Description3",
+                    idea_UpdateTime = new DateTime(2022, 02, 04),
+                    idea_CategoryId = categoryId2,
+                    idea_AcademicYearId = academicYearId1,
+                    idea_UserId = userId1
+                }
+                );
+
+            //UserInDepartment Data 
+            var uidUserId1 = Guid.NewGuid().ToString();
+
+            builder.Entity<UserInDepartment>().HasData(
+                new UserInDepartment()
+                {
+                    uid_UserId = userId1,
+                    uid_DepartmentId = departmentId1
+                },
+                new UserInDepartment()
+                {
+                    uid_UserId = userId2,
+                    uid_DepartmentId = departmentId2
+                }
+                );
+
         }
     }
 }
