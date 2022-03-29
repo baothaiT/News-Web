@@ -1,27 +1,27 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
-    <title>Varsity | Home</title>
+    <title>Varsity | 404</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="assetsClient/img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
 
     <!-- Font awesome -->
-    <link href="assetsClient/css/font-awesome.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.css" rel="stylesheet">
     <!-- Bootstrap -->
-    <link href="assetsClient/css/bootstrap.css" rel="stylesheet">   
+    <link href="assets/css/bootstrap.css" rel="stylesheet">   
     <!-- Slick slider -->
-    <link rel="stylesheet" type="text/css" href="assetsClient/css/slick.css">          
+    <link rel="stylesheet" type="text/css" href="assets/css/slick.css">          
     <!-- Fancybox slider -->
-    <link rel="stylesheet" href="assetsClient/css/jquery.fancybox.css" type="text/css" media="screen" /> 
+    <link rel="stylesheet" href="assets/css/jquery.fancybox.css" type="text/css" media="screen" /> 
     <!-- Theme color -->
-    <link id="switcher" href="assetsClient/css/theme-color/default-theme.css" rel="stylesheet">          
+    <link id="switcher" href="assets/css/theme-color/default-theme.css" rel="stylesheet">  
 
     <!-- Main style sheet -->
-    <link href="assetsClient/css/style.css" rel="stylesheet">    
+    <link href="assets/css/style.css" rel="stylesheet">    
 
    
     <!-- Google Fonts -->
@@ -37,8 +37,8 @@
     <![endif]-->
 
   </head>
-  <body> 
-
+  <body>
+  
   <!--START SCROLL TOP BUTTON -->
     <a class="scrollToTop" href="#">
       <i class="fa fa-angle-up"></i>      
@@ -84,7 +84,6 @@
     </div>
   </header>
   <!-- End header  -->
-
   <!-- Start menu -->
   <section id="mu-menu">
     <nav class="navbar navbar-default" role="navigation">  
@@ -101,11 +100,11 @@
           <!-- TEXT BASED LOGO -->
           <a class="navbar-brand" href="index.html"><i class="fa fa-university"></i><span>Varsity</span></a>
           <!-- IMG BASED LOGO  -->
-          <!-- <a class="navbar-brand" href="index.html"><img src="assetsClient/img/logo.png" alt="logo"></a> -->
+          <!-- <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt="logo"></a> -->
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
-            <li class="active"><a href="index.html">Home</a></li>            
+            <li><a href="index.html">Home</a></li>            
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Course <span class="fa fa-angle-down"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -122,7 +121,7 @@
               </ul>
             </li>            
             <li><a href="contact.html">Contact</a></li>
-            <li><a href="404.html">404 Page</a></li>               
+            <li class="active"><a href="404.html">404 Page</a></li>               
             <li><a href="#" id="mu-search-icon"><i class="fa fa-search"></i></a></li>
           </ul>                     
         </div><!--/.nav-collapse -->        
@@ -138,7 +137,7 @@
         <div class="row">
           <div class="col-md-12">            
             <form class="mu-search-form">
-              <input type="search" placeholder="Type Your Keyword(s) & Hit Enter">              
+              <input type="search" placeholder="Type Your Keyword(s) & Hit Enter">
             </form>
           </div>
         </div>
@@ -146,8 +145,42 @@
     </div>
   </div>
   <!-- End search box -->
+ <!-- Page breadcrumb -->
+ <section id="mu-page-breadcrumb">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12">
+         <div class="mu-page-breadcrumb-area">
+           <h2>404</h2>
+           <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>            
+            <li class="active">404</li>
+          </ol>
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+ <!-- End breadcrumb -->
 
-  @RenderBody();
+  <!-- Start error section  -->
+  <section id="mu-error">
+    <div class="container">
+      <div class="row">
+       <div class="col-md-12">
+          <div class="mu-error-area">
+            <p>Oops! The page you requested was not found!</p>
+            <span>The page you are looking for is not available or has been removed or changed.</span>
+            <h2>404</h2>
+            <a class="mu-post-btn" href="index.html">GO TO HOME</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ <!-- End error section  -->
+ 
+
   <!-- Start footer -->
   <footer id="mu-footer">
     <!-- start footer top -->
@@ -217,26 +250,28 @@
     <!-- end footer bottom -->
   </footer>
   <!-- End footer -->
+
+
+
+
+
   
   <!-- jQuery library -->
-  <script src="assetsClient/js/jquery.min.js"></script>  
+  <script src="assets/js/jquery.min.js"></script>  
   <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="assetsClient/js/bootstrap.js"></script>   
+  <script src="assets/js/bootstrap.js"></script>   
   <!-- Slick slider -->
-  <script type="text/javascript" src="assetsClient/js/slick.js"></script>
+  <script type="text/javascript" src="assets/js/slick.js"></script>
   <!-- Counter -->
-  <script type="text/javascript" src="assetsClient/js/waypoints.js"></script>
-  <script type="text/javascript" src="assetsClient/js/jquery.counterup.js"></script>  
+  <script type="text/javascript" src="assets/js/waypoints.js"></script>
+  <script type="text/javascript" src="assets/js/jquery.counterup.js"></script>  
   <!-- Mixit slider -->
-  <script type="text/javascript" src="assetsClient/js/jquery.mixitup.js"></script>
+  <script type="text/javascript" src="assets/js/jquery.mixitup.js"></script>
   <!-- Add fancyBox -->        
-  <script type="text/javascript" src="assetsClient/js/jquery.fancybox.pack.js"></script>
-  
-  
+  <script type="text/javascript" src="assets/js/jquery.fancybox.pack.js"></script>
+
   <!-- Custom js -->
-  <script src="assetsClient/js/custom.js"></script> 
-   @await RenderSectionAsync("Scripts", required: false)
+  <script src="assets/js/custom.js"></script> 
+
   </body>
 </html>
-
-
