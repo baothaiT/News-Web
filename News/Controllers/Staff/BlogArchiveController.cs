@@ -9,6 +9,8 @@ namespace News.Controllers.Staff
         [Route("blogarchive")]
         public ActionResult Index()
         {
+            //Class active 
+            ViewBag.BlogActive = "active";
 
             return View();
         }

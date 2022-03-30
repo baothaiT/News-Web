@@ -9,6 +9,9 @@ namespace News.Controllers.Staff
         [Route("/contact")]
         public ActionResult Index()
         {
+            //Class active
+            ViewBag.ContactActive = "active";
+
             return View();
         }
 

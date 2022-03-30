@@ -3,30 +3,30 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace News.Controllers.Staff
 {
-    public class GalleryController : Controller
+    public class CreateIdeaController : Controller
     {
-        // GET: GalleryController
-        [Route("gallery")]
+        // GET: CreateIdeaController
+        [Route("createiead")]
         public ActionResult Index()
         {
             //Class active
-            ViewBag.GalleryActive = "active";
+            ViewBag.UploadIdeaActive = "active";
             return View();
         }
 
-        // GET: GalleryController/Details/5
+        // GET: CreateIdeaController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: GalleryController/Create
+        // GET: CreateIdeaController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: GalleryController/Create
+        // POST: CreateIdeaController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -41,13 +41,13 @@ namespace News.Controllers.Staff
             }
         }
 
-        // GET: GalleryController/Edit/5
+        // GET: CreateIdeaController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: GalleryController/Edit/5
+        // POST: CreateIdeaController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -62,13 +62,13 @@ namespace News.Controllers.Staff
             }
         }
 
-        // GET: GalleryController/Delete/5
+        // GET: CreateIdeaController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: GalleryController/Delete/5
+        // POST: CreateIdeaController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

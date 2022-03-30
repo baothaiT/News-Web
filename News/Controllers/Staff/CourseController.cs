@@ -9,6 +9,8 @@ namespace News.Controllers.Staff
         [Route("course")]
         public ActionResult Index()
         {
+            //Class Active menu
+            ViewBag.CourseActive = "active";
             return View();
         }
 

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using News.Entities;
 
-namespace News.Controllers.Staff
+namespace News.Controllers.Coordinator
 {
     public class IdeaManagementController : Controller
     {

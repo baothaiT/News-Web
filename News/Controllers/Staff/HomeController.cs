@@ -20,6 +20,7 @@ namespace News.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.HomeActive = "active";
             return View();
         }
 
