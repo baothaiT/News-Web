@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using News.Data;
+using News.Entities;
 
 namespace News.Controllers.Coordinator
 {
@@ -20,24 +21,39 @@ namespace News.Controllers.Coordinator
         }
 
         // GET: DepartmentManagementController/Details/5
-        public ActionResult Details(int id)
+        [Route("departmentmanagement/details")]
+        [HttpGet]
+        public ActionResult Details(string id)
         {
-            return View();
+            var query = _context.Department.Find(id);
+            return View(query);
         }
 
         // GET: DepartmentManagementController/Create
+        [Route("departmentmanagement/create")]
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: DepartmentManagementController/Create
+        [Route("departmentmanagement/create")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Department department)
         {
             try
             {
+                var newDepartment = new Department()
+                {
+                    department_Name = department.department_Name,
+                    department_Description = department.department_Description
+                };
+
+                _context.Department.Add(newDepartment);
+                _context.SaveChanges();
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -47,18 +63,28 @@ namespace News.Controllers.Coordinator
         }
 
         // GET: DepartmentManagementController/Edit/5
-        public ActionResult Edit(int id)
+        [Route("departmentmanagement/edit")]
+        public ActionResult Edit(string id)
         {
-            return View();
+            var query = _context.Department.Find(id);
+            return View(query);
         }
 
         // POST: DepartmentManagementController/Edit/5
+        [Route("departmentmanagement/edit")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(string id, Department department)
         {
             try
             {
+                var query = _context.Department.Find(department.department_Id);
+                query.department_Name = department.department_Name;
+                query.department_Description = department.department_Description;
+
+                _context.Department.Update(query);
+                _context.SaveChanges();
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -68,18 +94,27 @@ namespace News.Controllers.Coordinator
         }
 
         // GET: DepartmentManagementController/Delete/5
-        public ActionResult Delete(int id)
+        [Route("departmentmanagement/delete")]
+        [HttpGet]
+        public ActionResult Delete(string id)
         {
-            return View();
+            var query = _context.Department.Find(id);
+            return View(query);
         }
 
         // POST: DepartmentManagementController/Delete/5
+        [Route("departmentmanagement/delete")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(string id, IFormCollection collection)
         {
             try
             {
+                var query = _context.Department.Find(id);
+
+                _context.Department.Remove(query);
+                _context.SaveChanges();
+
                 return RedirectToAction(nameof(Index));
             }
             catch
