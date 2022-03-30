@@ -1,0 +1,43 @@
+﻿@model News.Entities.AcademicYear
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AcademicYear</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.academicYear_Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.academicYear_Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.academicYear_Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.academicYear_Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.academicYear_StartTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.academicYear_StartTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.academicYear_DueTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.academicYear_DueTime)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.academicYear_Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
