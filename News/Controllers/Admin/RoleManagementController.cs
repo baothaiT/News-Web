@@ -100,11 +100,11 @@ namespace News.Controllers.Admin
         [Route("/rolemanagement/delete")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, AppRole appRole)
         {
             try
             {
-                var query = _context.AppRole.Find(id);
+                var query = _context.AppRole.Find(appRole.Id);
                 _context.AppRole.Remove(query);
                 _context.SaveChanges();
 

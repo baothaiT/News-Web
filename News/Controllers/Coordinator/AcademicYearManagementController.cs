@@ -115,11 +115,11 @@ namespace News.Controllers.Coordinator
         [Route("academicyearmanagement/edit")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(string id, IFormCollection collection)
+        public ActionResult Delete(string id, AcademicYear academicYear)
         {
             try
             {
-                var query = _context.AcademicYear.Find(id);
+                var query = _context.AcademicYear.Find(academicYear.academicYear_Id);
                 _context.AcademicYear.Remove(query);
                 _context.SaveChanges();
 

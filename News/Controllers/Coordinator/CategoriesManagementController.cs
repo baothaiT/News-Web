@@ -107,11 +107,11 @@ namespace News.Controllers.Coordinator
         [Route("categoriesmanagement/delete")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(string id, IFormCollection collection)
+        public ActionResult Delete(string id, Categories categories)
         {
             try
             {
-                var query = _context.Categories.Find(id);
+                var query = _context.Categories.Find(categories.category_Id);
 
                 _context.Categories.Remove(query);
                 _context.SaveChanges();

@@ -162,7 +162,7 @@ namespace News.Controllers.Coordinator
         [Route("ideamanagement/delete")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(string id, IFormCollection collection)
+        public ActionResult Delete(string id, Idea idea)
         {
             try
             {

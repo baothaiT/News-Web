@@ -106,11 +106,11 @@ namespace News.Controllers.Admin
         // POST: UserManagementController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(string id, IFormCollection collection)
+        public ActionResult Delete(string id, AppUser appUser)
         {
             try
             {
-                var query = _context.AppUser.Find(id);
+                var query = _context.AppUser.Find(appUser.Id);
                 _context.AppUser.Remove(query);
                 _context.SaveChanges();
 

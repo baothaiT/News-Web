@@ -106,11 +106,11 @@ namespace News.Controllers.Coordinator
         [Route("departmentmanagement/delete")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(string id, IFormCollection collection)
+        public ActionResult Delete(string id, Department department)
         {
             try
             {
-                var query = _context.Department.Find(id);
+                var query = _context.Department.Find(department.department_Id);
 
                 _context.Department.Remove(query);
                 _context.SaveChanges();
