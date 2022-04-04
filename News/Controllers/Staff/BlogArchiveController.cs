@@ -1,10 +1,18 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using News.Data;
+using News.Models;
+using System.Linq;
 
 namespace News.Controllers.Staff
 {
     public class BlogArchiveController : Controller
     {
+        private ApplicationDbContext _context;
+        public BlogArchiveController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         // GET: BlogArchiveController
         [Route("blogarchive")]
         public ActionResult Index()
@@ -12,7 +20,12 @@ namespace News.Controllers.Staff
             //Class active 
             ViewBag.BlogActive = "active";
 
-            return View();
+            //Query Blog
+            var query = from s in _context.Idea
+                        orderby s.idea_UpdateTime descending
+                        select s;
+
+            return View(query);
         }
 
         // GET: BlogArchiveController/Details/5

@@ -78,6 +78,7 @@ namespace News.Controllers.Staff
                     idea_Id = Guid.NewGuid().ToString(),
                     idea_Title = idea.idea_Title,
                     idea_Description = idea.idea_Description,
+                    idea_Img = idea.idea_Img,
                     idea_UpdateTime = DateTime.Now,
                     idea_Agree = idea.idea_Agree,
                     idea_CategoryId = idea.idea_CategoryId,
@@ -87,7 +88,7 @@ namespace News.Controllers.Staff
                 _context.Idea.Add(createIdea);
                 _context.SaveChanges();
 
-                return RedirectToAction(nameof(Create));
+                return Redirect("/blogarchive");
             }
             catch
             {

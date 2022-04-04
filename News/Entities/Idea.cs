@@ -10,6 +10,7 @@ namespace News.Entities
         public string idea_Description { get; set; }
         public DateTime idea_UpdateTime { get; set; }
         public bool idea_Agree { get; set; }
+        public string idea_Img { get; set; }
 
         [DisplayName("Category")]
         public string idea_CategoryId { get; set; }

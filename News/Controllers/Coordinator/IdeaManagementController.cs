@@ -21,6 +21,8 @@ namespace News.Controllers.Coordinator
         public ActionResult Index()
         {
             var query = _context.Idea;
+
+
             return View(query);
         }
 
