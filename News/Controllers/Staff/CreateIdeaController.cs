@@ -1,16 +1,28 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using News.Data;
+using News.Entities;
+using System;
+using System.Collections.Generic;
 
 namespace News.Controllers.Staff
 {
     public class CreateIdeaController : Controller
     {
+        private readonly ApplicationDbContext _context;
+        public CreateIdeaController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         // GET: CreateIdeaController
-        [Route("createiead")]
+        
         public ActionResult Index()
         {
             //Class active
             ViewBag.UploadIdeaActive = "active";
+
+
             return View();
         }
 
@@ -21,19 +33,61 @@ namespace News.Controllers.Staff
         }
 
         // GET: CreateIdeaController/Create
+        [Route("createiead")]
         public ActionResult Create()
         {
+            //Class active
+            ViewBag.UploadIdeaActive = "active";
+
+
+            //Query Categories 
+            var categoriesQuery = _context.Categories;
+
+            List<SelectListItem> CategoryList = new List<SelectListItem>();
+            foreach (var category in categoriesQuery)
+            {
+                var itemCategory = new SelectListItem { Value = category.category_Id, Text = category.category_Name };
+                CategoryList.Add(itemCategory);
+            }
+            ViewBag.idea_CategoryId = CategoryList;
+
+            //Query Academic Year 
+            var academicYearQuery = _context.AcademicYear;
+
+            List<SelectListItem> AcademicYearList = new List<SelectListItem>();
+            foreach (var academic in academicYearQuery)
+            {
+                var itemAcademic = new SelectListItem { Value = academic.academicYear_Id, Text = academic.academicYear_Name };
+                AcademicYearList.Add(itemAcademic);
+            }
+            ViewBag.idea_AcademicYearId = AcademicYearList;
+
             return View();
         }
 
         // POST: CreateIdeaController/Create
+        [Route("createiead")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Idea idea)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var createIdea = new Idea()
+                {
+                    idea_Id = Guid.NewGuid().ToString(),
+                    idea_Title = idea.idea_Title,
+                    idea_Description = idea.idea_Description,
+                    idea_UpdateTime = DateTime.Now,
+                    idea_Agree = idea.idea_Agree,
+                    idea_CategoryId = idea.idea_CategoryId,
+                    idea_AcademicYearId = idea.idea_AcademicYearId,
+                };
+
+                _context.Idea.Add(createIdea);
+                _context.SaveChanges();
+
+                return RedirectToAction(nameof(Create));
             }
             catch
             {
