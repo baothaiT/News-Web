@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using News.Data;
 using News.Entities;
+using System;
 
 namespace News.Controllers.Coordinator
 {
@@ -49,6 +50,7 @@ namespace News.Controllers.Coordinator
             {
                 var newCategories = new Categories()
                 {
+                    category_Id = Guid.NewGuid().ToString(),
                     category_Name = categories.category_Name,
                     category_Description = categories.category_Description,
                 };

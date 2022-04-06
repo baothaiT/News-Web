@@ -1,21 +1,30 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using News.Data;
 
 namespace News.Controllers.Staff
 {
     public class BlogSingleController : Controller
     {
+        private readonly ApplicationDbContext _context;
+        public BlogSingleController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         // GET: BlogSingleController
-        [Route("blogsingle")]
+        [Route("blogsinglelist")]
         public ActionResult Index()
         {
             return View();
         }
 
         // GET: BlogSingleController/Details/5
-        public ActionResult Details(int id)
+        [Route("blogsingle")]
+        [HttpGet]
+        public ActionResult Details(string id)
         {
-            return View();
+            var queryIdea = _context.Idea.Find(id);
+            return View(queryIdea);
         }
 
         // GET: BlogSingleController/Create
