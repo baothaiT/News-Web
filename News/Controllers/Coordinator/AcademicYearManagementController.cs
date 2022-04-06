@@ -84,7 +84,7 @@ namespace News.Controllers.Coordinator
         {
             try
             {
-                var query = _context.AcademicYear.Find(id);
+                var query = _context.AcademicYear.Find(academicYear.academicYear_Id);
 
                 query.academicYear_Name = academicYear.academicYear_Name;
                 query.academicYear_Description = academicYear.academicYear_Description;
@@ -103,7 +103,7 @@ namespace News.Controllers.Coordinator
         }
 
         // GET: AcademicYearController/Delete/5
-        [Route("academicyearmanagement/edit")]
+        [Route("academicyearmanagement/delete")]
         [HttpGet]
         public ActionResult Delete(string id)
         {
@@ -112,7 +112,7 @@ namespace News.Controllers.Coordinator
         }
 
         // POST: AcademicYearController/Delete/5
-        [Route("academicyearmanagement/edit")]
+        [Route("academicyearmanagement/delete")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(string id, AcademicYear academicYear)

@@ -394,7 +394,7 @@ namespace News.Migrations
                             idea_Agree = false,
                             idea_CategoryId = "79ebcc46-bc30-49bf-9536-3d0b65aa2e36",
                             idea_Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.",
-                            idea_Img = "/assetsClient/img/blog/blog-1.jpg",
+                            idea_Img = "/~/assetsClient/img/blog/blog-1.jpg",
                             idea_Title = "Title1",
                             idea_UpdateTime = new DateTime(2022, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             idea_UserId = "b9ce1eb4-b6a5-4a00-92b7-acd735592124"
@@ -406,7 +406,7 @@ namespace News.Migrations
                             idea_Agree = false,
                             idea_CategoryId = "b2b85455-6396-40ee-bb53-34544d88407e",
                             idea_Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.",
-                            idea_Img = "/assetsClient/img/blog/blog-1.jpg",
+                            idea_Img = "/~/assetsClient/img/blog/blog-1.jpg",
                             idea_Title = "Title2",
                             idea_UpdateTime = new DateTime(2022, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             idea_UserId = "b9ce1eb4-b6a5-4a00-92b7-acd735592124"
@@ -418,7 +418,7 @@ namespace News.Migrations
                             idea_Agree = false,
                             idea_CategoryId = "b2b85455-6396-40ee-bb53-34544d88407e",
                             idea_Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.",
-                            idea_Img = "/assetsClient/img/blog/blog-1.jpg",
+                            idea_Img = "/~/assetsClient/img/blog/blog-1.jpg",
                             idea_Title = "Title3",
                             idea_UpdateTime = new DateTime(2022, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             idea_UserId = "2cb63ff0-bd71-47f1-8f8e-faf484379222"

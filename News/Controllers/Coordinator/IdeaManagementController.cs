@@ -114,12 +114,12 @@ namespace News.Controllers.Coordinator
 
 
             // Get Id and Name of User
-            var queryUser = _context.AppUser.Find(queryIdea.idea_UserId);
+            //var queryUser = _context.AppUser.Find(queryIdea.idea_UserId);
 
-            List<SelectListItem> UserList = new List<SelectListItem>();
-            var itemUser = new SelectListItem { Value = queryUser.Id, Text = queryUser.UserName };
-            UserList.Add(itemUser);
-            ViewBag.idea_UserId = UserList;
+            //List<SelectListItem> UserList = new List<SelectListItem>();
+            //var itemUser = new SelectListItem { Value = queryUser.Id, Text = queryUser.UserName };
+            //UserList.Add(itemUser);
+            //ViewBag.idea_UserId = UserList;
 
             return View(queryIdea);
         }
@@ -132,7 +132,7 @@ namespace News.Controllers.Coordinator
         {
             try
             {
-                var query = _context.Idea.Find(id);
+                var query = _context.Idea.Find(idea.idea_Id);
                 query.idea_Title = idea.idea_Title;
                 query.idea_Description = idea.idea_Description;
                 query.idea_UpdateTime = idea.idea_UpdateTime;
@@ -140,7 +140,7 @@ namespace News.Controllers.Coordinator
                 query.idea_AcademicYearId = idea.idea_AcademicYearId;
                 query.idea_UserId = idea.idea_UserId;
 
-                _context.Idea.Add(query);
+                _context.Idea.Update(query);
                 _context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
@@ -168,7 +168,7 @@ namespace News.Controllers.Coordinator
         {
             try
             {
-                var query = _context.Idea.Find(id);
+                var query = _context.Idea.Find(idea.idea_Id);
                 _context.Idea.Remove(query);
                 _context.SaveChanges();
 

@@ -111,7 +111,8 @@ namespace News.Controllers.Admin
             try
             {
                 var query = _context.AppUser.Find(appUser.Id);
-                _context.DeleteObject(query);
+                //Error
+                _context.AppUser.Remove(query);
                 _context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));

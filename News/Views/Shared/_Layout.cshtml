@@ -7,21 +7,21 @@
     <title>Varsity | Home</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="assetsClient/img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="~/assetsClient/img/favicon.ico" type="image/x-icon">
 
     <!-- Font awesome -->
-    <link href="assetsClient/css/font-awesome.css" rel="stylesheet">
+    <link href="~/~/assetsClient/css/font-awesome.css" rel="stylesheet">
     <!-- Bootstrap -->
-    <link href="assetsClient/css/bootstrap.css" rel="stylesheet">
+    <link href="~/assetsClient/css/bootstrap.css" rel="stylesheet">
     <!-- Slick slider -->
-    <link rel="stylesheet" type="text/css" href="assetsClient/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="~/assetsClient/css/slick.css">
     <!-- Fancybox slider -->
-    <link rel="stylesheet" href="assetsClient/css/jquery.fancybox.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="~/assetsClient/css/jquery.fancybox.css" type="text/css" media="screen" />
     <!-- Theme color -->
-    <link id="switcher" href="assetsClient/css/theme-color/default-theme.css" rel="stylesheet">
+    <link id="switcher" href="~/assetsClient/css/theme-color/default-theme.css" rel="stylesheet">
 
     <!-- Main style sheet -->
-    <link href="assetsClient/css/style.css" rel="stylesheet">
+    <link href="~/assetsClient/css/style.css" rel="stylesheet">
 
 
     <!-- Google Fonts -->
@@ -99,17 +99,15 @@
                     <!-- TEXT BASED LOGO -->
                     <a class="navbar-brand" href="/"><i class="fa fa-university"></i><span>News</span></a>
                     <!-- IMG BASED LOGO  -->
-                    <!-- <a class="navbar-brand" href="index.html"><img src="assetsClient/img/logo.png" alt="logo"></a> -->
+                    <!-- <a class="navbar-brand" href="index.html"><img src="~/assetsClient/img/logo.png" alt="logo"></a> -->
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
                         <li class="@ViewBag.HomeActive"><a href="/">Home</a></li>
-                        <li class="@ViewBag.CourseActive"><a href="/course">Course</a></li>
                         <li class="@ViewBag.BlogActive"><a href="/blogarchive">Blog</a></li>
-                        <li class="@ViewBag.GalleryActive"><a href="/gallery">Gallery</a></li>
                         <li class="@ViewBag.ContactActive"><a href="/contact">Contact</a></li>
                         <li class="@ViewBag.UploadIdeaActive"><a href="/createiead">Upload Idea</a></li>
-
+                        <partial name="_LoginPartial.cshtml">
                         <li><a href="#" id="mu-search-icon"><i class="fa fa-search"></i></a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
@@ -204,22 +202,22 @@
     </footer>
     <!-- End footer -->
     <!-- jQuery library -->
-    <script src="assetsClient/js/jquery.min.js"></script>
+    <script src="~/assetsClient/js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="assetsClient/js/bootstrap.js"></script>
+    <script src="~/assetsClient/js/bootstrap.js"></script>
     <!-- Slick slider -->
-    <script type="text/javascript" src="assetsClient/js/slick.js"></script>
+    <script type="text/javascript" src="~/assetsClient/js/slick.js"></script>
     <!-- Counter -->
-    <script type="text/javascript" src="assetsClient/js/waypoints.js"></script>
-    <script type="text/javascript" src="assetsClient/js/jquery.counterup.js"></script>
+    <script type="text/javascript" src="~/assetsClient/js/waypoints.js"></script>
+    <script type="text/javascript" src="~/assetsClient/js/jquery.counterup.js"></script>
     <!-- Mixit slider -->
-    <script type="text/javascript" src="assetsClient/js/jquery.mixitup.js"></script>
+    <script type="text/javascript" src="~/assetsClient/js/jquery.mixitup.js"></script>
     <!-- Add fancyBox -->
-    <script type="text/javascript" src="assetsClient/js/jquery.fancybox.pack.js"></script>
+    <script type="text/javascript" src="~/assetsClient/js/jquery.fancybox.pack.js"></script>
 
 
     <!-- Custom js -->
-    <script src="assetsClient/js/custom.js"></script>
+    <script src="~/assetsClient/js/custom.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
