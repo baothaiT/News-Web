@@ -170,7 +170,7 @@ namespace News.Data
                 {
                     idea_Id = ideaId1,
                     idea_Title = "Title1",
-                    idea_Img = "/~/assetsClient/img/blog/blog-1.jpg",
+                    idea_ImageName = "/~/assetsClient/img/blog/blog-1.jpg",
                     idea_Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.",
                     idea_UpdateTime = new DateTime(2022, 02, 02),
                     idea_CategoryId = categoryId1,
@@ -181,7 +181,7 @@ namespace News.Data
                 {
                     idea_Id = ideaId2,
                     idea_Title = "Title2",
-                    idea_Img = "/~/assetsClient/img/blog/blog-1.jpg",
+                    idea_ImageName = "/~/assetsClient/img/blog/blog-1.jpg",
                     idea_Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.",
                     idea_UpdateTime = new DateTime(2022, 02, 03),
                     idea_CategoryId = categoryId2,
@@ -192,7 +192,7 @@ namespace News.Data
                 {
                     idea_Id = ideaId3,
                     idea_Title = "Title3",
-                    idea_Img = "/~/assetsClient/img/blog/blog-1.jpg",
+                    idea_ImageName = "/~/assetsClient/img/blog/blog-1.jpg",
                     idea_Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.",
                     idea_UpdateTime = new DateTime(2022, 02, 04),
                     idea_CategoryId = categoryId2,

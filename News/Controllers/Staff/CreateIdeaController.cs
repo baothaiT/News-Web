@@ -1,22 +1,29 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using News.Data;
 using News.Entities;
+using News.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace News.Controllers.Staff
 {
     public class CreateIdeaController : Controller
     {
         private readonly ApplicationDbContext _context;
-        public CreateIdeaController(ApplicationDbContext context)
+        private readonly IWebHostEnvironment _hostEnvironment;
+
+        public CreateIdeaController(ApplicationDbContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            _hostEnvironment = hostEnvironment;
         }
         // GET: CreateIdeaController
-        
+
         public ActionResult Index()
         {
             //Class active
@@ -68,25 +75,48 @@ namespace News.Controllers.Staff
         // POST: CreateIdeaController/Create
         [Route("createiead")]
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(Idea idea)
+        public async Task<ActionResult> CreateAsync(IdeaModels idea)
         {
             try
             {
-                var createIdea = new Idea()
+                if (ModelState.IsValid)
                 {
-                    idea_Id = Guid.NewGuid().ToString(),
-                    idea_Title = idea.idea_Title,
-                    idea_Description = idea.idea_Description,
-                    idea_Img = idea.idea_Img,
-                    idea_UpdateTime = DateTime.Now,
-                    idea_Agree = idea.idea_Agree,
-                    idea_CategoryId = idea.idea_CategoryId,
-                    idea_AcademicYearId = idea.idea_AcademicYearId,
-                };
+                    string wwwRootPath = _hostEnvironment.WebRootPath;
+                    string fileName = Path.GetFileNameWithoutExtension(idea.idea_ImagePath.FileName);
+                    string extension = Path.GetExtension(idea.idea_ImagePath.FileName);
+                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    string path = Path.Combine(wwwRootPath + "/Image/", fileName);
+                    
+                    
+                    var createIdea = new Idea()
+                    {
+                        idea_Id = Guid.NewGuid().ToString(),
+                        idea_Title = idea.idea_Title,
+                        idea_Description = idea.idea_Description,
+                        idea_ImagePath = path,
+                        idea_ImageName = fileName ,
+                        idea_UpdateTime = DateTime.Now,
+                        idea_Agree = idea.idea_Agree,
+                        idea_CategoryId = idea.idea_CategoryId,
+                        idea_AcademicYearId = idea.idea_AcademicYearId,
+                    };
 
-                _context.Idea.Add(createIdea);
-                _context.SaveChanges();
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        await idea.idea_ImagePath.CopyToAsync(fileStream);
+                    }
+                    //string wwwRootPath = _hostEnvironment.WebRootPath;
+                    //string fileName = Path.GetFileNameWithoutExtension(imageModel.ImageFile.FileName);
+                    //string extension = Path.GetExtension(imageModel.ImageFile.FileName);
+                    //imageModel.ImageName = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    //string path = Path.Combine(wwwRootPath + "/Image/", fileName);
+                    //using (var fileStream = new FileStream(path, FileMode.Create))
+                    //{
+                    //    await imageModel.ImageFile.CopyToAsync(fileStream);
+                    //}
+                    _context.Idea.Add(createIdea);
+                    await _context.SaveChangesAsync();
+                }
 
                 return Redirect("/blogarchive");
             }

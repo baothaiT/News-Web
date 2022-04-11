@@ -1,13 +1,23 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using News.Entities;
+using News.Models;
 
 namespace News.Controllers
 {
     public class TestController : Controller
     {
+        
         [Route("test")]
         // GET: TestController
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        [Route("test2")]
+        // GET: TestController
+        public ActionResult Index2()
         {
             return View();
         }
@@ -29,13 +39,12 @@ namespace News.Controllers
         [Route("test/create")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(IdeaModels idea)
         {
             try
             {
                 string a = Request.Form["testForm"];
 
-                string s;
                 return RedirectToAction(nameof(Index));
             }
             catch

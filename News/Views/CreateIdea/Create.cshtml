@@ -1,4 +1,4 @@
-﻿@model News.Entities.Idea
+﻿@model News.Models.IdeaModels
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -41,30 +41,37 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div>
-                                    <form asp-controller="CreateIdea" asp-action="Create" method="post">
+                                    <form asp-controller="CreateIdea" asp-action="Create" method="post" enctype="multipart/form-data">
 
                                         <div class="form-group">
                                             <label for="titleForm"> Title</label>
-                                            <input type="text" class="form-control" placeholder="Title" name="idea_Title" id="titleForm" required/>
+                                            <input type="text" class="form-control" placeholder="Title" name="idea_Title" id="titleForm" required />
                                         </div>
                                         <div class="form-group">
                                             <label for="imgForm"> Image</label>
-                                            <input type="text" class="form-control" placeholder="Link image" id="idea_Img" name="idea_Img" required/>
+                                            <input type="text" class="form-control" placeholder="Link image" id="idea_Img" name="idea_Img" required />
                                         </div>
                                         <div class="form-group">
                                             <label for="contentForm"> Content</label>
                                             <textarea id="contentForm" name="idea_Description" rows="20" placeholder="Content" required>  </textarea>
                                         </div>
+
+
+                                        <div class="form-group">
+                                            <input type="file" name="idea_ImagePath" class="form-control" />
+                                        </div>
+
+
                                         <div class="form-group">
                                             <label asp-for="idea_CategoryId" class="control-label"></label>
-                                            <select asp-for="idea_CategoryId" class ="form-control" asp-items="ViewBag.idea_CategoryId"></select>
+                                            <select asp-for="idea_CategoryId" class="form-control" asp-items="ViewBag.idea_CategoryId"></select>
                                         </div>
                                         <div class="form-group">
                                             <label asp-for="idea_AcademicYearId" class="control-label"></label>
-                                            <select asp-for="idea_AcademicYearId" class ="form-control" asp-items="ViewBag.idea_AcademicYearId"></select>
+                                            <select asp-for="idea_AcademicYearId" class="form-control" asp-items="ViewBag.idea_AcademicYearId"></select>
                                         </div>
                                         <div>
-                                            <input type="checkbox" id="policyForm" asp-for="idea_Agree"   required>
+                                            <input type="checkbox" id="policyForm" asp-for="idea_Agree" required>
                                             <label for="policyForm"> Agree terms of use</label><br>
                                         </div>
                                         <div>
