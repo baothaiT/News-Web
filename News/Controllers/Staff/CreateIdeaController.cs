@@ -87,7 +87,7 @@ namespace News.Controllers.Staff
                     fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
                     string path = Path.Combine(wwwRootPath + "/Image/", fileName);
                     
-                    
+                    //Create Idea
                     var createIdea = new Idea()
                     {
                         idea_Id = Guid.NewGuid().ToString(),
@@ -105,15 +105,6 @@ namespace News.Controllers.Staff
                     {
                         await idea.idea_ImagePath.CopyToAsync(fileStream);
                     }
-                    //string wwwRootPath = _hostEnvironment.WebRootPath;
-                    //string fileName = Path.GetFileNameWithoutExtension(imageModel.ImageFile.FileName);
-                    //string extension = Path.GetExtension(imageModel.ImageFile.FileName);
-                    //imageModel.ImageName = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                    //string path = Path.Combine(wwwRootPath + "/Image/", fileName);
-                    //using (var fileStream = new FileStream(path, FileMode.Create))
-                    //{
-                    //    await imageModel.ImageFile.CopyToAsync(fileStream);
-                    //}
                     _context.Idea.Add(createIdea);
                     await _context.SaveChangesAsync();
                 }
