@@ -17,7 +17,7 @@ namespace News.Models
         public bool idea_Agree { get; set; }
         public string idea_ImageName { get; set; }
         [NotMapped]
-        [DisplayName("Image")]
+        [DisplayName("Image (350x200)")]
         public IFormFile idea_ImagePath { get; set; }
 
         [DisplayName("Category")]

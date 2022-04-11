@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Food.Service;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using News.Data;
 using News.Models;
 using System.Linq;
@@ -15,7 +17,7 @@ namespace News.Controllers.Staff
         }
         // GET: BlogArchiveController
         [Route("blogarchive")]
-        public ActionResult Index()
+        public ActionResult Index(int? pageNumber , string sortOrder, string currentFilter)
         {
             //Class active 
             ViewBag.BlogActive = "active";
@@ -25,7 +27,21 @@ namespace News.Controllers.Staff
                         orderby s.idea_UpdateTime descending
                         select s;
 
-            return View(query);
+            //Create Idea
+            var blogModelQuery = query
+                .Select(x => new BlogArchiveModels()
+                {
+                    Id = x.idea_Id,
+                    Title = x.idea_Title,
+                    Img = x.idea_ImageName,
+                    UserName = "",
+                    CountComment = 20,
+                    ShortDescription = "",
+                    UpdateTime = x.idea_UpdateTime
+
+                });
+            int pageSize = 8;
+            return View(PaginatedList<BlogArchiveModels>.Create(blogModelQuery.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
         // GET: BlogArchiveController/Details/5
