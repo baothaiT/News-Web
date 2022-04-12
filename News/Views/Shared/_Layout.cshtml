@@ -104,11 +104,17 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
                         <li class="@ViewBag.HomeActive"><a href="/">Home</a></li>
-                        <li class="@ViewBag.BlogActive"><a href="/blogarchive">Blog</a></li>
+                        <li class="dropdown @ViewBag.BlogActive">
+                            <a href="/blogarchive" class="dropdown-toggle" data-toggle="dropdown">Blogs <span class="fa fa-angle-down"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/blogarchive?typeSort=MostView">Most View</a></li>
+                                <li><a href="/blogarchive?typeSort=Popular">Popular</a></li>
+                            </ul>
+                        </li>
                         <li class="@ViewBag.ContactActive"><a href="/contact">Contact</a></li>
                         <li class="@ViewBag.UploadIdeaActive"><a href="/createiead">Upload Idea</a></li>
                         <partial name="_LoginPartial.cshtml">
-                        <li><a href="#" id="mu-search-icon"><i class="fa fa-search"></i></a></li>
+                            <li><a href="#" id="mu-search-icon"><i class="fa fa-search"></i></a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>

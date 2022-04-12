@@ -17,7 +17,8 @@ namespace News.Controllers.Staff
         }
         // GET: BlogArchiveController
         [Route("blogarchive")]
-        public ActionResult Index(int? pageNumber , string sortOrder, string currentFilter)
+        [HttpGet("{typeSort}")]
+        public ActionResult Index(int? pageNumber , string sortOrder, string currentFilter,string typeSort)
         {
             //Class active 
             ViewBag.BlogActive = "active";
@@ -26,6 +27,24 @@ namespace News.Controllers.Staff
             var query = from s in _context.Idea
                         orderby s.idea_UpdateTime descending
                         select s;
+            if(typeSort != "")
+            {
+                switch (typeSort)
+                {
+                    case "MostView":
+                        // code block
+                        query = query.OrderByDescending(s => s.idea_View);
+                        break;
+                    case "Popular":
+                        // code block
+                        query = query.OrderByDescending(s => s.idea_View);
+                        break;
+                    default:
+                        // code block
+                        break;
+                }
+            }
+            
 
             //Create Idea
             var blogModelQuery = query

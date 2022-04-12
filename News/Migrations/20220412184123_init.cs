@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace News.Migrations
 {
-    public partial class @int : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -46,25 +46,6 @@ namespace News.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Department", x => x.department_Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "IdeaModels",
-                columns: table => new
-                {
-                    idea_Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    idea_Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    idea_Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    idea_UpdateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    idea_Agree = table.Column<bool>(type: "bit", nullable: false),
-                    idea_ImageName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    idea_CategoryId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    idea_AcademicYearId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    idea_UserId = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_IdeaModels", x => x.idea_Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -140,6 +121,7 @@ namespace News.Migrations
                     idea_Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     idea_Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     idea_Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    idea_View = table.Column<int>(type: "int", nullable: false),
                     idea_UpdateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     idea_Agree = table.Column<bool>(type: "bit", nullable: false),
                     idea_ImageName = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -280,19 +262,47 @@ namespace News.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "LikeInIdea",
+                columns: table => new
+                {
+                    likeInIdea_Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    likeInIdea_Like = table.Column<int>(type: "int", nullable: false),
+                    likeInIdea_DisLike = table.Column<int>(type: "int", nullable: false),
+                    likeInIdea_CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    likeInIdea_UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    likeInIdea_IdeaId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LikeInIdea", x => x.likeInIdea_Id);
+                    table.ForeignKey(
+                        name: "FK_LikeInIdea_Idea_likeInIdea_IdeaId",
+                        column: x => x.likeInIdea_IdeaId,
+                        principalTable: "Idea",
+                        principalColumn: "idea_Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_LikeInIdea_Users_likeInIdea_UserId",
+                        column: x => x.likeInIdea_UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.InsertData(
                 table: "AcademicYear",
                 columns: new[] { "academicYear_Id", "academicYear_Description", "academicYear_DueTime", "academicYear_Name", "academicYear_StartTime" },
-                values: new object[] { "cdc13449-201a-40a0-b88d-43b205dfb4cd", "AcademicYear1", new DateTime(2023, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "AcademicYear1", new DateTime(2021, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[] { "0882c16d-2960-4070-8ada-2f3ce0660e34", "AcademicYear1", new DateTime(2023, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "AcademicYear1", new DateTime(2021, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.InsertData(
                 table: "Categories",
                 columns: new[] { "category_Id", "category_Description", "category_Name" },
                 values: new object[,]
                 {
-                    { "e71a86a5-6b49-4157-93c2-356414dd9e22", "Des 1", "Category1" },
-                    { "443c4f07-636c-4057-a416-55f61c280f42", "Des 2", "Category2" },
-                    { "04bec936-0975-4810-bd91-d0ab48bd2bc5", "Des 3", "Category3" }
+                    { "8041fdb8-dfd7-4922-b838-11cb2cf0cacb", "Des 1", "Category1" },
+                    { "360b73c3-cd9e-4ead-873e-9527453601fb", "Des 2", "Category2" },
+                    { "5e7d2250-0e01-4db7-92f8-787332c34c24", "Des 3", "Category3" }
                 });
 
             migrationBuilder.InsertData(
@@ -300,9 +310,9 @@ namespace News.Migrations
                 columns: new[] { "department_Id", "department_Description", "department_Name" },
                 values: new object[,]
                 {
-                    { "971d4e16-c69e-4caf-a5f4-42840c6b7390", "Department 1", "Department 1" },
-                    { "0572e5a3-ed5d-44fa-8e84-6fe25e654865", "Department 2", "Department 2 " },
-                    { "dcf2f7a5-da02-4147-81a4-7ee5168189ca", "Department 3", "Department 3" }
+                    { "1b8ea152-a9d8-45fa-8355-e265c4155d24", "Department 1", "Department 1" },
+                    { "b09885be-d645-49da-9170-bf613718269d", "Department 2", "Department 2 " },
+                    { "24126293-5b4c-4b76-bc11-f01149e9c08e", "Department 3", "Department 3" }
                 });
 
             migrationBuilder.InsertData(
@@ -310,8 +320,8 @@ namespace News.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Description", "Discriminator", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "b26e74ed-235f-4104-9867-173d97f31546", "28cdc2e0-d22d-4551-b37c-f9b16825e9e3", "Staff", "AppRole", "staff", null },
-                    { "a487abc3-8131-43cd-a1a4-07e2d8b9d91b", "b9f28c23-a5e5-4d43-beac-6a9bbecdfbf4", "Admin", "AppRole", "admin", null }
+                    { "654b6b63-bb3b-4cff-8a28-4d190e5635ec", "e6e379f2-a9a9-4afc-9886-4b163ddbcbd6", "Staff", "AppRole", "staff", null },
+                    { "4c8ac78e-fdcb-4cb3-83f6-ff76b9e9e6f7", "94e1217e-fe80-4a56-ae99-b9f0873c9e5a", "Admin", "AppRole", "admin", null }
                 });
 
             migrationBuilder.InsertData(
@@ -319,19 +329,19 @@ namespace News.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "DoB", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "19a9026b-14e8-44b7-bdb7-c82aa7e9f731", 0, "f0c3eb5c-5dd5-4f86-8700-f6924a127c0b", "AppUser", new DateTime(2022, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin@gmail.com", true, null, "Admin", false, null, "ADMIN@GMAIL.COM", "ADMIN@GMAIL.COM", "AQAAAAEAACcQAAAAEF0x3Mck9V+qiLNGW3YCOShVJ6nTJA55Zes5QBt0XRPYXs3p3bERJPUhaI8XFgGg2A==", null, false, "9a54346e-360c-42a3-92bf-189c7a13ad4d", false, "Admin" },
-                    { "0297d44f-b78c-4beb-92bb-0c12e2cd45b0", 0, "1ce78fbd-9767-4e85-bef5-b34ba9f44d2a", "AppUser", new DateTime(2022, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "staff@gmail.com", true, null, "Staff", false, null, "STAFF@GMAIL.COM", "STAFF@GMAIL.COM", "AQAAAAEAACcQAAAAEHk3UJWySEfbJSx9tb0ziS7qJiFbzX9+4yzKcAgG3GpnEa14dpkmwh3TbBUMI/QXFQ==", null, false, "d150402a-ab9f-45f7-bd5f-344ad6b63078", false, "Staff" },
-                    { "385eb8c5-c39f-428f-848d-52c3b8322079", 0, "e1e39302-ca41-443d-adbc-dfd76cb15e1c", "AppUser", new DateTime(2022, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "staff2@gmail.com", true, null, "Staff2", false, null, "STAFF2@GMAIL.COM", "STAFF2@GMAIL.COM", "AQAAAAEAACcQAAAAEDiRloOQ+UZg0rXTbpcrTxBbplhU+Kyc5WHLfEqAj3uw9eCrcTcygwu0M1Gkpd9AXA==", null, false, "6cde85ce-89f0-4c11-a993-2077217d5383", false, "Staff2" }
+                    { "b2d1ec0d-f62a-464d-a10a-fa194e8cb16e", 0, "253d9e93-3931-4a64-b6f6-24eb68bde3c2", "AppUser", new DateTime(2022, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin@gmail.com", true, null, "Admin", false, null, "ADMIN@GMAIL.COM", "ADMIN@GMAIL.COM", "AQAAAAEAACcQAAAAEMDduAoAWqjUJvmGno4PxKmdtuRkqevSkFObFXX4G+RJdwCUhuAG5w06hAv7NxxJlg==", null, false, "bfe62178-d2f3-4d65-8dd5-fc1d9489ab0c", false, "Admin" },
+                    { "ea52857c-f411-478e-bd2b-21fff1433d54", 0, "5c628c9a-8913-4ddc-ae51-b3a7252d3d66", "AppUser", new DateTime(2022, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "staff@gmail.com", true, null, "Staff", false, null, "STAFF@GMAIL.COM", "STAFF@GMAIL.COM", "AQAAAAEAACcQAAAAEHJzhdMBpShZ/kik98g7i3SNHdbsjgeRj2PA9tUMlfk3h7JOJsyn5cxl+ZmB1e3/dA==", null, false, "51c905c1-f56e-41fd-9a5e-d89619fab364", false, "Staff" },
+                    { "ff45e841-7cd7-4d8a-9c5d-bcbf2920ab01", 0, "789d93b1-c8df-4b4b-8950-a6aa3563bf00", "AppUser", new DateTime(2022, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "staff2@gmail.com", true, null, "Staff2", false, null, "STAFF2@GMAIL.COM", "STAFF2@GMAIL.COM", "AQAAAAEAACcQAAAAEAGpeMWW0BAoIgmK1Cmd6gzBIuQtJ+DvmjLgJ5k7NxwNr/BefTSaAVtF3aUIlpv2Wg==", null, false, "3afe31fb-37c9-42a6-84a1-46f6e38bc42b", false, "Staff2" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Idea",
-                columns: new[] { "idea_Id", "idea_AcademicYearId", "idea_Agree", "idea_CategoryId", "idea_Description", "idea_ImageName", "idea_ImagePath", "idea_Title", "idea_UpdateTime", "idea_UserId" },
+                columns: new[] { "idea_Id", "idea_AcademicYearId", "idea_Agree", "idea_CategoryId", "idea_Description", "idea_ImageName", "idea_ImagePath", "idea_Title", "idea_UpdateTime", "idea_UserId", "idea_View" },
                 values: new object[,]
                 {
-                    { "d540b67c-8315-4453-9919-dde427d095fe", "cdc13449-201a-40a0-b88d-43b205dfb4cd", false, "e71a86a5-6b49-4157-93c2-356414dd9e22", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.", "/~/assetsClient/img/blog/blog-1.jpg", null, "Title1", new DateTime(2022, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "0297d44f-b78c-4beb-92bb-0c12e2cd45b0" },
-                    { "27ece7cc-f5e0-4d31-9cf0-abb5686d57f9", "cdc13449-201a-40a0-b88d-43b205dfb4cd", false, "443c4f07-636c-4057-a416-55f61c280f42", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.", "/~/assetsClient/img/blog/blog-1.jpg", null, "Title2", new DateTime(2022, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "0297d44f-b78c-4beb-92bb-0c12e2cd45b0" },
-                    { "95ff183c-faf4-4d8a-9e84-505940336d87", "cdc13449-201a-40a0-b88d-43b205dfb4cd", false, "443c4f07-636c-4057-a416-55f61c280f42", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.", "/~/assetsClient/img/blog/blog-1.jpg", null, "Title3", new DateTime(2022, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), "19a9026b-14e8-44b7-bdb7-c82aa7e9f731" }
+                    { "92de6369-6646-4939-9ecf-49a366ea9656", "0882c16d-2960-4070-8ada-2f3ce0660e34", false, "8041fdb8-dfd7-4922-b838-11cb2cf0cacb", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.", "/~/assetsClient/img/blog/blog-1.jpg", null, "Title1", new DateTime(2022, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "ea52857c-f411-478e-bd2b-21fff1433d54", 0 },
+                    { "de73fe97-5978-464a-987a-2b4aecc8a60f", "0882c16d-2960-4070-8ada-2f3ce0660e34", false, "360b73c3-cd9e-4ead-873e-9527453601fb", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.", "/~/assetsClient/img/blog/blog-1.jpg", null, "Title2", new DateTime(2022, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "ea52857c-f411-478e-bd2b-21fff1433d54", 0 },
+                    { "a5a9065f-a57f-41c9-b241-06cff41ae776", "0882c16d-2960-4070-8ada-2f3ce0660e34", false, "360b73c3-cd9e-4ead-873e-9527453601fb", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.", "/~/assetsClient/img/blog/blog-1.jpg", null, "Title3", new DateTime(2022, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), "b2d1ec0d-f62a-464d-a10a-fa194e8cb16e", 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -339,8 +349,8 @@ namespace News.Migrations
                 columns: new[] { "uid_DepartmentId", "uid_UserId" },
                 values: new object[,]
                 {
-                    { "971d4e16-c69e-4caf-a5f4-42840c6b7390", "19a9026b-14e8-44b7-bdb7-c82aa7e9f731" },
-                    { "0572e5a3-ed5d-44fa-8e84-6fe25e654865", "0297d44f-b78c-4beb-92bb-0c12e2cd45b0" }
+                    { "1b8ea152-a9d8-45fa-8355-e265c4155d24", "b2d1ec0d-f62a-464d-a10a-fa194e8cb16e" },
+                    { "b09885be-d645-49da-9170-bf613718269d", "ea52857c-f411-478e-bd2b-21fff1433d54" }
                 });
 
             migrationBuilder.InsertData(
@@ -348,8 +358,8 @@ namespace News.Migrations
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "a487abc3-8131-43cd-a1a4-07e2d8b9d91b", "19a9026b-14e8-44b7-bdb7-c82aa7e9f731" },
-                    { "b26e74ed-235f-4104-9867-173d97f31546", "0297d44f-b78c-4beb-92bb-0c12e2cd45b0" }
+                    { "4c8ac78e-fdcb-4cb3-83f6-ff76b9e9e6f7", "b2d1ec0d-f62a-464d-a10a-fa194e8cb16e" },
+                    { "654b6b63-bb3b-4cff-8a28-4d190e5635ec", "ea52857c-f411-478e-bd2b-21fff1433d54" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -366,6 +376,16 @@ namespace News.Migrations
                 name: "IX_Idea_idea_UserId",
                 table: "Idea",
                 column: "idea_UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LikeInIdea_likeInIdea_IdeaId",
+                table: "LikeInIdea",
+                column: "likeInIdea_IdeaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LikeInIdea_likeInIdea_UserId",
+                table: "LikeInIdea",
+                column: "likeInIdea_UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RoleClaims_RoleId",
@@ -415,10 +435,7 @@ namespace News.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Idea");
-
-            migrationBuilder.DropTable(
-                name: "IdeaModels");
+                name: "LikeInIdea");
 
             migrationBuilder.DropTable(
                 name: "RoleClaims");
@@ -439,16 +456,19 @@ namespace News.Migrations
                 name: "UserTokens");
 
             migrationBuilder.DropTable(
-                name: "AcademicYear");
-
-            migrationBuilder.DropTable(
-                name: "Categories");
+                name: "Idea");
 
             migrationBuilder.DropTable(
                 name: "Department");
 
             migrationBuilder.DropTable(
                 name: "Roles");
+
+            migrationBuilder.DropTable(
+                name: "AcademicYear");
+
+            migrationBuilder.DropTable(
+                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Users");

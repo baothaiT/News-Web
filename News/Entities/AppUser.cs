@@ -18,6 +18,6 @@ namespace News.Entities
         public List<Idea> ideasList { set; get; }
         public List<UserInDepartment> userInDepartmentsList { set; get; }
 
-
+        public List<LikeInIdea> likeInIdea { set; get; }
     }
 }

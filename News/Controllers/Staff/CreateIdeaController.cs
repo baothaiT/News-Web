@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Configuration;
 using News.Data;
 using News.Entities;
 using News.Models;
@@ -157,6 +158,26 @@ namespace News.Controllers.Staff
             {
                 return View();
             }
+        }
+
+        public void SendMail(string Mailto, string subject, string boddy)
+        {
+            var smtpacountJson = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("MailSettings")["Mail"];
+            var smtppasswordJson = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("MailSettings")["Password"];
+
+            String mailgui = smtpacountJson.ToString();
+            string smtpacount = smtpacountJson.ToString();
+            string smtppassword = smtppasswordJson.ToString();
+
+            MailUtils.MailUtils.SendMailGoogleSmtp(
+                mailgui,
+                Mailto,
+                subject,
+                boddy,
+                smtpacount,
+                smtppassword
+
+            ).Wait();
         }
     }
 }

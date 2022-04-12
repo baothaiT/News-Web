@@ -15,6 +15,7 @@ namespace News.Entities
         public string idea_Id { get; set; }
         public string idea_Title { get; set; }
         public string idea_Description { get; set; }
+        public int idea_View { get; set; }
         public DateTime idea_UpdateTime { get; set; }
         public bool idea_Agree { get; set; }
         public string idea_ImageName { get; set; }
@@ -33,6 +34,8 @@ namespace News.Entities
         [DisplayName("User")]
         public string idea_UserId { get; set; }
         public AppUser appUserFK { get; set; }
+
+        public List<LikeInIdea> likeInIdea { set; get; }
 
     }
 }
