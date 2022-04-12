@@ -27,9 +27,9 @@ namespace News.Entities
         public string idea_CategoryId { get; set; }
         public Categories categoriesFK { get; set; }
 
-        [DisplayName("Academic Year")]
-        public string idea_AcademicYearId { get; set; }
-        public AcademicYear AcademicYearFK { get; set; }
+        [DisplayName("Submission")]
+        public string idea_SubmissionId { get; set; }
+        public Submission submissionFK { get; set; }
 
         [DisplayName("User")]
         public string idea_UserId { get; set; }

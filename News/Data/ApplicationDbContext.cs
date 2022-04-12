@@ -33,7 +33,7 @@ namespace News.Data
 
 
 
-            builder.ApplyConfiguration(new AcademicYearConfigurations());
+            builder.ApplyConfiguration(new SubmissionConfigurations());
             builder.ApplyConfiguration(new AppRoleConfigurations());
             builder.ApplyConfiguration(new AppUserConfigurations());
             builder.ApplyConfiguration(new CategoriesConfigurations());
@@ -48,7 +48,7 @@ namespace News.Data
 
         }
 
-        public DbSet<AcademicYear> AcademicYear { set; get; }
+        public DbSet<Submission> Submission { set; get; }
         public DbSet<AppRole> AppRole { set; get; }
         public DbSet<AppUser> AppUser { set; get; }
         public DbSet<Categories> Categories { set; get; }

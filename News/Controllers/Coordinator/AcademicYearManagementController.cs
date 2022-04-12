@@ -42,12 +42,12 @@ namespace News.Controllers.Coordinator
         [Route("academicyearmanagement/create")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(AcademicYear academicYear )
+        public ActionResult Create(Submission academicYear )
         {
             try
             {
 
-                var newAcademicYear = new AcademicYear()
+                var newAcademicYear = new Submission()
                 {
                     academicYear_Id = Guid.NewGuid().ToString(),
                     academicYear_Name = academicYear.academicYear_Name,
@@ -80,7 +80,7 @@ namespace News.Controllers.Coordinator
         [Route("academicyearmanagement/edit")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(string id, AcademicYear academicYear)
+        public ActionResult Edit(string id, Submission academicYear)
         {
             try
             {
@@ -115,7 +115,7 @@ namespace News.Controllers.Coordinator
         [Route("academicyearmanagement/delete")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(string id, AcademicYear academicYear)
+        public ActionResult Delete(string id, Submission academicYear)
         {
             try
             {

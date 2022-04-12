@@ -15,7 +15,7 @@ namespace News.Configurations
             builder.HasOne(t => t.categoriesFK).WithMany(ur => ur.IdeaList)
      .HasForeignKey(pc => pc.idea_CategoryId);
 
-            builder.HasOne(t => t.AcademicYearFK).WithMany(ur => ur.IdeaList)
+            builder.HasOne(t => t.submissionFK).WithMany(ur => ur.IdeaList)
      .HasForeignKey(pc => pc.idea_AcademicYearId);
 
             builder.HasOne(t => t.appUserFK).WithMany(ur => ur.ideasList)

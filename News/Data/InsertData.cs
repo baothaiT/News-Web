@@ -149,8 +149,8 @@ namespace News.Data
             //Academic Year Data 
             var academicYearId1 = Guid.NewGuid().ToString();
 
-            builder.Entity<AcademicYear>().HasData(
-                new AcademicYear()
+            builder.Entity<Submission>().HasData(
+                new Submission()
                 {
                     academicYear_Id = academicYearId1,
                     academicYear_Name = "AcademicYear1",
