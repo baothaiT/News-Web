@@ -17,7 +17,7 @@ namespace News.Controllers.Coordinator
         [Route("academicyearmanagement")]
         public ActionResult Index()
         {
-            var query = _context.AcademicYear;
+            var query = _context.Submission;
             return View(query);
         }
 
@@ -26,7 +26,7 @@ namespace News.Controllers.Coordinator
         [HttpGet]
         public ActionResult Details(string id)
         {
-            var query = _context.AcademicYear.Find(id);
+            var query = _context.Submission.Find(id);
             return View(query);
         }
 
@@ -47,17 +47,17 @@ namespace News.Controllers.Coordinator
             try
             {
 
-                var newAcademicYear = new Submission()
-                {
-                    academicYear_Id = Guid.NewGuid().ToString(),
-                    academicYear_Name = academicYear.academicYear_Name,
-                    academicYear_Description = academicYear.academicYear_Description,
-                    academicYear_StartTime = academicYear.academicYear_StartTime,
-                    academicYear_DueTime = academicYear.academicYear_DueTime
-                };
+                //var newAcademicYear = new Submission()
+                //{
+                //    IdeaList = Guid.NewGuid().ToString(),
+                //    academicYear_Name = academicYear.academicYear_Name,
+                //    academicYear_Description = academicYear.academicYear_Description,
+                //    academicYear_StartTime = academicYear.academicYear_StartTime,
+                //    academicYear_DueTime = academicYear.academicYear_DueTime
+                //};
 
-                _context.AcademicYear.Add(newAcademicYear);
-                _context.SaveChanges();
+                //_context.AcademicYear.Add(newAcademicYear);
+                //_context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
             }
@@ -72,8 +72,8 @@ namespace News.Controllers.Coordinator
         [HttpGet]
         public ActionResult Edit(string id)
         {
-            var query = _context.AcademicYear.Find(id);
-            return View(query);
+            //var query = _context.AcademicYear.Find(id);
+            return View();
         }
 
         // POST: AcademicYearController/Edit/5
@@ -84,15 +84,15 @@ namespace News.Controllers.Coordinator
         {
             try
             {
-                var query = _context.AcademicYear.Find(academicYear.academicYear_Id);
+                //var query = _context.AcademicYear.Find(academicYear.academicYear_Id);
 
-                query.academicYear_Name = academicYear.academicYear_Name;
-                query.academicYear_Description = academicYear.academicYear_Description;
-                query.academicYear_StartTime = academicYear.academicYear_StartTime;
-                query.academicYear_DueTime= academicYear.academicYear_DueTime;
+                //query.academicYear_Name = academicYear.academicYear_Name;
+                //query.academicYear_Description = academicYear.academicYear_Description;
+                //query.academicYear_StartTime = academicYear.academicYear_StartTime;
+                //query.academicYear_DueTime= academicYear.academicYear_DueTime;
 
-                _context.AcademicYear.Update(query);
-                _context.SaveChanges();
+                //_context.AcademicYear.Update(query);
+                //_context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
             }
@@ -107,8 +107,8 @@ namespace News.Controllers.Coordinator
         [HttpGet]
         public ActionResult Delete(string id)
         {
-            var query = _context.AcademicYear.Find(id);
-            return View(query);
+            //var query = _context.AcademicYear.Find(id);
+            return View();
         }
 
         // POST: AcademicYearController/Delete/5
@@ -119,9 +119,9 @@ namespace News.Controllers.Coordinator
         {
             try
             {
-                var query = _context.AcademicYear.Find(academicYear.academicYear_Id);
-                _context.AcademicYear.Remove(query);
-                _context.SaveChanges();
+                //var query = _context.AcademicYear.Find(academicYear.academicYear_Id);
+                //_context.AcademicYear.Remove(query);
+                //_context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
             }

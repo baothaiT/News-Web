@@ -51,12 +51,12 @@ namespace News.Controllers.Coordinator
             ViewBag.idea_CategoryId = CategoryList;
 
             //Query Academic Year 
-            var academicYearQuery = _context.AcademicYear;
+            var academicYearQuery = _context.Submission;
 
             List<SelectListItem> AcademicYearList = new List<SelectListItem>();
             foreach (var academic in academicYearQuery)
             {
-                var itemAcademic = new SelectListItem { Value = academic.academicYear_Id, Text = academic.academicYear_Name };
+                var itemAcademic = new SelectListItem { Value = academic.submission_Id, Text = academic.submission_Name };
                 AcademicYearList.Add(itemAcademic);
             }
             ViewBag.idea_AcademicYearId = AcademicYearList;
@@ -105,9 +105,9 @@ namespace News.Controllers.Coordinator
             ViewBag.idea_CategoryId = CategoriesList;
 
             //Query AcademicYear
-            var queryAcademicYear = _context.AcademicYear.Find(queryIdea.idea_AcademicYearId);
+            var queryAcademicYear = _context.Submission.Find(queryIdea.idea_SubmissionId);
             List<SelectListItem> AcademicYearList = new List<SelectListItem>();
-            var itemAcademicYear = new SelectListItem { Value = queryAcademicYear.academicYear_Id, Text = queryAcademicYear.academicYear_Name };
+            var itemAcademicYear = new SelectListItem { Value = queryAcademicYear.submission_Id, Text = queryAcademicYear.submission_Name };
             AcademicYearList.Add(itemAcademicYear);
 
             ViewBag.idea_AcademicYearId = AcademicYearList;
@@ -137,7 +137,7 @@ namespace News.Controllers.Coordinator
                 query.idea_Description = idea.idea_Description;
                 query.idea_UpdateTime = idea.idea_UpdateTime;
                 query.idea_CategoryId = idea.idea_CategoryId;
-                query.idea_AcademicYearId = idea.idea_AcademicYearId;
+                query.idea_SubmissionId = idea.idea_SubmissionId;
                 query.idea_UserId = idea.idea_UserId;
 
                 _context.Idea.Update(query);

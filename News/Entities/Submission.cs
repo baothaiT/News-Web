@@ -9,7 +9,7 @@ namespace News.Entities
         public string submission_Name { get; set; }
         public string submission_Description { get; set; }
         public DateTime submission_StartTime { set; get; }
-        public DateTime v_DueTime { set; get; }
+        public DateTime submission_DueTime { set; get; }
         public List<Idea> IdeaList { get; set; }
 
     }

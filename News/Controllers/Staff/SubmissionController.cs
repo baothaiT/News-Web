@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace News.Controllers.Staff
 {
-    public class CourseController : Controller
+    public class SubmissionController : Controller
     {
         // GET: CourseController
-        [Route("course")]
+        [Route("submission")]
         public ActionResult Index()
         {
             //Class Active menu

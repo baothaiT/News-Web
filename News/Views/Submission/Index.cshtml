@@ -1,10 +1,9 @@
-﻿@model Food.Service.PaginatedList<News.Models.BlogArchiveModels>
-
-@*
+﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
+
 
 <!-- Page breadcrumb -->
 <section id="mu-page-breadcrumb">
@@ -33,105 +32,43 @@
                             <!-- start course content container -->
                             <div class="mu-course-container mu-blog-archive">
                                 <div class="row">
-                                    @{
-                                        foreach (var item in Model)
-                                        {
-                                            <div class="col-md-6 col-sm-6">
-                                                <article class="mu-blog-single-item">
-                                                    <figure class="mu-blog-single-img">
-                                                        <a href="#"><img src="~/image/@item.Img" alt="img" height="350px" width="200px"></a>
-                                                        <figcaption class="mu-blog-caption">
-                                                            <h3><a href="blogsingle/id=@item.Id">@item.Title</a></h3>
-                                                        </figcaption>
-                                                    </figure>
-                                                    <div class="mu-blog-meta">
-                                                        <a href="blogsingle/id=@item.Id">@item.UserName</a>
-                                                        <a href="blogsingle/id=@item.Id">@item.UpdateTime</a>
-                                                        <!--<span><i class="fa fa-comments-o"></i>87</span>-->
-                                                </div>
-                                                    <div class="mu-blog-description">
-                                                        <p></p>
-                                                        <a class="mu-read-more-btn" asp-controller="BlogSingle" asp-action="Details" asp-route-id="@item.Id">Read More</a>
-                                                    </div>
-                                                </article>
-                                            </div>
-                                        }
-                                    }
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">First</th>
+                                                <th scope="col">Last</th>
+                                                <th scope="col">Handle</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>do</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>Jacob</td>
+                                                <td>Thornton</td>
+                                                <td>fat</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>Larry</td>
+                                                <td>the Bird</td>
+                                                <td>twitter</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
 
 
                                 </div>
                             </div>
                             <!-- end course content container -->
                             <!-- start course pagination -->
-                            <div class="mu-pagination">
-                                @{
-                                    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-                                    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-                                }
-                                <nav>
-                                    <ul class="pagination">
-                                        <li>
-                                            
-                                            <a asp-action="Index"
-                                               asp-route-sortOrder="@ViewData["CurrentSort"]"
-                                               asp-route-pageNumber="@(Model.PageIndex - 1)"
-                                               asp-route-currentFilter="@ViewData["CurrentFilter"]"
-                                               class="btn btn-default @prevDisabled" aria-label="Previous">
-                                                 <span class="fa fa-angle-left"></span> Prev
-                                            </a>
-                                        </li>
-                                        @if (Model.PageIndex == 1)
-                                        {
-
-                                        }
-                                        else
-                                        {
-                                            <li class="page-item ">
-                                                <a asp-action="Index"
-                                               asp-route-sortOrder="@ViewData["CurrentSort"]"
-                                               asp-route-pageNumber="@(Model.PageIndex - 1)"
-                                               asp-route-currentFilter="@ViewData["CurrentFilter"]"
-                                               class="btn btn-default @prevDisabled">
-                                                    @(Model.PageIndex -1)
-                                                </a>
-                                            </li>
-
-                                        }
-
-                                        <li class="page-item active">
-                                            <a asp-action="Index"
-                                               asp-route-sortOrder="@ViewData["CurrentSort"]"
-                                               asp-route-pageNumber="@(Model.PageIndex)"
-                                               asp-route-currentFilter="@ViewData["CurrentFilter"]"
-                                               class="btn btn-default @nextDisabled">@Model.PageIndex</a>
-                                        </li>
-
-                                        <li class="page-item ">
-                                            <a asp-action="Index"
-                                               asp-route-sortOrder="@ViewData["CurrentSort"]"
-                                               asp-route-pageNumber="@(Model.PageIndex + 1)"
-                                               asp-route-currentFilter="@ViewData["CurrentFilter"]"
-                                               class="btn btn-default @nextDisabled">
-                                                @(Model.PageIndex +1)
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            @*<a href="#" aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
-                                                </a>*@
-                                            <a asp-action="Index"
-                                               asp-route-sortOrder="@ViewData["CurrentSort"]"
-                                               asp-route-pageNumber="@(Model.PageIndex + 1)"
-                                               asp-route-currentFilter="@ViewData["CurrentFilter"]"
-                                               class="btn btn-default @nextDisabled" aria-label="Next">
-                                                Next <span class="fa fa-angle-right"></span>
-                                            </a>
-                                        </li>
-
-                                    </ul>
-                                </nav>
-                            </div>
+                           
                             <!-- end course pagination -->
                         </div>
                         <div class="col-md-3">

@@ -60,15 +60,15 @@ namespace News.Controllers.Staff
             ViewBag.idea_CategoryId = CategoryList;
 
             //Query Academic Year 
-            var academicYearQuery = _context.AcademicYear;
+            var academicYearQuery = _context.Submission;
 
-            List<SelectListItem> AcademicYearList = new List<SelectListItem>();
+            List<SelectListItem> SubmissionList = new List<SelectListItem>();
             foreach (var academic in academicYearQuery)
             {
-                var itemAcademic = new SelectListItem { Value = academic.academicYear_Id, Text = academic.academicYear_Name };
-                AcademicYearList.Add(itemAcademic);
+                var itemAcademic = new SelectListItem { Value = academic.submission_Id, Text = academic.submission_Name };
+                SubmissionList.Add(itemAcademic);
             }
-            ViewBag.idea_AcademicYearId = AcademicYearList;
+            ViewBag.idea_submission_Name = SubmissionList;
 
             return View();
         }
@@ -99,7 +99,7 @@ namespace News.Controllers.Staff
                         idea_UpdateTime = DateTime.Now,
                         idea_Agree = idea.idea_Agree,
                         idea_CategoryId = idea.idea_CategoryId,
-                        idea_AcademicYearId = idea.idea_AcademicYearId,
+                        idea_SubmissionId = idea.idea_AcademicYearId,
                     };
 
                     using (var fileStream = new FileStream(path, FileMode.Create))
