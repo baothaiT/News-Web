@@ -24,7 +24,7 @@ namespace News.Models
         public string idea_CategoryId { get; set; }
 
         [DisplayName("Academic Year")]
-        public string idea_AcademicYearId { get; set; }
+        public string idea_SubmissionId { get; set; }
 
         [DisplayName("User")]
         public string idea_UserId { get; set; }

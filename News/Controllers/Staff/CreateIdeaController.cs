@@ -104,7 +104,7 @@ namespace News.Controllers.Staff
                         idea_UpdateTime = DateTime.Now,
                         idea_Agree = idea.idea_Agree,
                         idea_CategoryId = idea.idea_CategoryId,
-                        idea_SubmissionId = idea.idea_AcademicYearId,
+                        idea_SubmissionId = idea.idea_SubmissionId,
                     };
 
                     using (var fileStream = new FileStream(path, FileMode.Create))
