@@ -68,31 +68,31 @@ namespace News.Controllers.Coordinator
         }
 
         // GET: AcademicYearController/Edit/5
-        [Route("academicyearmanagement/edit")]
+        [Route("submissionmanagement/edit")]
         [HttpGet]
         public ActionResult Edit(string id)
         {
-            //var query = _context.AcademicYear.Find(id);
-            return View();
+            var query = _context.Submission.Find(id);
+            return View(query);
         }
 
         // POST: AcademicYearController/Edit/5
-        [Route("academicyearmanagement/edit")]
+        [Route("submissionmanagement/edit")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(string id, Submission academicYear)
+        public ActionResult Edit(string id, Submission submission)
         {
             try
             {
-                //var query = _context.AcademicYear.Find(academicYear.academicYear_Id);
+                var query = _context.Submission.Find(submission.submission_Id);
 
-                //query.academicYear_Name = academicYear.academicYear_Name;
-                //query.academicYear_Description = academicYear.academicYear_Description;
-                //query.academicYear_StartTime = academicYear.academicYear_StartTime;
-                //query.academicYear_DueTime= academicYear.academicYear_DueTime;
+                query.submission_Name = submission.submission_Name;
+                query.submission_Description = submission.submission_Description;
+                query.submission_StartTime = submission.submission_StartTime;
+                query.submission_DueTime = submission.submission_DueTime;
 
-                //_context.AcademicYear.Update(query);
-                //_context.SaveChanges();
+                _context.Submission.Update(query);
+                _context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
             }
