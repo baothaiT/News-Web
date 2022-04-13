@@ -17,8 +17,8 @@ namespace News.Controllers.Staff
         }
         // GET: BlogArchiveController
         [Route("blogarchive")]
-        [HttpGet("{typeSort}")]
-        public ActionResult Index(int? pageNumber , string sortOrder, string currentFilter,string typeSort)
+        [HttpGet("{typeSort,submissionId}")]
+        public ActionResult Index(int? pageNumber , string sortOrder, string currentFilter,string typeSort, string submissionId)
         {
             //Class active 
             ViewBag.BlogActive = "active";
@@ -27,6 +27,8 @@ namespace News.Controllers.Staff
             var query = from s in _context.Idea
                         orderby s.idea_UpdateTime descending
                         select s;
+
+            
             if(typeSort != "")
             {
                 switch (typeSort)

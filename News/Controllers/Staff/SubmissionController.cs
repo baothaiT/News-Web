@@ -1,17 +1,24 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using News.Data;
 
 namespace News.Controllers.Staff
 {
     public class SubmissionController : Controller
     {
+        private readonly ApplicationDbContext _context;
+        public SubmissionController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         // GET: CourseController
         [Route("submission")]
         public ActionResult Index()
         {
             //Class Active menu
             ViewBag.CourseActive = "active";
-            return View();
+            var querySubmission = _context.Submission;
+            return View(querySubmission);
         }
 
         // GET: CourseController/Details/5

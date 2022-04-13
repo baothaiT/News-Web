@@ -212,13 +212,13 @@ namespace News.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "ea52857c-f411-478e-bd2b-21fff1433d54",
-                            RoleId = "654b6b63-bb3b-4cff-8a28-4d190e5635ec"
+                            UserId = "0480497b-8970-4e5e-9f84-34e7f50b2c50",
+                            RoleId = "3b24b0b1-1acd-48fc-8982-efd5c81b4960"
                         },
                         new
                         {
-                            UserId = "b2d1ec0d-f62a-464d-a10a-fa194e8cb16e",
-                            RoleId = "4c8ac78e-fdcb-4cb3-83f6-ff76b9e9e6f7"
+                            UserId = "f8937fa9-88e8-4abf-a7ca-07f795b22f60",
+                            RoleId = "68d1af0f-29f9-4980-81e8-fe209c0b1b3b"
                         });
                 });
 
@@ -243,38 +243,6 @@ namespace News.Migrations
                     b.ToTable("UserTokens");
                 });
 
-            modelBuilder.Entity("News.Entities.AcademicYear", b =>
-                {
-                    b.Property<string>("academicYear_Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("academicYear_Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("academicYear_DueTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("academicYear_Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("academicYear_StartTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("academicYear_Id");
-
-                    b.ToTable("AcademicYear");
-
-                    b.HasData(
-                        new
-                        {
-                            academicYear_Id = "0882c16d-2960-4070-8ada-2f3ce0660e34",
-                            academicYear_Description = "AcademicYear1",
-                            academicYear_DueTime = new DateTime(2023, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            academicYear_Name = "AcademicYear1",
-                            academicYear_StartTime = new DateTime(2021, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
-                });
-
             modelBuilder.Entity("News.Entities.Categories", b =>
                 {
                     b.Property<string>("category_Id")
@@ -293,19 +261,19 @@ namespace News.Migrations
                     b.HasData(
                         new
                         {
-                            category_Id = "8041fdb8-dfd7-4922-b838-11cb2cf0cacb",
+                            category_Id = "92808b37-8f70-4715-ab35-031cd62dc917",
                             category_Description = "Des 1",
                             category_Name = "Category1"
                         },
                         new
                         {
-                            category_Id = "360b73c3-cd9e-4ead-873e-9527453601fb",
+                            category_Id = "68a7ff31-1d37-4a5b-ae9b-ecfaa684c9bf",
                             category_Description = "Des 2",
                             category_Name = "Category2"
                         },
                         new
                         {
-                            category_Id = "5e7d2250-0e01-4db7-92f8-787332c34c24",
+                            category_Id = "58cdb479-446a-49ad-98b2-7e70860aa7de",
                             category_Description = "Des 3",
                             category_Name = "Category3"
                         });
@@ -329,19 +297,19 @@ namespace News.Migrations
                     b.HasData(
                         new
                         {
-                            department_Id = "1b8ea152-a9d8-45fa-8355-e265c4155d24",
+                            department_Id = "6390050d-de2a-4f74-a627-cb14133ced99",
                             department_Description = "Department 1",
                             department_Name = "Department 1"
                         },
                         new
                         {
-                            department_Id = "b09885be-d645-49da-9170-bf613718269d",
+                            department_Id = "b08d1566-bf46-4619-a352-7451e9410875",
                             department_Description = "Department 2",
                             department_Name = "Department 2 "
                         },
                         new
                         {
-                            department_Id = "24126293-5b4c-4b76-bc11-f01149e9c08e",
+                            department_Id = "f50a7f69-6bf9-4a3e-b4fa-c9d0a0d3c843",
                             department_Description = "Department 3",
                             department_Name = "Department 3"
                         });
@@ -350,9 +318,6 @@ namespace News.Migrations
             modelBuilder.Entity("News.Entities.Idea", b =>
                 {
                     b.Property<string>("idea_Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("idea_AcademicYearId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("idea_Agree")
@@ -370,6 +335,9 @@ namespace News.Migrations
                     b.Property<string>("idea_ImagePath")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("idea_SubmissionId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("idea_Title")
                         .HasColumnType("nvarchar(max)");
 
@@ -384,9 +352,9 @@ namespace News.Migrations
 
                     b.HasKey("idea_Id");
 
-                    b.HasIndex("idea_AcademicYearId");
-
                     b.HasIndex("idea_CategoryId");
+
+                    b.HasIndex("idea_SubmissionId");
 
                     b.HasIndex("idea_UserId");
 
@@ -395,41 +363,41 @@ namespace News.Migrations
                     b.HasData(
                         new
                         {
-                            idea_Id = "92de6369-6646-4939-9ecf-49a366ea9656",
-                            idea_AcademicYearId = "0882c16d-2960-4070-8ada-2f3ce0660e34",
+                            idea_Id = "6f1fe5d6-eea9-4686-a49d-6ea9e85ddd69",
                             idea_Agree = false,
-                            idea_CategoryId = "8041fdb8-dfd7-4922-b838-11cb2cf0cacb",
+                            idea_CategoryId = "92808b37-8f70-4715-ab35-031cd62dc917",
                             idea_Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.",
                             idea_ImageName = "/~/assetsClient/img/blog/blog-1.jpg",
+                            idea_SubmissionId = "eb8ca11b-310f-44c6-a454-6e18f655cdae",
                             idea_Title = "Title1",
                             idea_UpdateTime = new DateTime(2022, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            idea_UserId = "ea52857c-f411-478e-bd2b-21fff1433d54",
+                            idea_UserId = "0480497b-8970-4e5e-9f84-34e7f50b2c50",
                             idea_View = 0
                         },
                         new
                         {
-                            idea_Id = "de73fe97-5978-464a-987a-2b4aecc8a60f",
-                            idea_AcademicYearId = "0882c16d-2960-4070-8ada-2f3ce0660e34",
+                            idea_Id = "1e413296-a25a-4fa2-9685-967649db3c55",
                             idea_Agree = false,
-                            idea_CategoryId = "360b73c3-cd9e-4ead-873e-9527453601fb",
+                            idea_CategoryId = "68a7ff31-1d37-4a5b-ae9b-ecfaa684c9bf",
                             idea_Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.",
                             idea_ImageName = "/~/assetsClient/img/blog/blog-1.jpg",
+                            idea_SubmissionId = "eb8ca11b-310f-44c6-a454-6e18f655cdae",
                             idea_Title = "Title2",
                             idea_UpdateTime = new DateTime(2022, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            idea_UserId = "ea52857c-f411-478e-bd2b-21fff1433d54",
+                            idea_UserId = "0480497b-8970-4e5e-9f84-34e7f50b2c50",
                             idea_View = 0
                         },
                         new
                         {
-                            idea_Id = "a5a9065f-a57f-41c9-b241-06cff41ae776",
-                            idea_AcademicYearId = "0882c16d-2960-4070-8ada-2f3ce0660e34",
+                            idea_Id = "6b062a8b-7134-494d-8b2c-0af2c3ecc6e1",
                             idea_Agree = false,
-                            idea_CategoryId = "360b73c3-cd9e-4ead-873e-9527453601fb",
+                            idea_CategoryId = "68a7ff31-1d37-4a5b-ae9b-ecfaa684c9bf",
                             idea_Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.",
                             idea_ImageName = "/~/assetsClient/img/blog/blog-1.jpg",
+                            idea_SubmissionId = "eb8ca11b-310f-44c6-a454-6e18f655cdae",
                             idea_Title = "Title3",
                             idea_UpdateTime = new DateTime(2022, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            idea_UserId = "b2d1ec0d-f62a-464d-a10a-fa194e8cb16e",
+                            idea_UserId = "f8937fa9-88e8-4abf-a7ca-07f795b22f60",
                             idea_View = 0
                         });
                 });
@@ -463,6 +431,38 @@ namespace News.Migrations
                     b.ToTable("LikeInIdea");
                 });
 
+            modelBuilder.Entity("News.Entities.Submission", b =>
+                {
+                    b.Property<string>("submission_Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("submission_Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("submission_DueTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("submission_Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("submission_StartTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("submission_Id");
+
+                    b.ToTable("Submission");
+
+                    b.HasData(
+                        new
+                        {
+                            submission_Id = "eb8ca11b-310f-44c6-a454-6e18f655cdae",
+                            submission_Description = "AcademicYear1",
+                            submission_DueTime = new DateTime(2023, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            submission_Name = "AcademicYear1",
+                            submission_StartTime = new DateTime(2021, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
+                });
+
             modelBuilder.Entity("News.Entities.UserInDepartment", b =>
                 {
                     b.Property<string>("uid_UserId")
@@ -480,13 +480,13 @@ namespace News.Migrations
                     b.HasData(
                         new
                         {
-                            uid_UserId = "b2d1ec0d-f62a-464d-a10a-fa194e8cb16e",
-                            uid_DepartmentId = "1b8ea152-a9d8-45fa-8355-e265c4155d24"
+                            uid_UserId = "f8937fa9-88e8-4abf-a7ca-07f795b22f60",
+                            uid_DepartmentId = "6390050d-de2a-4f74-a627-cb14133ced99"
                         },
                         new
                         {
-                            uid_UserId = "ea52857c-f411-478e-bd2b-21fff1433d54",
-                            uid_DepartmentId = "b09885be-d645-49da-9170-bf613718269d"
+                            uid_UserId = "0480497b-8970-4e5e-9f84-34e7f50b2c50",
+                            uid_DepartmentId = "b08d1566-bf46-4619-a352-7451e9410875"
                         });
                 });
 
@@ -502,15 +502,15 @@ namespace News.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "654b6b63-bb3b-4cff-8a28-4d190e5635ec",
-                            ConcurrencyStamp = "e6e379f2-a9a9-4afc-9886-4b163ddbcbd6",
+                            Id = "3b24b0b1-1acd-48fc-8982-efd5c81b4960",
+                            ConcurrencyStamp = "de1fc7db-1a7c-4333-9a65-2ef7f11a8dc0",
                             Name = "staff",
                             Description = "Staff"
                         },
                         new
                         {
-                            Id = "4c8ac78e-fdcb-4cb3-83f6-ff76b9e9e6f7",
-                            ConcurrencyStamp = "94e1217e-fe80-4a56-ae99-b9f0873c9e5a",
+                            Id = "68d1af0f-29f9-4980-81e8-fe209c0b1b3b",
+                            ConcurrencyStamp = "54f9a821-8f7a-420c-9a43-4d1e8d336b5c",
                             Name = "admin",
                             Description = "Admin"
                         });
@@ -534,17 +534,17 @@ namespace News.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b2d1ec0d-f62a-464d-a10a-fa194e8cb16e",
+                            Id = "f8937fa9-88e8-4abf-a7ca-07f795b22f60",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "253d9e93-3931-4a64-b6f6-24eb68bde3c2",
+                            ConcurrencyStamp = "93b44c57-018b-41d0-9812-8de09d709a60",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMDduAoAWqjUJvmGno4PxKmdtuRkqevSkFObFXX4G+RJdwCUhuAG5w06hAv7NxxJlg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEK8fc9p7edZqa8k2Jj9VwQjOVMJNQ90Ut4vH40XhhqajRuHqAb+XZe0+olTGWfJ1Zg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "bfe62178-d2f3-4d65-8dd5-fc1d9489ab0c",
+                            SecurityStamp = "0b17efe4-13fc-4f3c-b294-756017aa07a5",
                             TwoFactorEnabled = false,
                             UserName = "Admin",
                             DoB = new DateTime(2022, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -552,17 +552,17 @@ namespace News.Migrations
                         },
                         new
                         {
-                            Id = "ea52857c-f411-478e-bd2b-21fff1433d54",
+                            Id = "0480497b-8970-4e5e-9f84-34e7f50b2c50",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5c628c9a-8913-4ddc-ae51-b3a7252d3d66",
+                            ConcurrencyStamp = "c63e0288-3f9e-49a7-b32a-debb27f06f2d",
                             Email = "staff@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "STAFF@GMAIL.COM",
                             NormalizedUserName = "STAFF@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHJzhdMBpShZ/kik98g7i3SNHdbsjgeRj2PA9tUMlfk3h7JOJsyn5cxl+ZmB1e3/dA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMq8SaOv5jXPx7SD6kTdNu6/npyBho6HsVLPsmGQ1K+iRNpBKWP4BRaVazPElKdPOA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "51c905c1-f56e-41fd-9a5e-d89619fab364",
+                            SecurityStamp = "63c05300-1870-4698-bd6c-d6200d35c18e",
                             TwoFactorEnabled = false,
                             UserName = "Staff",
                             DoB = new DateTime(2022, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -570,17 +570,17 @@ namespace News.Migrations
                         },
                         new
                         {
-                            Id = "ff45e841-7cd7-4d8a-9c5d-bcbf2920ab01",
+                            Id = "13381ae4-da8b-4762-8822-59d369b1a758",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "789d93b1-c8df-4b4b-8950-a6aa3563bf00",
+                            ConcurrencyStamp = "d364dcc5-ade3-4836-baca-6cddb93548a2",
                             Email = "staff2@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "STAFF2@GMAIL.COM",
                             NormalizedUserName = "STAFF2@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAGpeMWW0BAoIgmK1Cmd6gzBIuQtJ+DvmjLgJ5k7NxwNr/BefTSaAVtF3aUIlpv2Wg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJxgovC0XaqTLRZr4JwEOcYcKm0+QQzUfgiWHFq/VnpV5IRu8DuRZBffu/ILDJXMVQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3afe31fb-37c9-42a6-84a1-46f6e38bc42b",
+                            SecurityStamp = "b7a24a3b-4b2a-4e91-9d3d-3a19507775fd",
                             TwoFactorEnabled = false,
                             UserName = "Staff2",
                             DoB = new DateTime(2022, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -641,23 +641,23 @@ namespace News.Migrations
 
             modelBuilder.Entity("News.Entities.Idea", b =>
                 {
-                    b.HasOne("News.Entities.AcademicYear", "AcademicYearFK")
-                        .WithMany("IdeaList")
-                        .HasForeignKey("idea_AcademicYearId");
-
                     b.HasOne("News.Entities.Categories", "categoriesFK")
                         .WithMany("IdeaList")
                         .HasForeignKey("idea_CategoryId");
+
+                    b.HasOne("News.Entities.Submission", "submissionFK")
+                        .WithMany("IdeaList")
+                        .HasForeignKey("idea_SubmissionId");
 
                     b.HasOne("News.Entities.AppUser", "appUserFK")
                         .WithMany("ideasList")
                         .HasForeignKey("idea_UserId");
 
-                    b.Navigation("AcademicYearFK");
-
                     b.Navigation("appUserFK");
 
                     b.Navigation("categoriesFK");
+
+                    b.Navigation("submissionFK");
                 });
 
             modelBuilder.Entity("News.Entities.LikeInIdea", b =>
@@ -694,11 +694,6 @@ namespace News.Migrations
                     b.Navigation("DepartmentFK");
                 });
 
-            modelBuilder.Entity("News.Entities.AcademicYear", b =>
-                {
-                    b.Navigation("IdeaList");
-                });
-
             modelBuilder.Entity("News.Entities.Categories", b =>
                 {
                     b.Navigation("IdeaList");
@@ -712,6 +707,11 @@ namespace News.Migrations
             modelBuilder.Entity("News.Entities.Idea", b =>
                 {
                     b.Navigation("likeInIdea");
+                });
+
+            modelBuilder.Entity("News.Entities.Submission", b =>
+                {
+                    b.Navigation("IdeaList");
                 });
 
             modelBuilder.Entity("News.Entities.AppUser", b =>

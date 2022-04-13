@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
+
 namespace News.Controllers.Staff
 {
     public class CreateIdeaController : Controller
@@ -42,7 +43,8 @@ namespace News.Controllers.Staff
 
         // GET: CreateIdeaController/Create
         [Route("createiead")]
-        public ActionResult Create()
+        [HttpGet("submissionId")]
+        public ActionResult Create(string submissionId)
         {
             //Class active
             ViewBag.UploadIdeaActive = "active";
@@ -60,14 +62,17 @@ namespace News.Controllers.Staff
             ViewBag.idea_CategoryId = CategoryList;
 
             //Query Academic Year 
-            var academicYearQuery = _context.Submission;
+            var SubmissionQuery = _context.Submission.Find(submissionId);
 
             List<SelectListItem> SubmissionList = new List<SelectListItem>();
-            foreach (var academic in academicYearQuery)
+
+            if (SubmissionQuery != null)
             {
-                var itemAcademic = new SelectListItem { Value = academic.submission_Id, Text = academic.submission_Name };
-                SubmissionList.Add(itemAcademic);
+                var itemSubmission = new SelectListItem { Value = SubmissionQuery.submission_Id, Text = SubmissionQuery.submission_Name };
+                SubmissionList.Add(itemSubmission);
             }
+               
+            
             ViewBag.idea_submission_Name = SubmissionList;
 
             return View();
