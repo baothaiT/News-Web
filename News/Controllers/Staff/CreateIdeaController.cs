@@ -44,7 +44,6 @@ namespace News.Controllers.Staff
         }
 
         // GET: CreateIdeaController/Create
-        [Authorize]
         [Route("createiead")]
         [HttpGet("submissionId")]
         public ActionResult Create(string submissionId)
@@ -71,8 +70,7 @@ namespace News.Controllers.Staff
 
             if (SubmissionQuery != null)
             {
-                //var itemSubmission = new SelectListItem { Value = SubmissionQuery.submission_Id, Text = c };
-                //SubmissionList.Add(itemSubmission);
+
                 ViewBag.idea_submission_Name = SubmissionQuery.submission_Name;
             }
             else
@@ -115,7 +113,11 @@ namespace News.Controllers.Staff
                         idea_SubmissionId = idea.idea_SubmissionId,
                     };
                     var userEmail = User.FindFirstValue(ClaimTypes.Email);
-                    SendMail(userEmail,"Create Mail"," Success!");
+                    if (userEmail is null)
+                    {
+                        SendMail(userEmail, "Create Mail", " Success!");
+                    }
+                    
 
                     using (var fileStream = new FileStream(path, FileMode.Create))
                     {

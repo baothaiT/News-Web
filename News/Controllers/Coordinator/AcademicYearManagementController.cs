@@ -14,7 +14,7 @@ namespace News.Controllers.Coordinator
             _context = context;
         }
         // GET: AcademicYearController
-        [Route("academicyearmanagement")]
+        [Route("submissionmanagement")]
         public ActionResult Index()
         {
             var query = _context.Submission;
@@ -22,7 +22,7 @@ namespace News.Controllers.Coordinator
         }
 
         // GET: AcademicYearController/Details/5
-        [Route("academicyearmanagement/details")]
+        [Route("submissionmanagement/details")]
         [HttpGet]
         public ActionResult Details(string id)
         {
@@ -31,7 +31,7 @@ namespace News.Controllers.Coordinator
         }
 
         // GET: AcademicYearController/Create
-        [Route("academicyearmanagement/create")]
+        [Route("submissionmanagement/create")]
         [HttpGet]
         public ActionResult Create()
         {
@@ -39,25 +39,25 @@ namespace News.Controllers.Coordinator
         }
 
         // POST: AcademicYearController/Create
-        [Route("academicyearmanagement/create")]
+        [Route("submissionmanagement/create")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Submission academicYear )
+        public ActionResult Create(Submission submission )
         {
             try
             {
 
-                //var newAcademicYear = new Submission()
-                //{
-                //    IdeaList = Guid.NewGuid().ToString(),
-                //    academicYear_Name = academicYear.academicYear_Name,
-                //    academicYear_Description = academicYear.academicYear_Description,
-                //    academicYear_StartTime = academicYear.academicYear_StartTime,
-                //    academicYear_DueTime = academicYear.academicYear_DueTime
-                //};
+                var newSubmission = new Submission()
+                {
+                    submission_Id = Guid.NewGuid().ToString(),
+                    submission_Name = submission.submission_Name,
+                    submission_Description = submission.submission_Description,
+                    submission_StartTime = submission.submission_StartTime,
+                    submission_DueTime = submission.submission_DueTime
+                };
 
-                //_context.AcademicYear.Add(newAcademicYear);
-                //_context.SaveChanges();
+                _context.Submission.Add(newSubmission);
+                _context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
             }

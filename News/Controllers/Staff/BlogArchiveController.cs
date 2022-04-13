@@ -25,7 +25,7 @@ namespace News.Controllers.Staff
 
 
             var query = from a in _context.Idea select a ;
-            if (submissionId != null)
+            if (submissionId is not null)
             {
                 query = query.Where(a => a.idea_SubmissionId == submissionId);
             }
