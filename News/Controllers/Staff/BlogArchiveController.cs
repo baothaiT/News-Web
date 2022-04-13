@@ -23,13 +23,15 @@ namespace News.Controllers.Staff
             //Class active 
             ViewBag.BlogActive = "active";
 
-            //Query Blog
-            var query = from s in _context.Idea
-                        orderby s.idea_UpdateTime descending
-                        select s;
 
-            
-            if(typeSort != "")
+            var query = from a in _context.Idea select a ;
+            if (submissionId != null)
+            {
+                query = query.Where(a => a.idea_SubmissionId == submissionId);
+            }
+
+            query = query.OrderByDescending(s => s.idea_UpdateTime);
+            if (typeSort != "")
             {
                 switch (typeSort)
                 {
@@ -61,7 +63,7 @@ namespace News.Controllers.Staff
                     UpdateTime = x.idea_UpdateTime
 
                 });
-            int pageSize = 8;
+            int pageSize = 2;
             return View(PaginatedList<BlogArchiveModels>.Create(blogModelQuery.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
