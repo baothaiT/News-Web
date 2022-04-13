@@ -103,25 +103,25 @@ namespace News.Controllers.Coordinator
         }
 
         // GET: AcademicYearController/Delete/5
-        [Route("academicyearmanagement/delete")]
+        [Route("submissionmanagement/delete")]
         [HttpGet]
         public ActionResult Delete(string id)
         {
-            //var query = _context.AcademicYear.Find(id);
-            return View();
+            var query = _context.Submission.Find(id);
+            return View(query);
         }
 
         // POST: AcademicYearController/Delete/5
         [Route("academicyearmanagement/delete")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(string id, Submission academicYear)
+        public ActionResult Delete(string id, Submission submission)
         {
             try
             {
-                //var query = _context.AcademicYear.Find(academicYear.academicYear_Id);
-                //_context.AcademicYear.Remove(query);
-                //_context.SaveChanges();
+                var query = _context.Submission.Find(submission.submission_Id);
+                _context.Submission.Remove(query);
+                _context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
             }
