@@ -9,6 +9,7 @@ using News.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 
@@ -68,12 +69,17 @@ namespace News.Controllers.Staff
 
             if (SubmissionQuery != null)
             {
-                var itemSubmission = new SelectListItem { Value = SubmissionQuery.submission_Id, Text = SubmissionQuery.submission_Name };
-                SubmissionList.Add(itemSubmission);
+                //var itemSubmission = new SelectListItem { Value = SubmissionQuery.submission_Id, Text = c };
+                //SubmissionList.Add(itemSubmission);
+                ViewBag.idea_submission_Name = SubmissionQuery.submission_Name;
+            }
+            else
+            {
+                ViewBag.idea_submission_Name = null;
             }
                
             
-            ViewBag.idea_submission_Name = SubmissionList;
+            
 
             return View();
         }
@@ -106,6 +112,8 @@ namespace News.Controllers.Staff
                         idea_CategoryId = idea.idea_CategoryId,
                         idea_SubmissionId = idea.idea_SubmissionId,
                     };
+                    var userEmail = User.FindFirstValue(ClaimTypes.Email);
+                    SendMail(userEmail,"Create Mail"," Success!");
 
                     using (var fileStream = new FileStream(path, FileMode.Create))
                     {
