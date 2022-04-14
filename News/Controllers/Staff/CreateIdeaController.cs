@@ -72,10 +72,12 @@ namespace News.Controllers.Staff
             {
 
                 ViewBag.idea_submission_Name = SubmissionQuery.submission_Name;
+                ViewBag.idea_submission_Id = SubmissionQuery.submission_Id;
             }
             else
             {
                 ViewBag.idea_submission_Name = null;
+                ViewBag.idea_submission_Id = null;
             }
                
             
@@ -113,9 +115,9 @@ namespace News.Controllers.Staff
                         idea_SubmissionId = idea.idea_SubmissionId,
                     };
                     var userEmail = User.FindFirstValue(ClaimTypes.Email);
-                    if (userEmail is null)
+                    if (userEmail is not null)
                     {
-                        SendMail(userEmail, "Create Mail", " Success!");
+                        //SendMail(userEmail, "Create Mail", " Success!");
                     }
                     
 
