@@ -26,7 +26,7 @@ namespace News.Controllers.Staff
             var queryIdea = _context.Idea.Find(id);
 
             ViewBag.Img = queryIdea.idea_ImageName;
-            ViewBag.ContentHTML = queryIdea.idea_Description;
+            ViewData["content"] = queryIdea.idea_Description;
 
 
             return View(queryIdea);

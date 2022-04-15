@@ -47,7 +47,7 @@
                                             </div>
 
                                             <!--Start Content-->
-                                            <div class="mu-blog-description" id="ContentBlog">
+                                            <div class="mu-blog-description" id="ContentBlog" [innerHtml]="@ViewData["content"]">
 
                                                 a
                                             </div>
@@ -415,10 +415,33 @@
 
 <script>
 
-    function onloadContent()
-    {
-         const h2 = document.querySelector("#ContentBlog");
-         h2.innerHTML=@ViewBag.ContentHTML;
+        function onloadContent()
+        {
+             //const h2 = document.querySelector("#ContentBlog");
+             //h2.innerHTML=@ViewBag.ContentHTML;
+
+
+             var d1= document.querySelector("#ContentBlog").innerHTML = '@ViewData["content"]';
+              d1.insertAdjacentHTML('afterend', '@ViewData["content"]');
+               //document.querySelector("#ContentBlog").innerHTML = doc;
+        }
+
+        export class SomeComponent {
+        public dummyElem = document.createElement('DIV');
+
+
+
+      decode(text: string): string {
+        var ret:string = "";
+
+        this.dummyElem.innerHTML = text;
+        document.body.appendChild(this.dummyElem);
+        ret = this.dummyElem.textContent; // just grap the decoded string which contains the desired HTML tags
+        document.body.removeChild(this.dummyElem);
+
+        return ret;
+      }
     }
+
 
 </script>
