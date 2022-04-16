@@ -171,7 +171,7 @@ namespace News.Data
                     idea_Id = ideaId1,
                     idea_Title = "Title1",
                     idea_ImageName = "blog-1.png",
-                    idea_Description = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim. </p>",
+                    idea_Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim. ",
                     idea_UpdateTime = new DateTime(2022, 02, 02),
                     idea_CategoryId = categoryId1,
                     idea_SubmissionId = academicYearId1,
@@ -182,7 +182,7 @@ namespace News.Data
                     idea_Id = ideaId2,
                     idea_Title = "Title2",
                     idea_ImageName = "blog-2.png",
-                    idea_Description = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim. </p>",
+                    idea_Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim. ",
                     idea_UpdateTime = new DateTime(2022, 02, 03),
                     idea_CategoryId = categoryId2,
                     idea_SubmissionId = academicYearId1,
@@ -193,7 +193,7 @@ namespace News.Data
                     idea_Id = ideaId3,
                     idea_Title = "Title3",
                     idea_ImageName = "blog-3.png",
-                    idea_Description = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim. </p>",
+                    idea_Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim. ",
                     idea_UpdateTime = new DateTime(2022, 02, 04),
                     idea_CategoryId = categoryId2,
                     idea_SubmissionId = academicYearId1,
@@ -214,6 +214,42 @@ namespace News.Data
                 {
                     uid_UserId = userId2,
                     uid_DepartmentId = departmentId2
+                }
+                );
+
+            //Comments
+
+            var Cmt_Id1 = Guid.NewGuid().ToString();
+            var Cmt_Id2 = Guid.NewGuid().ToString();
+            var Cmt_Id3 = Guid.NewGuid().ToString();
+
+            builder.Entity<Comments>().HasData(
+                new Comments()
+                {
+                    cmt_Id = Cmt_Id1,
+                    cmt_Content = "Comment1",
+                    cmt_UserId = userId1,
+                    cmt_UpdateDate = new DateTime(2022, 02, 04),
+                    cmt_IdeaId = ideaId1,
+                    cmt_IsDelete = false
+                },
+                new Comments()
+                {
+                    cmt_Id = Cmt_Id2,
+                    cmt_Content = "Comment2",
+                    cmt_UserId = userId2,
+                    cmt_UpdateDate = new DateTime(2022, 02, 05),
+                    cmt_IdeaId = ideaId1,
+                    cmt_IsDelete = false
+                },
+                new Comments()
+                {
+                    cmt_Id = Cmt_Id3,
+                    cmt_Content = "Comment3",
+                    cmt_UserId = userId1,
+                    cmt_UpdateDate = new DateTime(2022, 02, 06),
+                    cmt_IdeaId = ideaId1,
+                    cmt_IsDelete = false
                 }
                 );
 

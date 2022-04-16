@@ -43,6 +43,23 @@ namespace News.Controllers.Staff
             var queryIdea = _context.Idea;
             ViewBag.IdeaList = queryIdea.ToList();
             //End Query Idea
+            var queryComment = from a in _context.Comments
+                               join b in _context.AppUser on a.cmt_UserId equals b.Id
+                               select new { a, b };
+            queryComment = queryComment.Where(x => x.a.cmt_IdeaId == id);
+            var CommentInModel = queryComment
+                .Select(x => new CommentsModels()
+                {
+                    cmt_Content = x.a.cmt_Content,
+                    cmt_UserName = x.b.UserName,
+                    cmt_UpdateDate = x.a.cmt_UpdateDate
+
+                });
+            ViewBag.CommentList = CommentInModel.ToList();
+            //Start Query Comment
+
+
+            //End Query Comment
 
             return View(blogModelQuery);
         }

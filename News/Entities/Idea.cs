@@ -36,6 +36,7 @@ namespace News.Entities
         public AppUser appUserFK { get; set; }
 
         public List<LikeInIdea> likeInIdea { set; get; }
+        public List<Comments> Comments { set; get; }
 
     }
 }

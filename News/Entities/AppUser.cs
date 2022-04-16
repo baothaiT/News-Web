@@ -19,5 +19,6 @@ namespace News.Entities
         public List<UserInDepartment> userInDepartmentsList { set; get; }
 
         public List<LikeInIdea> likeInIdea { set; get; }
+        public List<Comments> Comments { set; get; }
     }
 }
