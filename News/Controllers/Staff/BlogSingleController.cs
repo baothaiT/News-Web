@@ -20,13 +20,13 @@ namespace News.Controllers.Staff
 
         // GET: BlogSingleController/Details/5
         [Route("blogsingle")]
-        [HttpGet]
+        [HttpGet("{id}")]
         public ActionResult Details(string id)
         {
             var queryIdea = _context.Idea.Find(id);
 
             ViewBag.Img = queryIdea.idea_ImageName;
-            ViewData["content"] = queryIdea.idea_Description;
+            ViewBag.Description = queryIdea.idea_Description.ToString();
 
 
             return View(queryIdea);

@@ -29,7 +29,7 @@ namespace News.Controllers.Staff
             {
                 query = query.Where(a => a.idea_SubmissionId == submissionId);
             }
-
+            
             query = query.OrderByDescending(s => s.idea_UpdateTime);
             if (typeSort != "")
             {
