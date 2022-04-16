@@ -63,6 +63,11 @@ namespace News.Controllers.Staff
                     UpdateTime = x.idea_UpdateTime
 
                 });
+            //Start Query Idea
+            var queryIdea = _context.Idea;
+            ViewBag.IdeaList = queryIdea.ToList();
+            //End Query Idea
+
             int pageSize = 2;
             return View(PaginatedList<BlogArchiveModels>.Create(blogModelQuery.AsNoTracking(), pageNumber ?? 1, pageSize));
         }

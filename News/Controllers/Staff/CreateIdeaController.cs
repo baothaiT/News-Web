@@ -48,6 +48,8 @@ namespace News.Controllers.Staff
         [HttpGet("submissionId")]
         public ActionResult Create(string submissionId)
         {
+            
+
             //Class active
             ViewBag.UploadIdeaActive = "active";
 
@@ -95,6 +97,11 @@ namespace News.Controllers.Staff
             {
                 if (ModelState.IsValid)
                 {
+                    //Get Informaion 
+                    string namePc = Environment.MachineName;
+                    bool checkLogin = (User?.Identity.IsAuthenticated).GetValueOrDefault();
+                    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
                     string wwwRootPath = _hostEnvironment.WebRootPath;
                     string fileName = Path.GetFileNameWithoutExtension(idea.idea_ImagePath.FileName);
                     string extension = Path.GetExtension(idea.idea_ImagePath.FileName);
@@ -113,6 +120,7 @@ namespace News.Controllers.Staff
                         idea_Agree = idea.idea_Agree,
                         idea_CategoryId = idea.idea_CategoryId,
                         idea_SubmissionId = idea.idea_SubmissionId,
+                        idea_UserId = userId,
                     };
                     var userEmail = User.FindFirstValue(ClaimTypes.Email);
                     if (userEmail is not null)
