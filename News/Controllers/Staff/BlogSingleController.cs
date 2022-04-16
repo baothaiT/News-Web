@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using News.Data;
+using News.Entities;
 using News.Models;
+using System;
 using System.Linq;
+using System.Security.Claims;
 
 namespace News.Controllers.Staff
 {
@@ -18,6 +21,7 @@ namespace News.Controllers.Staff
         [HttpGet("{id}")]
         public ActionResult Details(string id)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             var query = from a in _context.AppUser
                         join b in _context.Idea on a.Id equals b.idea_UserId
@@ -78,6 +82,17 @@ namespace News.Controllers.Staff
 
             //End Increase View for Idea
 
+            //Start Count ThumbUp
+            var queryThumbUp = _context.LikeInIdea.Where(a => a.likeInIdea_IdeaId == id && a.likeInIdea_Like == true);
+
+            ViewBag.CountThumbUp = queryThumbUp.Count();
+            //End Count ThumbUp
+            //Start Count ThumbDown
+
+            var queryThumbDown = _context.LikeInIdea.Where(a => a.likeInIdea_IdeaId == id && a.likeInIdea_DisLike == true);
+
+            ViewBag.CountThumbDown = queryThumbDown.Count();
+            //End Count ThumbDown
 
 
             return View(blogModelQuery);
@@ -89,20 +104,97 @@ namespace News.Controllers.Staff
         //    return View();
         //}
 
-        //// POST: BlogSingleController/Create
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create(IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+        // POST: BlogSingleController/Create
+        [Route("blogsingle/thumbup")]
+        [HttpGet("{id}")]
+        public ActionResult ThumbUp(Idea idea,string id)
+        {
+            try
+            {
+                string namePc = Environment.MachineName;
+                bool checkLogin = (User?.Identity.IsAuthenticated).GetValueOrDefault();
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+                //Check User
+                var queryStatus = _context.LikeInIdea.FirstOrDefault(a => a.likeInIdea_UserId == userId && a.likeInIdea_IdeaId == id);
+                if(queryStatus is null)
+                {
+                    var CreateStatus = new LikeInIdea()
+                    {
+                        likeInIdea_Id = Guid.NewGuid().ToString(),
+                        likeInIdea_Like = true,
+                        likeInIdea_DisLike = false,
+                        likeInIdea_CreateDate = DateTime.Now,
+                        likeInIdea_UserId = userId,
+                        likeInIdea_IdeaId = id
+                    };
+
+                    _context.LikeInIdea.Add(CreateStatus);
+                    
+                }
+                else
+                {
+
+                    queryStatus.likeInIdea_Like = true;
+                    queryStatus.likeInIdea_DisLike = false;
+                    queryStatus.likeInIdea_CreateDate = DateTime.Now;
+
+                    _context.LikeInIdea.Update(queryStatus);
+
+                }
+                _context.SaveChanges();
+                return Redirect("/blogsingle?id=" + id);
+            }
+            catch
+            {
+                return Redirect("/blogsingle?id=" + id);
+            }
+        }
+
+        [Route("blogsingle/thumbdown")]
+        [HttpGet("{id}")]
+        public ActionResult ThumbDown(Idea idea,string id)
+        {
+            try
+            {
+
+                string namePc = Environment.MachineName;
+                bool checkLogin = (User?.Identity.IsAuthenticated).GetValueOrDefault();
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+                //Check User
+                var queryStatus = _context.LikeInIdea.FirstOrDefault(a => a.likeInIdea_UserId == userId && a.likeInIdea_IdeaId == id);
+                if (queryStatus is null)
+                {
+                    var CreateStatus = new LikeInIdea()
+                    {
+                        likeInIdea_Id = Guid.NewGuid().ToString(),
+                        likeInIdea_Like = false,
+                        likeInIdea_DisLike = true,
+                        likeInIdea_CreateDate = DateTime.Now,
+                        likeInIdea_UserId = userId,
+                        likeInIdea_IdeaId = id
+                    };
+
+                    _context.LikeInIdea.Add(CreateStatus);
+                    
+                }
+                else
+                {
+                    queryStatus.likeInIdea_Like = false;
+                    queryStatus.likeInIdea_DisLike = true;
+                    queryStatus.likeInIdea_CreateDate = DateTime.Now;
+
+                    _context.LikeInIdea.Update(queryStatus);
+                }
+                _context.SaveChanges();
+                return Redirect("/blogsingle?id=" + id);
+            }
+            catch
+            {
+                return Redirect("/blogsingle?id=" + id);
+            }
+        }
 
     }
 }
