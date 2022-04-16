@@ -24,7 +24,7 @@ namespace News.Controllers.Staff
                         join d in _context.Submission on b.idea_SubmissionId equals d.submission_Id
                         select new { a, b, c,d };
             query = query.Where(x => x.b.idea_Id == id);
-
+            
             //Create Idea
             var blogModelQuery = query
                 .Select(x => new DetailIdeaModels()
@@ -39,13 +39,17 @@ namespace News.Controllers.Staff
                     idea_SubmissionName = x.d.submission_Name
                 });
 
+            ViewBag.IdeaId = id;
+
             //Start Query Idea
             var queryIdea = _context.Idea;
             ViewBag.IdeaList = queryIdea.ToList();
             //End Query Idea
             var queryComment = from a in _context.Comments
                                join b in _context.AppUser on a.cmt_UserId equals b.Id
+                               orderby a.cmt_UpdateDate ascending
                                select new { a, b };
+
             queryComment = queryComment.Where(x => x.a.cmt_IdeaId == id);
             var CommentInModel = queryComment
                 .Select(x => new CommentsModels()
