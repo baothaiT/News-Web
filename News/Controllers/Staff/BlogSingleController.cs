@@ -18,6 +18,7 @@ namespace News.Controllers.Staff
         [HttpGet("{id}")]
         public ActionResult Details(string id)
         {
+
             var query = from a in _context.AppUser
                         join b in _context.Idea on a.Id equals b.idea_UserId
                         join c in _context.Categories on b.idea_CategoryId equals c.category_Id
@@ -45,6 +46,7 @@ namespace News.Controllers.Staff
             var queryIdea = _context.Idea;
             ViewBag.IdeaList = queryIdea.ToList();
             //End Query Idea
+            //Start Query Comment
             var queryComment = from a in _context.Comments
                                join b in _context.AppUser on a.cmt_UserId equals b.Id
                                orderby a.cmt_UpdateDate ascending
@@ -60,10 +62,23 @@ namespace News.Controllers.Staff
 
                 });
             ViewBag.CommentList = CommentInModel.ToList();
-            //Start Query Comment
+
 
 
             //End Query Comment
+
+            //Start Increase View for Idea
+
+            var IncreaseView = _context.Idea.FirstOrDefault(a => a.idea_Id == id);
+            ViewBag.View = IncreaseView.idea_View;
+            IncreaseView.idea_View = IncreaseView.idea_View +1;
+
+            _context.Idea.Update(IncreaseView);
+            _context.SaveChanges();
+
+            //End Increase View for Idea
+
+
 
             return View(blogModelQuery);
         }

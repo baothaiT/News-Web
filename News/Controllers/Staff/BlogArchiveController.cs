@@ -27,28 +27,10 @@ namespace News.Controllers.Staff
             var query = from a in _context.Idea select a ;
             if (submissionId is not null)
             {
-                query = query.Where(a => a.idea_SubmissionId == submissionId);
+                query = query.Where(x => x.idea_SubmissionId == submissionId);
             }
             
             query = query.OrderByDescending(s => s.idea_UpdateTime);
-            if (typeSort != "")
-            {
-                switch (typeSort)
-                {
-                    case "MostView":
-                        // code block
-                        query = query.OrderByDescending(s => s.idea_View);
-                        break;
-                    case "Popular":
-                        // code block
-                        query = query.OrderByDescending(s => s.idea_View);
-                        break;
-                    default:
-                        // code block
-                        break;
-                }
-            }
-            
 
             //Create Idea
             var blogModelQuery = query
@@ -58,17 +40,40 @@ namespace News.Controllers.Staff
                     Title = x.idea_Title,
                     Img = x.idea_ImageName,
                     UserName = "",
-                    CountComment = 20,
                     ShortDescription = "",
-                    UpdateTime = x.idea_UpdateTime
-
+                    UpdateTime = x.idea_UpdateTime,
+                    CountComment = _context.Comments.Where(s => s.cmt_IdeaId == x.idea_Id).Count(),
+                    View = x.idea_View
                 });
+
+
+            //Sort
+            if (typeSort != "")
+            {
+                switch (typeSort)
+                {
+                    case "MostView":
+                        // code block
+                        blogModelQuery = blogModelQuery.OrderByDescending(s => s.View);
+                        break;
+                    case "Popular":
+                        // code block
+                        blogModelQuery = blogModelQuery.OrderByDescending(s => s.CountComment);
+                        break;
+                    default:
+                        // code block
+                        break;
+                }
+            }
+            
+
+            
             //Start Query Idea
             var queryIdea = _context.Idea;
             ViewBag.IdeaList = queryIdea.ToList();
             //End Query Idea
 
-            int pageSize = 2;
+            int pageSize = 6;
             return View(PaginatedList<BlogArchiveModels>.Create(blogModelQuery.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 

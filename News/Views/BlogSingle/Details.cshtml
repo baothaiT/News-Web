@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<News.Models.DetailIdeaModels>;
-
+@using Microsoft.AspNetCore.Identity
+@using News.Entities
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -53,6 +56,7 @@
 
                                                     <figcaption class="mu-blog-caption">
                                                         <h3><a href="#">@item.idea_Title</a></h3>
+                                                        <span>View: @ViewBag.View</span>
                                                     </figcaption>
                                                 </figure>
                                                 <div class="mu-blog-meta">
@@ -124,9 +128,6 @@
                                                         </article>
                                                     </div>
                                                 }
-
-
-
                                             </div>
                                         </div>
                                     </div>
@@ -151,16 +152,11 @@
                                                                 <h4 class="author-name">@item.cmt_UserName</h4>
                                                                 <span class="comments-date"> Posted on @item.cmt_UpdateDate</span>
                                                                 <p>@item.cmt_Content</p>
-
                                                             </div>
                                                         </div>
                                                     }
-
-
                                                 </li>
-
                                             </ul>
-
                                         </div>
                                     </div>
                                 </div>
@@ -170,7 +166,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div id="respond">
-                                        <h3 class="reply-title">Leave a Comment</h3>
+                                        <h3 class="reply-title">Comment:</h3>
                                         <form id="commentform" method="post" asp-controller="Comment" asp-action="Create">
                                             <p hidden>
                                                 <input type="text" name="cmt_IdeaId" value="@ViewBag.IdeaId" />
@@ -180,7 +176,16 @@
                                                 <textarea required="required" aria-required="true" rows="8" cols="45" name="cmt_Content"></textarea>
                                             </p>
                                             <p class="form-submit">
-                                                <input type="submit" value="Post Comment" class="mu-post-btn" name="submit">
+                                                @if (SignInManager.IsSignedIn(User))
+                                                {
+                                                    <input type="submit" value="Post Comment" class="mu-post-btn" name="submit">
+                                                }
+                                                else
+                                                {
+                                                    <input type="submit" value="Post Comment" class="mu-post-btn" name="submit" disabled="disabled">
+                                                    <span>Login to comment* </span>
+                                                }
+
                                             </p>
                                         </form>
                                     </div>
@@ -196,6 +201,7 @@
                                 <div class="mu-single-sidebar">
                                     <h3>Popular News</h3>
                                     <div class="mu-sidebar-popular-courses">
+
                                         @for (var i = 0; i < 3; i++)
                                         {
                                             <div class="media">
@@ -209,16 +215,9 @@
                                                 </div>
                                             </div>
                                         }
-
-
-
-
-
                                     </div>
                                 </div>
                                 <!-- end single sidebar -->
-
-
                             </aside>
                             <!-- / end sidebar -->
                         </div>
@@ -229,35 +228,3 @@
     </div>
 </section>
 
-@*<script>
-
-    function onloadContent()
-    {
-    //const h2 = document.querySelector("#ContentBlog");
-    //h2.innerHTML=@ViewBag.ContentHTML;
-
-
-    var d1= document.querySelector("#ContentBlog").innerHTML = '@ViewData["content"]';
-    d1.insertAdjacentHTML('afterend', '@ViewData["content"]');
-    //document.querySelector("#ContentBlog").innerHTML = doc;
-    }
-
-    export class SomeComponent {
-    public dummyElem = document.createElement('DIV');
-
-
-
-    decode(text: string): string {
-    var ret:string = "";
-
-    this.dummyElem.innerHTML = text;
-    document.body.appendChild(this.dummyElem);
-    ret = this.dummyElem.textContent; // just grap the decoded string which contains the desired HTML tags
-    document.body.removeChild(this.dummyElem);
-
-    return ret;
-    }
-    }
-
-
-    </script>*@

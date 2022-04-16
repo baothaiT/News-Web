@@ -175,7 +175,8 @@ namespace News.Data
                     idea_UpdateTime = new DateTime(2022, 02, 02),
                     idea_CategoryId = categoryId1,
                     idea_SubmissionId = academicYearId1,
-                    idea_UserId = userId2
+                    idea_UserId = userId2,
+                    idea_View =0
                 },
                 new Idea()
                 {
@@ -186,7 +187,8 @@ namespace News.Data
                     idea_UpdateTime = new DateTime(2022, 02, 03),
                     idea_CategoryId = categoryId2,
                     idea_SubmissionId = academicYearId1,
-                    idea_UserId = userId2
+                    idea_UserId = userId2,
+                    idea_View = 0
                 },
                 new Idea()
                 {
@@ -197,7 +199,8 @@ namespace News.Data
                     idea_UpdateTime = new DateTime(2022, 02, 04),
                     idea_CategoryId = categoryId2,
                     idea_SubmissionId = academicYearId1,
-                    idea_UserId = userId1
+                    idea_UserId = userId1,
+                    idea_View = 0
                 }
                 );
 

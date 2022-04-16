@@ -107,7 +107,7 @@ namespace News.Controllers.Staff
                     string extension = Path.GetExtension(idea.idea_ImagePath.FileName);
                     fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
                     string path = Path.Combine(wwwRootPath + "/Image/", fileName);
-                    
+
                     //Create Idea
                     var createIdea = new Idea()
                     {
@@ -115,12 +115,13 @@ namespace News.Controllers.Staff
                         idea_Title = idea.idea_Title,
                         idea_Description = idea.idea_Description,
                         idea_ImagePath = path,
-                        idea_ImageName = fileName ,
+                        idea_ImageName = fileName,
                         idea_UpdateTime = DateTime.Now,
                         idea_Agree = idea.idea_Agree,
                         idea_CategoryId = idea.idea_CategoryId,
                         idea_SubmissionId = idea.idea_SubmissionId,
                         idea_UserId = userId,
+                        idea_View = 0
                     };
                     var userEmail = User.FindFirstValue(ClaimTypes.Email);
                     if (userEmail is not null)
