@@ -15,7 +15,7 @@
                     <h2>Blog Archive</h2>
                     <ol class="breadcrumb">
                         <li><a href="#">Home</a></li>
-                        <li class="active">Blog Archive</li>
+                        <li class="active">Submission</li>
                     </ol>
                 </div>
             </div>
@@ -45,30 +45,30 @@
                                         </thead>
                                         <tbody>
                                             @foreach (var item in Model)
-                                           {
-                                               <tr>
-                                                <td>@item.submission_Name</td>
-                                                <td>@item.submission_StartTime</td>
-                                                <td>@item.submission_DueTime</td>
-                                                <td>
-                                                    <a href="/blogarchive?submissionId=@item.submission_Id">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-                                                            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-                                                        </svg>
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a id="a-@item.submission_Id" href="/createiead?submissionId=@item.submission_Id">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-                                                            <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
-                                                        </svg>
-                                                    </a>
-                                                </td>
-                                            </tr>
+                                            {
+                                                <tr>
+                                                    <td>@item.submission_Name</td>
+                                                    <td>@item.submission_StartTime</td>
+                                                    <td>@item.submission_DueTime</td>
+                                                    <td>
+                                                        <a href="/blogarchive?submissionId=@item.submission_Id">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                                                                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                                                            </svg>
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <a id="a-@item.submission_Id" href="/createiead?submissionId=@item.submission_Id">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                                                <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
+                                                            </svg>
+                                                        </a>
+                                                    </td>
+                                                </tr>
 
-                                           }
-                                            
-                                           
+                                            }
+
+
                                         </tbody>
                                     </table>
 
@@ -82,87 +82,33 @@
                         <div class="col-md-3">
                             <!-- start sidebar -->
                             <aside class="mu-sidebar">
-                                <!-- start single sidebar -->
-                                <div class="mu-single-sidebar">
-                                    <h3>Categories</h3>
-                                    <ul class="mu-sidebar-catg">
-                                        <li><a href="#">Web Design</a></li>
-                                        <li><a href="">Web Development</a></li>
-                                        <li><a href="">Math</a></li>
-                                        <li><a href="">Physics</a></li>
-                                        <li><a href="">Camestry</a></li>
-                                        <li><a href="">English</a></li>
-                                    </ul>
-                                </div>
-                                <!-- end single sidebar -->
+
                                 <!-- start single sidebar -->
                                 <div class="mu-single-sidebar">
                                     <h3>Popular News</h3>
                                     <div class="mu-sidebar-popular-courses">
-                                        <div class="media">
-                                            <div class="media-left">
-                                                <a href="#">
-                                                    <img class="media-object" src="~/assetsClient/img/courses/1.jpg" alt="img">
-                                                </a>
+                                        @for (var i = 0; i < 3; i++)
+                                        {
+
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <a href="#">
+                                                        <img class="media-object" src="~/Image/@ViewBag.IdeaList[i].idea_ImageName" alt="img">
+                                                    </a>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading"><a href="#">@ViewBag.IdeaList[i].idea_Title</a></h4>
+                                                </div>
                                             </div>
-                                            <div class="media-body">
-                                                <h4 class="media-heading"><a href="#">Medical Science</a></h4>
-                                                <span class="popular-course-price">$200.00</span>
-                                            </div>
-                                        </div>
-                                        <div class="media">
-                                            <div class="media-left">
-                                                <a href="#">
-                                                    <img class="media-object" src="~/assetsClient/img/courses/2.jpg" alt="img">
-                                                </a>
-                                            </div>
-                                            <div class="media-body">
-                                                <h4 class="media-heading"><a href="#">Web Design</a></h4>
-                                                <span class="popular-course-price">$250.00</span>
-                                            </div>
-                                        </div>
-                                        <div class="media">
-                                            <div class="media-left">
-                                                <a href="#">
-                                                    <img class="media-object" src="~/assetsClient/img/courses/3.jpg" alt="img">
-                                                </a>
-                                            </div>
-                                            <div class="media-body">
-                                                <h4 class="media-heading"><a href="#">Health & Sports</a></h4>
-                                                <span class="popular-course-price">$90.00</span>
-                                            </div>
-                                        </div>
+
+                                        }
+
+
+
                                     </div>
                                 </div>
                                 <!-- end single sidebar -->
-                                <!-- start single sidebar -->
-                                <div class="mu-single-sidebar">
-                                    <h3>Archives</h3>
-                                    <ul class="mu-sidebar-catg mu-sidebar-archives">
-                                        <li><a href="#">May <span>(25)</span></a></li>
-                                        <li><a href="">June <span>(35)</span></a></li>
-                                        <li><a href="">July <span>(20)</span></a></li>
-                                        <li><a href="">August <span>(125)</span></a></li>
-                                        <li><a href="">September <span>(45)</span></a></li>
-                                        <li><a href="">October <span>(85)</span></a></li>
-                                    </ul>
-                                </div>
-                                <!-- end single sidebar -->
-                                <!-- start single sidebar -->
-                                <div class="mu-single-sidebar">
-                                    <h3>Tags Cloud</h3>
-                                    <div class="tag-cloud">
-                                        <a href="#">Health</a>
-                                        <a href="#">Science</a>
-                                        <a href="#">Sports</a>
-                                        <a href="#">Mathematics</a>
-                                        <a href="#">Web Design</a>
-                                        <a href="#">Admission</a>
-                                        <a href="#">History</a>
-                                        <a href="#">Environment</a>
-                                    </div>
-                                </div>
-                                <!-- end single sidebar -->
+
                             </aside>
                             <!-- / end sidebar -->
                         </div>

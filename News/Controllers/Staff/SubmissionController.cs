@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using News.Data;
+using System.Linq;
 
 namespace News.Controllers.Staff
 {
@@ -18,6 +19,13 @@ namespace News.Controllers.Staff
             //Class Active menu
             ViewBag.CourseActive = "active";
             var querySubmission = _context.Submission;
+
+            //Start Query Idea
+            var queryIdea = _context.Idea;
+            ViewBag.IdeaList = queryIdea.ToList();
+            //End Query Idea
+
+
             return View(querySubmission);
         }
 
