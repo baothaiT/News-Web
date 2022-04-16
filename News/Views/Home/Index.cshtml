@@ -196,11 +196,11 @@
                             <div class="col-lg-4 col-md-4 col-xs-12">
                                 <div class="mu-latest-course-single">
                                     <figure class="mu-latest-course-img">
-                                        <a href="blogsingle?id=@item.Id"><img src="~/image/@item.Img" alt="img"></a>
+                                        <a href="blogsingle?id=@item.Id"><img src="~/image/@item.Img" alt="img" height="400"></a>
                                     </figure>
                                     <div class="mu-latest-course-single-content">
                                         <h4><a href="blogsingle?id=@item.Id">@item.Title</a></h4>
-                                        <p [innerHTML] = @item.ShortDescription></p>
+                                        <p> @item.ShortDescription></p>
                                         <div class="mu-latest-course-single-contbottom">
                                             <a class="mu-course-details" href="blogsingle?id=@item.Id">Read More</a>
                                             

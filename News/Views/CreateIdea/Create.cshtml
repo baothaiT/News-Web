@@ -48,10 +48,11 @@
                                             <input type="text" class="form-control" placeholder="Title" name="idea_Title" id="titleForm" required />
                                         </div>
                                         <div class="form-group">
-                                            <label for="contentForm"> Content</label>
-                                            <textarea id="contentForm" name="idea_Description" rows="20" placeholder="Content" required>  </textarea>
+                                            <label for="contentForm"  class="control-label"> Content</label>
+                                            <textarea id="contentForm" name="idea_Description" rows="20" cols="100" placeholder="Content" class="form-control" required>  </textarea>
                                         </div>
                                         <div class="form-group">
+                                            <label  class="control-label"> Image (550x500)</label>
                                             <input type="file" name="idea_ImagePath" class="form-control" required />
                                         </div>
                                         <div class="form-group">
@@ -85,7 +86,7 @@
 </section>
 <!-- End contact  -->
 
-<script>
+@*<script>
     tinymce.init({
       selector: 'textarea',
       plugins: 'a11ychecker advcode casechange export formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
@@ -94,4 +95,4 @@
       tinycomments_mode: 'embedded',
       tinycomments_author: 'Author name',
     });
-</script>
+</script>*@
