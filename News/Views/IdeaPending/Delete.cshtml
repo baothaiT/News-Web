@@ -1,0 +1,47 @@
+﻿@model News.Entities.Idea
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Idea</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.idea_Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.idea_Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.idea_Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.idea_Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.idea_View)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.idea_View)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.idea_UpdateTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.idea_UpdateTime)
+        </dd>
+        
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="idea_Id" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

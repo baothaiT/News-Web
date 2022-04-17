@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using News.Data;
+using News.Entities;
 using News.Models;
 using System.Linq;
 
@@ -65,39 +66,45 @@ namespace News.Controllers.Coordinator
 
 
         // GET: IdeaPendingController/Edit/5
-        public ActionResult Appoval(int id)
+        [Route("ideapendingmanagement/appoval")]
+        [HttpGet("{id}")]
+        public ActionResult Appoval(string id)
         {
-            return View();
+            //Query Idea
+            var queryIdea = _context.Idea.FirstOrDefault(a => a.idea_Id == id);
+
+            //Query UserId 
+            var queryUserId = _context.AppUser.FirstOrDefault(a => a.UserName == "Anonymous");
+
+            queryIdea.idea_UserId = queryUserId.Id;
+
+            _context.Idea.Update(queryIdea);
+            _context.SaveChanges();
+
+
+            return Redirect("/ideamanagement");
         }
 
-        // POST: IdeaPendingController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Appoval(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
         // GET: IdeaPendingController/Delete/5
-        public ActionResult Delete(int id)
+        [Route("ideapendingmanagement/delete")]
+        [HttpGet]
+        public ActionResult Delete(string id)
         {
-            return View();
+            var query = _context.Idea.FirstOrDefault(a => a.idea_Id == id);
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: IdeaPendingController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(string id, Idea idea)
         {
             try
             {
+                var query = _context.Idea.FirstOrDefault(a => a.idea_Id == idea.idea_Id);
+                _context.Idea.Remove(query);
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch
