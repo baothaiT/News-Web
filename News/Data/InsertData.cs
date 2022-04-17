@@ -103,6 +103,19 @@ namespace News.Data
                     PasswordHash = hasher.HashPassword(null, "123456Aa@"),
                     SecurityStamp = Guid.NewGuid().ToString(),
                     DoB = new DateTime(2022, 02, 02)
+                },
+                new AppUser()
+                {
+                    Id = userId4,
+                    UserName = "Anonymous",
+                    LastName = "Anonymous",
+                    NormalizedUserName = "ANOYMOUS@GMAIL.COM",
+                    NormalizedEmail = "ANOYMOUS@GMAIL.COM",
+                    Email = "anonymous@gmail.com",
+                    EmailConfirmed = true,
+                    PasswordHash = hasher.HashPassword(null, "123456Aa@"),
+                    SecurityStamp = Guid.NewGuid().ToString(),
+                    DoB = new DateTime(2022, 02, 03)
                 }
                 );
 

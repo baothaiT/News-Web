@@ -59,5 +59,6 @@ namespace News.Data
         public DbSet<LikeInIdea> LikeInIdea { get; set; }
         public DbSet<Comments> Comments { get; set; }
         public DbSet<ContactEmail> ContactEmail { get; set; }
+        public DbSet<News.Models.DetailIdeaModels> DetailIdeaModels { get; set; }
     }
 }

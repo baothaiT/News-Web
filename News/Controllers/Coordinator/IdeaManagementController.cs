@@ -24,7 +24,7 @@ namespace News.Controllers.Coordinator
             var query = from a in _context.Idea
                         join b in _context.Submission on a.idea_SubmissionId equals b.submission_Id
                         select new { a, b };
-            query = query.Where(x => x.a.IsDelete == false);
+            query = query.Where(x => x.a.IsDelete == false && x.a.idea_UserId != null);
             //Create Idea
             var blogModelQuery = query
                 .Select(x => new DetailIdeaModels()

@@ -1,0 +1,109 @@
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using News.Data;
+using News.Models;
+using System.Linq;
+
+namespace News.Controllers.Coordinator
+{
+    public class IdeaPendingController : Controller
+    {
+        private readonly ApplicationDbContext _context;
+        public IdeaPendingController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+        // GET: IdeaPendingController
+        [Route("ideapendingmanagement")]
+        [HttpGet]
+        public ActionResult Index()
+        {
+            var query = from a in _context.Idea
+                        join b in _context.Submission on a.idea_SubmissionId equals b.submission_Id
+                        select new { a, b };
+            query = query.Where(x => x.a.IsDelete == false && x.a.idea_UserId == null);
+            //Create Idea
+            var blogModelQuery = query
+                .Select(x => new DetailIdeaModels()
+                {
+                    idea_Id = x.a.idea_Id,
+                    idea_Title = x.a.idea_Title,
+                    idea_Description = x.a.idea_Description,
+                    idea_UpdateTime = x.a.idea_UpdateTime,
+                    idea_SubmissionName = x.b.submission_Name
+                });
+
+
+            return View(blogModelQuery);
+        }
+
+        // GET: IdeaPendingController/Details/5
+        [Route("ideapendingmanagement/details")]
+        [HttpGet]
+        public ActionResult Details(string id)
+        {
+            var query = from a in _context.Idea
+                        join b in _context.Submission on a.idea_SubmissionId equals b.submission_Id
+                        select new { a, b };
+            query = query.Where(x => x.a.IsDelete == false && x.a.idea_UserId == null);
+            //Create Idea
+            var blogModelQuery = query
+                .Select(x => new DetailIdeaModels()
+                {
+                    idea_Id = x.a.idea_Id,
+                    idea_Title = x.a.idea_Title,
+                    idea_Description = x.a.idea_Description,
+                    idea_UpdateTime = x.a.idea_UpdateTime,
+                    idea_SubmissionName = x.b.submission_Name
+                });
+
+            var blogModels = blogModelQuery.FirstOrDefault(x => x.idea_Id == id);
+            return View(blogModels);
+        }
+
+
+
+
+        // GET: IdeaPendingController/Edit/5
+        public ActionResult Appoval(int id)
+        {
+            return View();
+        }
+
+        // POST: IdeaPendingController/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Appoval(int id, IFormCollection collection)
+        {
+            try
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: IdeaPendingController/Delete/5
+        public ActionResult Delete(int id)
+        {
+            return View();
+        }
+
+        // POST: IdeaPendingController/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, IFormCollection collection)
+        {
+            try
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+    }
+}

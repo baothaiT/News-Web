@@ -61,10 +61,12 @@
                                         </div>
                                         <div class="form-group">
                                             <input type="text" value="@ViewBag.idea_submission_Name" class="form-control" readonly />
-                                            <input type="text" value="@ViewBag.idea_submission_Id" class="form-control" name="idea_SubmissionId" hidden />
+                                            
                                         </div>
 
-
+                                        <div class="form-group" hidden>
+                                            <input type="text" value="@ViewBag.idea_submission_Id" class="form-control" name="idea_SubmissionId"  />
+                                            </div>
                                         <div>
                                             <input type="checkbox" id="policyForm" asp-for="idea_Agree" required>
                                             <label for="policyForm"> Agree terms of use</label><br>

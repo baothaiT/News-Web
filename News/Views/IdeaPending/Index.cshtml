@@ -1,0 +1,51 @@
+﻿@model IEnumerable<News.Models.DetailIdeaModels>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.idea_Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idea_Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idea_UpdateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idea_SubmissionName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idea_Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idea_Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idea_UpdateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idea_SubmissionName)
+            </td>
+
+            <td>
+                <a asp-action="Appoval" asp-route-id="@item.idea_Id">Appoval</a> |
+                <a asp-action="Details" asp-route-id="@item.idea_Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.idea_Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

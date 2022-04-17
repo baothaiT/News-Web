@@ -1,10 +1,12 @@
 ﻿using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace News.Models
 {
     public class DetailIdeaModels
     {
+        [Key]
         public string idea_Id { get; set; }
         [DisplayName("Title")]
         public string idea_Title { get; set; }
