@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace News.Migrations
 {
-    public partial class init : Migration
+    public partial class @int : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -351,24 +351,24 @@ namespace News.Migrations
                 columns: new[] { "category_Id", "IsDelete", "category_Description", "category_Name" },
                 values: new object[,]
                 {
-                    { "e0679b30-9a6f-4c8e-a9f8-f4fb580bfe95", false, "Des 1", "Category1" },
-                    { "a5e192ec-82be-4aad-bfea-c6e2b62d505c", false, "Des 2", "Category2" },
-                    { "0938ea4c-c358-4e47-82ed-6116b5e53877", false, "Des 3", "Category3" }
+                    { "8b1baed2-8190-438e-9b71-a84065207a13", false, "Des 1", "Category1" },
+                    { "3cb90ad9-bfd2-47fb-821e-def0159a08e1", false, "Des 2", "Category2" },
+                    { "af74ff1e-57ca-4ffd-a3ea-85c84bf358e3", false, "Des 3", "Category3" }
                 });
 
             migrationBuilder.InsertData(
                 table: "ContactEmail",
                 columns: new[] { "Id", "Email", "Message", "Name", "Subject" },
-                values: new object[] { "d8fd9c01-e397-440e-8ccb-1fce22c68e1c", "Email Test", "Message Test", "Name Test", "Subject Test" });
+                values: new object[] { "2dc333e7-16b4-4632-a20b-5180a0fd0cd1", "Email Test", "Message Test", "Name Test", "Subject Test" });
 
             migrationBuilder.InsertData(
                 table: "Department",
                 columns: new[] { "department_Id", "IsDelete", "department_Description", "department_Name" },
                 values: new object[,]
                 {
-                    { "c76f5e13-6b33-4d3a-bd68-7b42f9a0f033", false, "Department 1", "Department 1" },
-                    { "f12e9f03-39ab-41f7-8e85-8be81b1a3b71", false, "Department 2", "Department 2 " },
-                    { "0bfae728-4f6e-4901-a959-5f9ecfde1a51", false, "Department 3", "Department 3" }
+                    { "b7329926-86e0-4d90-9beb-5493a27e093b", false, "Department 1", "Department 1" },
+                    { "b9162188-3d11-4b31-b7b5-d35a77be8dc7", false, "Department 2", "Department 2 " },
+                    { "85f36082-175f-4816-b55c-f02be5f529bb", false, "Department 3", "Department 3" }
                 });
 
             migrationBuilder.InsertData(
@@ -376,23 +376,23 @@ namespace News.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Description", "Discriminator", "IsDelete", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "aa3e612c-da21-40b3-808b-72be171330be", "c949a9c4-977b-4aec-ab0d-3168edfff7ff", "Staff", "AppRole", false, "staff", null },
-                    { "d2fc3a10-3e6a-4d13-b5cd-4eddd9122557", "6abc5a7f-fe99-482f-ade9-e3fe395a4e82", "Admin", "AppRole", false, "admin", null }
+                    { "c6f2211f-b5b8-41ce-b6d7-eb54d0e5010f", "1933e632-53b3-4140-bd4c-8d0815b61399", "Staff", "AppRole", false, "staff", null },
+                    { "7a71ab80-d3c8-4efb-8ac7-25966e6ece84", "d493dd46-1866-474d-8b31-32137fa57c4f", "Admin", "AppRole", false, "admin", null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Submission",
                 columns: new[] { "submission_Id", "IsDelete", "submission_Description", "submission_DueTime", "submission_Name", "submission_StartTime", "submission_UserId" },
-                values: new object[] { "c2f36ee8-d556-4a6b-8863-0e5f476bfec1", false, "AcademicYear1", new DateTime(2023, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "AcademicYear1", new DateTime(2021, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), null });
+                values: new object[] { "de6f1dda-bd93-4df3-8f6f-005c3cab80df", false, "Submission1", new DateTime(2023, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "Submission1", new DateTime(2021, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), null });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "DoB", "Email", "EmailConfirmed", "FirstName", "IsDelete", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "ab1a7d1b-a1c9-4ffe-a627-32368c17c3b7", 0, "38fd79c5-5fa2-4b7b-817c-045cc927d93d", "AppUser", new DateTime(2022, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin@gmail.com", true, null, false, "Admin", false, null, "ADMIN@GMAIL.COM", "ADMIN@GMAIL.COM", "AQAAAAEAACcQAAAAENHtHbX1AQAN6v2FHywY8fy4wy86vuSfg5KbvXXsJTQZQSPvmZghTmlKinhu/3ybJA==", null, false, "2c46bdc5-0bb4-4290-80ea-5ec296c51e4b", false, "Admin" },
-                    { "8821c7e7-3aff-4cb2-9c7a-6635e1849f3d", 0, "b1b1079f-9e33-448c-ace2-b5a5ae953671", "AppUser", new DateTime(2022, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "staff@gmail.com", true, null, false, "Staff", false, null, "STAFF@GMAIL.COM", "STAFF@GMAIL.COM", "AQAAAAEAACcQAAAAEIlloHUy3SIYEj9RXrpTj0zzvGkSg9F/8XQ4slIQ+L2csjG7GrldhxTIuZJ6aJCQLw==", null, false, "3508f0ca-419b-4cc7-8233-bd39426b6a0f", false, "Staff" },
-                    { "1aeae3c1-421e-41a2-8a84-9fb9d552b938", 0, "130a1ee6-d0f5-4630-93cf-369f69ca3aac", "AppUser", new DateTime(2022, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "staff2@gmail.com", true, null, false, "Staff2", false, null, "STAFF2@GMAIL.COM", "STAFF2@GMAIL.COM", "AQAAAAEAACcQAAAAECaDDMPgB4LDcLXfj2tDdC0Tscz4wwdE9hWvn/LXts3ZqC7oPsWJ4lzd+jTiwLjwEg==", null, false, "b6537a4d-e78a-4bc3-95bb-dcf42d94187a", false, "Staff2" }
+                    { "0b9202fc-436c-4840-9bab-b27a680789c6", 0, "321837d4-ca31-4e54-b4c2-fef6766dda47", "AppUser", new DateTime(2022, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin@gmail.com", true, null, false, "Admin", false, null, "ADMIN@GMAIL.COM", "ADMIN@GMAIL.COM", "AQAAAAEAACcQAAAAEMPaD1Y6b8/fqRPnDiOFufDX6OaTmze3F0PevCQAoVfRPGgQB/KNnpn8wtf7ZJssIg==", null, false, "d7281135-4fac-466f-9357-1bb588c76d2a", false, "Admin" },
+                    { "9b09a37b-46a9-4c09-aba2-4f8b6526be26", 0, "4f1b4334-16af-4b74-9919-e84a13f18ec6", "AppUser", new DateTime(2022, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "staff@gmail.com", true, null, false, "Staff", false, null, "STAFF@GMAIL.COM", "STAFF@GMAIL.COM", "AQAAAAEAACcQAAAAEAmIYPQVI4BpDFr0xPn7C02lgNCTKVwDboKdgDo+ZCRU9e23Voa90AHR+bXxKm330g==", null, false, "353d52e3-fca6-493c-be44-3e89cfdeefe4", false, "Staff" },
+                    { "a26a76ee-9972-4271-8f11-de1b302e2205", 0, "acb92b0e-a40b-40f3-9b85-1999bdc8579e", "AppUser", new DateTime(2022, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "staff2@gmail.com", true, null, false, "Staff2", false, null, "STAFF2@GMAIL.COM", "STAFF2@GMAIL.COM", "AQAAAAEAACcQAAAAEDU8Vm8AyfSoWiD/9g5/T2vFzrSh/kEMPCTGR73cUBa/9SZ7e/VLsjsePRoXN+craQ==", null, false, "32a46d4a-ca78-42bf-81a6-ca1b2b345cfc", false, "Staff2" }
                 });
 
             migrationBuilder.InsertData(
@@ -400,9 +400,9 @@ namespace News.Migrations
                 columns: new[] { "idea_Id", "IsDelete", "idea_Agree", "idea_CategoryId", "idea_Description", "idea_ImageName", "idea_ImagePath", "idea_SubmissionId", "idea_Title", "idea_UpdateTime", "idea_UserId", "idea_View" },
                 values: new object[,]
                 {
-                    { "6bbb851f-dbc2-4fa5-9641-7a660e9dbd9f", false, false, "e0679b30-9a6f-4c8e-a9f8-f4fb580bfe95", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim. ", "blog-1.png", null, "c2f36ee8-d556-4a6b-8863-0e5f476bfec1", "Title1", new DateTime(2022, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "8821c7e7-3aff-4cb2-9c7a-6635e1849f3d", 0 },
-                    { "df087ffa-1b4d-44c8-a540-6403008906fe", false, false, "a5e192ec-82be-4aad-bfea-c6e2b62d505c", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim. ", "blog-2.png", null, "c2f36ee8-d556-4a6b-8863-0e5f476bfec1", "Title2", new DateTime(2022, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "8821c7e7-3aff-4cb2-9c7a-6635e1849f3d", 0 },
-                    { "38c7903f-8113-418a-ae1d-c2cf63daebb1", false, false, "a5e192ec-82be-4aad-bfea-c6e2b62d505c", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim. ", "blog-3.png", null, "c2f36ee8-d556-4a6b-8863-0e5f476bfec1", "Title3", new DateTime(2022, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), "ab1a7d1b-a1c9-4ffe-a627-32368c17c3b7", 0 }
+                    { "8a9f23a7-bf81-4ead-b031-57137112ff1b", false, false, "8b1baed2-8190-438e-9b71-a84065207a13", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim. ", "blog-1.png", null, "de6f1dda-bd93-4df3-8f6f-005c3cab80df", "Title1", new DateTime(2022, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "9b09a37b-46a9-4c09-aba2-4f8b6526be26", 0 },
+                    { "6bf5b738-7ace-400c-b6f3-81ae6bb38f95", false, false, "3cb90ad9-bfd2-47fb-821e-def0159a08e1", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim. ", "blog-2.png", null, "de6f1dda-bd93-4df3-8f6f-005c3cab80df", "Title2", new DateTime(2022, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "9b09a37b-46a9-4c09-aba2-4f8b6526be26", 0 },
+                    { "f80add54-fc9e-428c-aa23-f0e5795ace21", false, false, "3cb90ad9-bfd2-47fb-821e-def0159a08e1", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim. ", "blog-3.png", null, "de6f1dda-bd93-4df3-8f6f-005c3cab80df", "Title3", new DateTime(2022, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), "0b9202fc-436c-4840-9bab-b27a680789c6", 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -410,8 +410,8 @@ namespace News.Migrations
                 columns: new[] { "uid_DepartmentId", "uid_UserId" },
                 values: new object[,]
                 {
-                    { "c76f5e13-6b33-4d3a-bd68-7b42f9a0f033", "ab1a7d1b-a1c9-4ffe-a627-32368c17c3b7" },
-                    { "f12e9f03-39ab-41f7-8e85-8be81b1a3b71", "8821c7e7-3aff-4cb2-9c7a-6635e1849f3d" }
+                    { "b7329926-86e0-4d90-9beb-5493a27e093b", "0b9202fc-436c-4840-9bab-b27a680789c6" },
+                    { "b9162188-3d11-4b31-b7b5-d35a77be8dc7", "9b09a37b-46a9-4c09-aba2-4f8b6526be26" }
                 });
 
             migrationBuilder.InsertData(
@@ -419,24 +419,24 @@ namespace News.Migrations
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "d2fc3a10-3e6a-4d13-b5cd-4eddd9122557", "ab1a7d1b-a1c9-4ffe-a627-32368c17c3b7" },
-                    { "aa3e612c-da21-40b3-808b-72be171330be", "8821c7e7-3aff-4cb2-9c7a-6635e1849f3d" }
+                    { "7a71ab80-d3c8-4efb-8ac7-25966e6ece84", "0b9202fc-436c-4840-9bab-b27a680789c6" },
+                    { "c6f2211f-b5b8-41ce-b6d7-eb54d0e5010f", "9b09a37b-46a9-4c09-aba2-4f8b6526be26" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Comments",
                 columns: new[] { "cmt_Id", "IsDelete", "cmt_Content", "cmt_IdeaId", "cmt_UpdateDate", "cmt_UserId" },
-                values: new object[] { "f8b68425-f2ae-4835-a930-6cfb2871881c", false, "Comment1", "6bbb851f-dbc2-4fa5-9641-7a660e9dbd9f", new DateTime(2022, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), "ab1a7d1b-a1c9-4ffe-a627-32368c17c3b7" });
+                values: new object[] { "f66449f5-72d6-42fb-b4bb-a6d71c072b16", false, "Comment1", "8a9f23a7-bf81-4ead-b031-57137112ff1b", new DateTime(2022, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), "0b9202fc-436c-4840-9bab-b27a680789c6" });
 
             migrationBuilder.InsertData(
                 table: "Comments",
                 columns: new[] { "cmt_Id", "IsDelete", "cmt_Content", "cmt_IdeaId", "cmt_UpdateDate", "cmt_UserId" },
-                values: new object[] { "d3c22960-1ec1-4f52-8bb3-74425de48063", false, "Comment2", "6bbb851f-dbc2-4fa5-9641-7a660e9dbd9f", new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "8821c7e7-3aff-4cb2-9c7a-6635e1849f3d" });
+                values: new object[] { "116f501a-5509-4843-9ec7-0d703ccf6da9", false, "Comment2", "8a9f23a7-bf81-4ead-b031-57137112ff1b", new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "9b09a37b-46a9-4c09-aba2-4f8b6526be26" });
 
             migrationBuilder.InsertData(
                 table: "Comments",
                 columns: new[] { "cmt_Id", "IsDelete", "cmt_Content", "cmt_IdeaId", "cmt_UpdateDate", "cmt_UserId" },
-                values: new object[] { "c08d2666-d85d-4091-b564-6c235edf0aa7", false, "Comment3", "6bbb851f-dbc2-4fa5-9641-7a660e9dbd9f", new DateTime(2022, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), "ab1a7d1b-a1c9-4ffe-a627-32368c17c3b7" });
+                values: new object[] { "e6650131-cec8-4540-bc04-446f61e2c40d", false, "Comment3", "8a9f23a7-bf81-4ead-b031-57137112ff1b", new DateTime(2022, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), "0b9202fc-436c-4840-9bab-b27a680789c6" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_cmt_IdeaId",

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Security.Claims;
 using News.Entities;
+using News.Models;
 
 namespace News.Controllers.Coordinator
 {
@@ -20,10 +21,23 @@ namespace News.Controllers.Coordinator
         [Route("ideamanagement")]
         public ActionResult Index()
         {
-            var query = _context.Idea;
+            var query = from a in _context.Idea
+                        join b in _context.Submission on a.idea_SubmissionId equals b.submission_Id
+                        select new { a, b };
+            query = query.Where(x => x.a.IsDelete == false);
+            //Create Idea
+            var blogModelQuery = query
+                .Select(x => new DetailIdeaModels()
+                {
+                    idea_Id = x.a.idea_Id,
+                    idea_Title = x.a.idea_Title,
+                    idea_Description = x.a.idea_Description,
+                    idea_UpdateTime = x.a.idea_UpdateTime,
+                    idea_SubmissionName = x.b.submission_Name
+                });
 
 
-            return View(query);
+            return View(blogModelQuery);
         }
 
         // GET: StaffController/Details/5

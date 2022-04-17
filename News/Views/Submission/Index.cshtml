@@ -62,11 +62,11 @@
                                                     <td>
                                                         @if (item.Block == true)
                                                         {
-                                                           
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-                                                                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
-                                                                </svg>
-                                                            
+
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                                                <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
+                                                            </svg>
+
                                                         }
                                                         else
                                                         {
@@ -100,21 +100,37 @@
                                 <div class="mu-single-sidebar">
                                     <h3>Popular News</h3>
                                     <div class="mu-sidebar-popular-courses">
-                                        @for (var i = 0; i < 3; i++)
-                                        {
+                                        @{
+                                            int iPopular = 0;
+                                            foreach (var item in ViewBag.IdeaList)
+                                            {
+                                                if (iPopular <3)
+                                                {
+                                                    <div class="media">
+                                                        <div class="media-left">
+                                                            <a href="blogsingle?id=@item.idea_Id">
+                                                                <img class="media-object" src="~/Image/@item.idea_ImageName" alt="img">
+                                                            </a>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <h4 class="media-heading"><a href="#">@item.idea_Title</a></h4>
+                                                        </div>
+                                                    </div>
 
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="#">
-                                                        <img class="media-object" src="~/Image/@ViewBag.IdeaList[i].idea_ImageName" alt="img">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h4 class="media-heading"><a href="#">@ViewBag.IdeaList[i].idea_Title</a></h4>
-                                                </div>
-                                            </div>
+                                                }
+                                                else
+                                                {
+                                                    break;
+                                                }
+                                                iPopular++;
 
+                                            }
                                         }
+
+
+
+
+
 
 
 

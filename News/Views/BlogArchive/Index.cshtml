@@ -142,20 +142,31 @@
                                 <div class="mu-single-sidebar">
                                     <h3>Popular News</h3>
                                     <div class="mu-sidebar-popular-courses">
-                                       @for (var i = 0; i < 3; i++)
-                                        {
+                                       @{
+                                            int iPopular = 0;
+                                            foreach (var item in ViewBag.IdeaList)
+                                            {
+                                                if (iPopular <3)
+                                                {
+                                                    <div class="media">
+                                                        <div class="media-left">
+                                                            <a href="blogsingle?id=@item.idea_Id">
+                                                                <img class="media-object" src="~/Image/@item.idea_ImageName" alt="img">
+                                                            </a>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <h4 class="media-heading"><a href="#">@item.idea_Title</a></h4>
+                                                        </div>
+                                                    </div>
 
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="#">
-                                                        <img class="media-object" src="~/Image/@ViewBag.IdeaList[i].idea_ImageName" alt="img">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h4 class="media-heading"><a href="#">@ViewBag.IdeaList[i].idea_Title</a></h4>
-                                                </div>
-                                            </div>
+                                                }
+                                                else
+                                                {
+                                                    break;
+                                                }
+                                                iPopular++;
 
+                                            }
                                         }
                                     </div>
                                 </div>

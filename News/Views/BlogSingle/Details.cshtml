@@ -18,8 +18,6 @@
         line-break: anywhere;
     }
 
-
-
 </style>
 
 <!-- Page breadcrumb -->
@@ -77,16 +75,16 @@
                                                 <div class="mu-blog-description container">
                                                     <div class="row">
                                                         <div class="col-sm">
-                                                           <a href="blogsingle/thumbup?id=@ViewBag.IdeaId">
-                                                               <img src="/assetsClient/img/icon/like.jpg" height="40" />
-                                                           </a>
-                                                           <span>: @ViewBag.CountThumbUp</span>
+                                                            <a href="blogsingle/thumbup?id=@ViewBag.IdeaId">
+                                                                <img src="/assetsClient/img/icon/like.jpg" height="40" />
+                                                            </a>
+                                                            <span>: @ViewBag.CountThumbUp</span>
                                                         </div>
                                                         <div class="col-sm">
                                                             <a href="blogsingle/thumbdown?id=@ViewBag.IdeaId">
-                                                               <img src="/assetsClient/img/icon/dislike.jpg" height="40" />
+                                                                <img src="/assetsClient/img/icon/dislike.jpg" height="40" />
                                                             </a>
-                                                            
+
                                                             <span>: @ViewBag.CountThumbDown</span>
                                                         </div>
                                                     </div>
@@ -128,26 +126,34 @@
                                         <h3>Related News</h3>
                                         <div class="mu-related-item-area">
                                             <div id="mu-related-item-slide">
-                                                @for (var i = 0; i < 3; i++)
-                                                {
-                                                    <div class="col-md-6">
-                                                        <article class="mu-blog-single-item">
-                                                            <figure class="mu-blog-single-img">
-                                                                <a href="blogsingle?id=@ViewBag.IdeaList[i].idea_Id"><img alt="img" src="~/Image/@ViewBag.IdeaList[i].idea_ImageName" height="400"></a>
-                                                                <figcaption class="mu-blog-caption">
-                                                                    <h3><a href="#">Lorem ipsum dolor sit amet.</a></h3>
-                                                                </figcaption>
-                                                            </figure>
-                                                            <div class="mu-blog-meta">
-                                                                <a href="#">By Admin</a>
-                                                                <a href="#">02 June 2016</a>
+                                                @{
+                                                    int iRelated = 0;
+
+                                                    foreach (var item in ViewBag.IdeaList)
+                                                    {
+                                                        if (iRelated < 5)
+                                                        {
+                                                            <div class="col-md-6">
+                                                                <article class="mu-blog-single-item">
+                                                                    <figure class="mu-blog-single-img">
+                                                                        <a href="blogsingle?id=@item.idea_Id"><img alt="img" src="~/Image/@item.idea_ImageName" height="400"></a>
+                                                                        <figcaption class="mu-blog-caption">
+                                                                            <h3><a href="blogsingle?id=@item.idea_Id">Lorem ipsum dolor sit amet.</a></h3>
+                                                                        </figcaption>
+                                                                    </figure>
+                                                                    <div class="mu-blog-meta">
+                                                                        <a href="#">@item.idea_UpdateTime</a>
+                                                                    </div>
+                                                                    <div class="mu-blog-description">
+                                                                        
+                                                                        <a href="blogsingle?id=@item.idea_Id" class="mu-read-more-btn">Read More</a>
+                                                                    </div>
+                                                                </article>
                                                             </div>
-                                                            <div class="mu-blog-description">
-                                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.</p>
-                                                                <a href="blogsingle?id=@ViewBag.IdeaList[i].idea_Id" class="mu-read-more-btn">Read More</a>
-                                                            </div>
-                                                        </article>
-                                                    </div>
+                                                        }
+
+                                                    }
+
                                                 }
                                             </div>
                                         </div>
@@ -159,7 +165,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="mu-comments-area">
-   
+
                                         <div class="comments">
                                             <ul class="commentlist">
                                                 <li>
@@ -203,8 +209,8 @@
                                                 }
                                                 else
                                                 {
-                                                    <input type="submit" value="Post Comment" class="mu-post-btn" name="submit" disabled="disabled">
-                                                    <span>Login to comment* </span>
+                                                    <input type="submit" value="Post Comment" class="mu-post-btn" name="submit" onclick="alert('Login to comment')"  disabled="disabled">
+                                                    <span style="color:red">Login to comment* </span>
                                                 }
 
                                             </p>
@@ -223,18 +229,31 @@
                                     <h3>Popular News</h3>
                                     <div class="mu-sidebar-popular-courses">
 
-                                        @for (var i = 0; i < 3; i++)
-                                        {
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="blogsingle?id=@ViewBag.IdeaList[i].idea_Id">
-                                                        <img class="media-object" src="~/Image/@ViewBag.IdeaList[i].idea_ImageName" alt="img">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h4 class="media-heading"><a href="blogsingle?id=@ViewBag.IdeaList[i].idea_Id">@ViewBag.IdeaList[i].idea_Title</a></h4>
-                                                </div>
-                                            </div>
+                                        @{
+                                            int iPopular = 0;
+                                            foreach (var item in ViewBag.IdeaList)
+                                            {
+                                                if (iPopular < 3)
+                                                {
+                                                    <div class="media">
+                                                        <div class="media-left">
+                                                            <a href="blogsingle?id=@item.idea_Id">
+                                                                <img class="media-object" src="~/Image/@item.idea_ImageName" alt="img">
+                                                            </a>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <h4 class="media-heading"><a href="#">@item.idea_Title</a></h4>
+                                                        </div>
+                                                    </div>
+
+                                                }
+                                                else
+                                                {
+                                                    break;
+                                                }
+                                                iPopular++;
+
+                                            }
                                         }
                                     </div>
                                 </div>

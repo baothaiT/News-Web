@@ -1,4 +1,4 @@
-﻿@model IEnumerable<News.Entities.Idea>
+﻿@model IEnumerable<News.Models.DetailIdeaModels>
 
 @{
     ViewData["Title"] = "Index";
@@ -20,7 +20,7 @@
                 @Html.DisplayNameFor(model => model.idea_UpdateTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.submissionFK)
+                @Html.DisplayNameFor(model => model.idea_SubmissionName)
             </th>
             <th></th>
         </tr>
@@ -38,7 +38,7 @@
                 @Html.DisplayFor(modelItem => item.idea_UpdateTime)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.submissionFK.submission_Id)
+                @Html.DisplayFor(modelItem => item.idea_SubmissionName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.idea_Id">Edit</a> |

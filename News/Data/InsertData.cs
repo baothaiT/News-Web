@@ -147,14 +147,14 @@ namespace News.Data
                 );
 
             //Academic Year Data 
-            var academicYearId1 = Guid.NewGuid().ToString();
+            var SubmissionId1 = Guid.NewGuid().ToString();
 
             builder.Entity<Submission>().HasData(
                 new Submission()
                 {
-                    submission_Id = academicYearId1,
-                    submission_Name = "AcademicYear1",
-                    submission_Description = "AcademicYear1",
+                    submission_Id = SubmissionId1,
+                    submission_Name = "Submission1",
+                    submission_Description = "Submission1",
                     submission_StartTime = new DateTime(2021, 02, 02),
                     submission_DueTime = new DateTime(2023, 02, 02)
                 }
@@ -174,7 +174,7 @@ namespace News.Data
                     idea_Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim. ",
                     idea_UpdateTime = new DateTime(2022, 02, 02),
                     idea_CategoryId = categoryId1,
-                    idea_SubmissionId = academicYearId1,
+                    idea_SubmissionId = SubmissionId1,
                     idea_UserId = userId2,
                     idea_View =0
                 },
@@ -186,7 +186,7 @@ namespace News.Data
                     idea_Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim. ",
                     idea_UpdateTime = new DateTime(2022, 02, 03),
                     idea_CategoryId = categoryId2,
-                    idea_SubmissionId = academicYearId1,
+                    idea_SubmissionId = SubmissionId1,
                     idea_UserId = userId2,
                     idea_View = 0
                 },
@@ -198,7 +198,7 @@ namespace News.Data
                     idea_Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim. ",
                     idea_UpdateTime = new DateTime(2022, 02, 04),
                     idea_CategoryId = categoryId2,
-                    idea_SubmissionId = academicYearId1,
+                    idea_SubmissionId = SubmissionId1,
                     idea_UserId = userId1,
                     idea_View = 0
                 }

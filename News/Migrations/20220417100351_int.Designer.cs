@@ -10,8 +10,8 @@ using News.Data;
 namespace News.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220417080900_init")]
-    partial class init
+    [Migration("20220417100351_int")]
+    partial class @int
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -214,13 +214,13 @@ namespace News.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "8821c7e7-3aff-4cb2-9c7a-6635e1849f3d",
-                            RoleId = "aa3e612c-da21-40b3-808b-72be171330be"
+                            UserId = "9b09a37b-46a9-4c09-aba2-4f8b6526be26",
+                            RoleId = "c6f2211f-b5b8-41ce-b6d7-eb54d0e5010f"
                         },
                         new
                         {
-                            UserId = "ab1a7d1b-a1c9-4ffe-a627-32368c17c3b7",
-                            RoleId = "d2fc3a10-3e6a-4d13-b5cd-4eddd9122557"
+                            UserId = "0b9202fc-436c-4840-9bab-b27a680789c6",
+                            RoleId = "7a71ab80-d3c8-4efb-8ac7-25966e6ece84"
                         });
                 });
 
@@ -266,21 +266,21 @@ namespace News.Migrations
                     b.HasData(
                         new
                         {
-                            category_Id = "e0679b30-9a6f-4c8e-a9f8-f4fb580bfe95",
+                            category_Id = "8b1baed2-8190-438e-9b71-a84065207a13",
                             IsDelete = false,
                             category_Description = "Des 1",
                             category_Name = "Category1"
                         },
                         new
                         {
-                            category_Id = "a5e192ec-82be-4aad-bfea-c6e2b62d505c",
+                            category_Id = "3cb90ad9-bfd2-47fb-821e-def0159a08e1",
                             IsDelete = false,
                             category_Description = "Des 2",
                             category_Name = "Category2"
                         },
                         new
                         {
-                            category_Id = "0938ea4c-c358-4e47-82ed-6116b5e53877",
+                            category_Id = "af74ff1e-57ca-4ffd-a3ea-85c84bf358e3",
                             IsDelete = false,
                             category_Description = "Des 3",
                             category_Name = "Category3"
@@ -318,30 +318,30 @@ namespace News.Migrations
                     b.HasData(
                         new
                         {
-                            cmt_Id = "f8b68425-f2ae-4835-a930-6cfb2871881c",
+                            cmt_Id = "f66449f5-72d6-42fb-b4bb-a6d71c072b16",
                             IsDelete = false,
                             cmt_Content = "Comment1",
-                            cmt_IdeaId = "6bbb851f-dbc2-4fa5-9641-7a660e9dbd9f",
+                            cmt_IdeaId = "8a9f23a7-bf81-4ead-b031-57137112ff1b",
                             cmt_UpdateDate = new DateTime(2022, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            cmt_UserId = "ab1a7d1b-a1c9-4ffe-a627-32368c17c3b7"
+                            cmt_UserId = "0b9202fc-436c-4840-9bab-b27a680789c6"
                         },
                         new
                         {
-                            cmt_Id = "d3c22960-1ec1-4f52-8bb3-74425de48063",
+                            cmt_Id = "116f501a-5509-4843-9ec7-0d703ccf6da9",
                             IsDelete = false,
                             cmt_Content = "Comment2",
-                            cmt_IdeaId = "6bbb851f-dbc2-4fa5-9641-7a660e9dbd9f",
+                            cmt_IdeaId = "8a9f23a7-bf81-4ead-b031-57137112ff1b",
                             cmt_UpdateDate = new DateTime(2022, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            cmt_UserId = "8821c7e7-3aff-4cb2-9c7a-6635e1849f3d"
+                            cmt_UserId = "9b09a37b-46a9-4c09-aba2-4f8b6526be26"
                         },
                         new
                         {
-                            cmt_Id = "c08d2666-d85d-4091-b564-6c235edf0aa7",
+                            cmt_Id = "e6650131-cec8-4540-bc04-446f61e2c40d",
                             IsDelete = false,
                             cmt_Content = "Comment3",
-                            cmt_IdeaId = "6bbb851f-dbc2-4fa5-9641-7a660e9dbd9f",
+                            cmt_IdeaId = "8a9f23a7-bf81-4ead-b031-57137112ff1b",
                             cmt_UpdateDate = new DateTime(2022, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            cmt_UserId = "ab1a7d1b-a1c9-4ffe-a627-32368c17c3b7"
+                            cmt_UserId = "0b9202fc-436c-4840-9bab-b27a680789c6"
                         });
                 });
 
@@ -369,7 +369,7 @@ namespace News.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "d8fd9c01-e397-440e-8ccb-1fce22c68e1c",
+                            Id = "2dc333e7-16b4-4632-a20b-5180a0fd0cd1",
                             Email = "Email Test",
                             Message = "Message Test",
                             Name = "Name Test",
@@ -398,21 +398,21 @@ namespace News.Migrations
                     b.HasData(
                         new
                         {
-                            department_Id = "c76f5e13-6b33-4d3a-bd68-7b42f9a0f033",
+                            department_Id = "b7329926-86e0-4d90-9beb-5493a27e093b",
                             IsDelete = false,
                             department_Description = "Department 1",
                             department_Name = "Department 1"
                         },
                         new
                         {
-                            department_Id = "f12e9f03-39ab-41f7-8e85-8be81b1a3b71",
+                            department_Id = "b9162188-3d11-4b31-b7b5-d35a77be8dc7",
                             IsDelete = false,
                             department_Description = "Department 2",
                             department_Name = "Department 2 "
                         },
                         new
                         {
-                            department_Id = "0bfae728-4f6e-4901-a959-5f9ecfde1a51",
+                            department_Id = "85f36082-175f-4816-b55c-f02be5f529bb",
                             IsDelete = false,
                             department_Description = "Department 3",
                             department_Name = "Department 3"
@@ -470,44 +470,44 @@ namespace News.Migrations
                     b.HasData(
                         new
                         {
-                            idea_Id = "6bbb851f-dbc2-4fa5-9641-7a660e9dbd9f",
+                            idea_Id = "8a9f23a7-bf81-4ead-b031-57137112ff1b",
                             IsDelete = false,
                             idea_Agree = false,
-                            idea_CategoryId = "e0679b30-9a6f-4c8e-a9f8-f4fb580bfe95",
+                            idea_CategoryId = "8b1baed2-8190-438e-9b71-a84065207a13",
                             idea_Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim. ",
                             idea_ImageName = "blog-1.png",
-                            idea_SubmissionId = "c2f36ee8-d556-4a6b-8863-0e5f476bfec1",
+                            idea_SubmissionId = "de6f1dda-bd93-4df3-8f6f-005c3cab80df",
                             idea_Title = "Title1",
                             idea_UpdateTime = new DateTime(2022, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            idea_UserId = "8821c7e7-3aff-4cb2-9c7a-6635e1849f3d",
+                            idea_UserId = "9b09a37b-46a9-4c09-aba2-4f8b6526be26",
                             idea_View = 0
                         },
                         new
                         {
-                            idea_Id = "df087ffa-1b4d-44c8-a540-6403008906fe",
+                            idea_Id = "6bf5b738-7ace-400c-b6f3-81ae6bb38f95",
                             IsDelete = false,
                             idea_Agree = false,
-                            idea_CategoryId = "a5e192ec-82be-4aad-bfea-c6e2b62d505c",
+                            idea_CategoryId = "3cb90ad9-bfd2-47fb-821e-def0159a08e1",
                             idea_Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim. ",
                             idea_ImageName = "blog-2.png",
-                            idea_SubmissionId = "c2f36ee8-d556-4a6b-8863-0e5f476bfec1",
+                            idea_SubmissionId = "de6f1dda-bd93-4df3-8f6f-005c3cab80df",
                             idea_Title = "Title2",
                             idea_UpdateTime = new DateTime(2022, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            idea_UserId = "8821c7e7-3aff-4cb2-9c7a-6635e1849f3d",
+                            idea_UserId = "9b09a37b-46a9-4c09-aba2-4f8b6526be26",
                             idea_View = 0
                         },
                         new
                         {
-                            idea_Id = "38c7903f-8113-418a-ae1d-c2cf63daebb1",
+                            idea_Id = "f80add54-fc9e-428c-aa23-f0e5795ace21",
                             IsDelete = false,
                             idea_Agree = false,
-                            idea_CategoryId = "a5e192ec-82be-4aad-bfea-c6e2b62d505c",
+                            idea_CategoryId = "3cb90ad9-bfd2-47fb-821e-def0159a08e1",
                             idea_Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim. ",
                             idea_ImageName = "blog-3.png",
-                            idea_SubmissionId = "c2f36ee8-d556-4a6b-8863-0e5f476bfec1",
+                            idea_SubmissionId = "de6f1dda-bd93-4df3-8f6f-005c3cab80df",
                             idea_Title = "Title3",
                             idea_UpdateTime = new DateTime(2022, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            idea_UserId = "ab1a7d1b-a1c9-4ffe-a627-32368c17c3b7",
+                            idea_UserId = "0b9202fc-436c-4840-9bab-b27a680789c6",
                             idea_View = 0
                         });
                 });
@@ -573,11 +573,11 @@ namespace News.Migrations
                     b.HasData(
                         new
                         {
-                            submission_Id = "c2f36ee8-d556-4a6b-8863-0e5f476bfec1",
+                            submission_Id = "de6f1dda-bd93-4df3-8f6f-005c3cab80df",
                             IsDelete = false,
-                            submission_Description = "AcademicYear1",
+                            submission_Description = "Submission1",
                             submission_DueTime = new DateTime(2023, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            submission_Name = "AcademicYear1",
+                            submission_Name = "Submission1",
                             submission_StartTime = new DateTime(2021, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
@@ -599,13 +599,13 @@ namespace News.Migrations
                     b.HasData(
                         new
                         {
-                            uid_UserId = "ab1a7d1b-a1c9-4ffe-a627-32368c17c3b7",
-                            uid_DepartmentId = "c76f5e13-6b33-4d3a-bd68-7b42f9a0f033"
+                            uid_UserId = "0b9202fc-436c-4840-9bab-b27a680789c6",
+                            uid_DepartmentId = "b7329926-86e0-4d90-9beb-5493a27e093b"
                         },
                         new
                         {
-                            uid_UserId = "8821c7e7-3aff-4cb2-9c7a-6635e1849f3d",
-                            uid_DepartmentId = "f12e9f03-39ab-41f7-8e85-8be81b1a3b71"
+                            uid_UserId = "9b09a37b-46a9-4c09-aba2-4f8b6526be26",
+                            uid_DepartmentId = "b9162188-3d11-4b31-b7b5-d35a77be8dc7"
                         });
                 });
 
@@ -624,16 +624,16 @@ namespace News.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "aa3e612c-da21-40b3-808b-72be171330be",
-                            ConcurrencyStamp = "c949a9c4-977b-4aec-ab0d-3168edfff7ff",
+                            Id = "c6f2211f-b5b8-41ce-b6d7-eb54d0e5010f",
+                            ConcurrencyStamp = "1933e632-53b3-4140-bd4c-8d0815b61399",
                             Name = "staff",
                             Description = "Staff",
                             IsDelete = false
                         },
                         new
                         {
-                            Id = "d2fc3a10-3e6a-4d13-b5cd-4eddd9122557",
-                            ConcurrencyStamp = "6abc5a7f-fe99-482f-ade9-e3fe395a4e82",
+                            Id = "7a71ab80-d3c8-4efb-8ac7-25966e6ece84",
+                            ConcurrencyStamp = "d493dd46-1866-474d-8b31-32137fa57c4f",
                             Name = "admin",
                             Description = "Admin",
                             IsDelete = false
@@ -661,17 +661,17 @@ namespace News.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ab1a7d1b-a1c9-4ffe-a627-32368c17c3b7",
+                            Id = "0b9202fc-436c-4840-9bab-b27a680789c6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "38fd79c5-5fa2-4b7b-817c-045cc927d93d",
+                            ConcurrencyStamp = "321837d4-ca31-4e54-b4c2-fef6766dda47",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAENHtHbX1AQAN6v2FHywY8fy4wy86vuSfg5KbvXXsJTQZQSPvmZghTmlKinhu/3ybJA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMPaD1Y6b8/fqRPnDiOFufDX6OaTmze3F0PevCQAoVfRPGgQB/KNnpn8wtf7ZJssIg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2c46bdc5-0bb4-4290-80ea-5ec296c51e4b",
+                            SecurityStamp = "d7281135-4fac-466f-9357-1bb588c76d2a",
                             TwoFactorEnabled = false,
                             UserName = "Admin",
                             DoB = new DateTime(2022, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -680,17 +680,17 @@ namespace News.Migrations
                         },
                         new
                         {
-                            Id = "8821c7e7-3aff-4cb2-9c7a-6635e1849f3d",
+                            Id = "9b09a37b-46a9-4c09-aba2-4f8b6526be26",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b1b1079f-9e33-448c-ace2-b5a5ae953671",
+                            ConcurrencyStamp = "4f1b4334-16af-4b74-9919-e84a13f18ec6",
                             Email = "staff@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "STAFF@GMAIL.COM",
                             NormalizedUserName = "STAFF@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIlloHUy3SIYEj9RXrpTj0zzvGkSg9F/8XQ4slIQ+L2csjG7GrldhxTIuZJ6aJCQLw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAmIYPQVI4BpDFr0xPn7C02lgNCTKVwDboKdgDo+ZCRU9e23Voa90AHR+bXxKm330g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3508f0ca-419b-4cc7-8233-bd39426b6a0f",
+                            SecurityStamp = "353d52e3-fca6-493c-be44-3e89cfdeefe4",
                             TwoFactorEnabled = false,
                             UserName = "Staff",
                             DoB = new DateTime(2022, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -699,17 +699,17 @@ namespace News.Migrations
                         },
                         new
                         {
-                            Id = "1aeae3c1-421e-41a2-8a84-9fb9d552b938",
+                            Id = "a26a76ee-9972-4271-8f11-de1b302e2205",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "130a1ee6-d0f5-4630-93cf-369f69ca3aac",
+                            ConcurrencyStamp = "acb92b0e-a40b-40f3-9b85-1999bdc8579e",
                             Email = "staff2@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "STAFF2@GMAIL.COM",
                             NormalizedUserName = "STAFF2@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAECaDDMPgB4LDcLXfj2tDdC0Tscz4wwdE9hWvn/LXts3ZqC7oPsWJ4lzd+jTiwLjwEg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDU8Vm8AyfSoWiD/9g5/T2vFzrSh/kEMPCTGR73cUBa/9SZ7e/VLsjsePRoXN+craQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b6537a4d-e78a-4bc3-95bb-dcf42d94187a",
+                            SecurityStamp = "32a46d4a-ca78-42bf-81a6-ca1b2b345cfc",
                             TwoFactorEnabled = false,
                             UserName = "Staff2",
                             DoB = new DateTime(2022, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
