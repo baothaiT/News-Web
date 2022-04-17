@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using News.Data;
 using News.Entities;
+using System;
 using System.Linq;
 
 namespace News.Controllers.Admin
@@ -41,11 +42,21 @@ namespace News.Controllers.Admin
         // POST: RoleManagementController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(AppRole appRole)
         {
             try
             {
-                
+                var createRole = new AppRole()
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Name = appRole.Name,
+                    Description = appRole.Description,
+                    NormalizedName = appRole.Name
+                };
+
+                _context.AppRole.Add(createRole);
+                _context.SaveChanges();
+
                 return RedirectToAction(nameof(Index));
             }
             catch
