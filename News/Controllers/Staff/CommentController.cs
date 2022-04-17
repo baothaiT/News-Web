@@ -54,7 +54,7 @@ namespace News.Controllers.Staff
                         cmt_UserId = userId,
                         cmt_UpdateDate = DateTime.Now,
                         cmt_IdeaId = comments.cmt_IdeaId,
-                        cmt_IsDelete = false
+                        IsDelete = false
                     };
 
                     _context.Comments.Add(createComment);

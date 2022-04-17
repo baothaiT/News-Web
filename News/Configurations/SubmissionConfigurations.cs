@@ -13,7 +13,8 @@ namespace News.Configurations
             builder.HasKey(t => new { t.submission_Id });
 
 
-
+            builder.HasOne(t => t.userFK).WithMany(ur => ur.Submission)
+    .HasForeignKey(pc => pc.submission_UserId).IsRequired(false);
         }
     }
 }

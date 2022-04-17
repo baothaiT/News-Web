@@ -11,7 +11,7 @@ namespace News.Entities
         public DateTime cmt_UpdateDate { get; set; }
         public string cmt_IdeaId { get; set; }
         public Idea IdeaFk { get; set; }
-        public bool cmt_IsDelete { get; set; }
+        public bool IsDelete { get; set; }
 
     }
 }

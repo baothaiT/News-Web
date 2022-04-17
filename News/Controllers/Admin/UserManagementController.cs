@@ -10,8 +10,8 @@ namespace News.Controllers.Admin
     public class UserManagementController : Controller
     {
         private ApplicationDbContext _context;
-        private readonly UserManager<IdentityUser> _userManager;
-        public UserManagementController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        private readonly UserManager<AppUser> _userManager;
+        public UserManagementController(ApplicationDbContext context, UserManager<AppUser> userManager)
         {
             _context = context;
             _userManager = userManager;
@@ -49,7 +49,7 @@ namespace News.Controllers.Admin
         {
             try
             {
-                var user = new IdentityUser { UserName = appUser.Email, Email = appUser.Email };
+                var user = new AppUser { UserName = appUser.Email, Email = appUser.Email };
                 var result = await _userManager.CreateAsync(user, appUser.PasswordHash);
 
                 return RedirectToAction(nameof(Index));

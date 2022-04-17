@@ -123,11 +123,15 @@ namespace News.Controllers.Staff
                         idea_UserId = userId,
                         idea_View = 0
                     };
+
+                    // Check and Send Mail for Staff
                     var userEmail = User.FindFirstValue(ClaimTypes.Email);
                     if (userEmail is not null)
                     {
-                        //SendMail(userEmail, "Create Mail", " Success!");
+                        SendMail(userEmail, "Create Mail", " Success!");
                     }
+
+                    // Check and Send Mail for Coordinator
                     
 
                     using (var fileStream = new FileStream(path, FileMode.Create))

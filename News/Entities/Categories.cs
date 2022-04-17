@@ -8,6 +8,7 @@ namespace News.Entities
         
         public string category_Name { get; set; }
         public string category_Description { get; set; }
+        public bool IsDelete { set; get; }
 
         public List<Idea> IdeaList { get; set; }
     }
