@@ -5,11 +5,8 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -23,13 +20,7 @@
                 @Html.DisplayNameFor(model => model.idea_UpdateTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.categoriesFK)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.submissionFK)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.appUserFK)
             </th>
             <th></th>
         </tr>
@@ -47,13 +38,7 @@
                 @Html.DisplayFor(modelItem => item.idea_UpdateTime)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.categoriesFK.category_Id)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.submissionFK.submission_Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.appUserFK.Id)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.idea_Id">Edit</a> |

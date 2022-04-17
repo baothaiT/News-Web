@@ -3,13 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 using News.Data;
 using News.Entities;
 using System;
+using System.Security.Claims;
 
 namespace News.Controllers.Coordinator
 {
-    public class AcademicYearManagementController : Controller
+    public class SubmissionManagementController : Controller
     {
         private ApplicationDbContext _context;
-        public AcademicYearManagementController(ApplicationDbContext context)
+        public SubmissionManagementController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -46,14 +47,15 @@ namespace News.Controllers.Coordinator
         {
             try
             {
-
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 var newSubmission = new Submission()
                 {
                     submission_Id = Guid.NewGuid().ToString(),
                     submission_Name = submission.submission_Name,
                     submission_Description = submission.submission_Description,
                     submission_StartTime = submission.submission_StartTime,
-                    submission_DueTime = submission.submission_DueTime
+                    submission_DueTime = submission.submission_DueTime,
+                    submission_UserId = userId
                 };
 
                 _context.Submission.Add(newSubmission);

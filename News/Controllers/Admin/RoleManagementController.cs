@@ -73,8 +73,7 @@ namespace News.Controllers.Admin
                 var query = _context.AppRole.Find(appRole.Id);
                 query.Name = appRole.Name;
                 query.Description = appRole.Description;
-                query.NormalizedName = appRole.NormalizedName;
-                query.ConcurrencyStamp = appRole.ConcurrencyStamp;
+                query.NormalizedName = appRole.Name.ToUpper();
 
                 _context.AppRole.Update(query);
                 _context.SaveChanges();
