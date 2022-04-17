@@ -4,6 +4,7 @@ using News.Data;
 using News.Entities;
 using System;
 using System.Security.Claims;
+using System.Linq;
 
 namespace News.Controllers.Coordinator
 {
@@ -18,7 +19,7 @@ namespace News.Controllers.Coordinator
         [Route("submissionmanagement")]
         public ActionResult Index()
         {
-            var query = _context.Submission;
+            var query = _context.Submission.Where(a => a.IsDelete == false);
             return View(query);
         }
 
@@ -114,7 +115,7 @@ namespace News.Controllers.Coordinator
         }
 
         // POST: AcademicYearController/Delete/5
-        [Route("academicyearmanagement/delete")]
+        [Route("submissionmanagement/delete")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(string id, Submission submission)
@@ -122,7 +123,10 @@ namespace News.Controllers.Coordinator
             try
             {
                 var query = _context.Submission.Find(submission.submission_Id);
-                _context.Submission.Remove(query);
+                query.IsDelete = true;
+
+                _context.Submission.Update(query);
+
                 _context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));

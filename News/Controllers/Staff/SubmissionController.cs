@@ -22,7 +22,7 @@ namespace News.Controllers.Staff
             ViewBag.CourseActive = "active";
 
             //Query Submission
-            var querySubmission = _context.Submission;
+            var querySubmission = _context.Submission.Where(a => a.IsDelete == false);
 
             var dateNow = DateTime.Now;
 
