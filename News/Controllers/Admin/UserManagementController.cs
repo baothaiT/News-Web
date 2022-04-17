@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using News.Data;
 using News.Entities;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace News.Controllers.Admin
@@ -20,7 +21,7 @@ namespace News.Controllers.Admin
         [Route("usermanagement")]
         public ActionResult Index()
         {
-            var query = _context.AppUser;
+            var query = _context.AppUser.Where(a => a.IsDelete == false);
             return View(query);
         }
 
@@ -111,8 +112,11 @@ namespace News.Controllers.Admin
             try
             {
                 var query = _context.AppUser.Find(appUser.Id);
+
+                query.IsDelete = true;
+                query.EmailConfirmed = false;
                 //Error
-                _context.AppUser.Remove(query);
+                _context.AppUser.Update(query);
                 _context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
