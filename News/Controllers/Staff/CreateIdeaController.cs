@@ -132,8 +132,17 @@ namespace News.Controllers.Staff
                     }
 
                     // Check and Send Mail for Coordinator
-                    
+                    // // Query CoordinatorID
+                    var queryCoordinatorId = _context.Submission.Find(idea.idea_SubmissionId);
+                    // // Query CoordinatorEmail
+                    var queryCoordinatorEmail = _context.AppUser.Find(queryCoordinatorId.submission_UserId);
 
+                    if (queryCoordinatorEmail is not null)
+                    {
+                        SendMail(queryCoordinatorEmail.Email, "Create Idea", " Success!");
+                    }
+
+                    // Insert image File
                     using (var fileStream = new FileStream(path, FileMode.Create))
                     {
                         await idea.idea_ImagePath.CopyToAsync(fileStream);
