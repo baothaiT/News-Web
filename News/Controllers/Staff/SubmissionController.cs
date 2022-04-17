@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using News.Data;
+using News.Models;
+using System;
 using System.Linq;
 
 namespace News.Controllers.Staff
@@ -18,7 +20,22 @@ namespace News.Controllers.Staff
         {
             //Class Active menu
             ViewBag.CourseActive = "active";
+
+            //Query Submission
             var querySubmission = _context.Submission;
+
+            var dateNow = DateTime.Now;
+
+            var submissionModelQuery = querySubmission
+                .Select(x => new SubmissionModels()
+                {
+                    submission_Id = x.submission_Id,
+                    submission_Name = x.submission_Name,
+                    submission_Description = x.submission_Description,
+                    submission_StartTime = x.submission_StartTime,
+                    submission_DueTime = x.submission_DueTime,
+                    Block = (x.submission_DueTime >= dateNow)? false : true,
+                });
 
             //Start Query Idea
             var queryIdea = _context.Idea;
@@ -26,7 +43,7 @@ namespace News.Controllers.Staff
             //End Query Idea
 
 
-            return View(querySubmission);
+            return View(submissionModelQuery);
         }
 
         // GET: CourseController/Details/5

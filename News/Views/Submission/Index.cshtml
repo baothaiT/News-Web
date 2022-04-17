@@ -1,4 +1,4 @@
-﻿@model IEnumerable<News.Entities.Submission>
+﻿@model IEnumerable<News.Models.SubmissionModels>
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -39,6 +39,7 @@
                                                 <th scope="col">Submission Name</th>
                                                 <th scope="col">Start Time</th>
                                                 <th scope="col">Due Time</th>
+                                                <th scope="col">Status Block</th>
                                                 <th scope="col">View Idea </th>
                                                 <th scope="col"> Add Idea</th>
                                             </tr>
@@ -50,6 +51,7 @@
                                                     <td>@item.submission_Name</td>
                                                     <td>@item.submission_StartTime</td>
                                                     <td>@item.submission_DueTime</td>
+                                                    <td>@item.Block</td>
                                                     <td>
                                                         <a href="/blogarchive?submissionId=@item.submission_Id">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
@@ -58,11 +60,22 @@
                                                         </a>
                                                     </td>
                                                     <td>
-                                                        <a id="a-@item.submission_Id" href="/createiead?submissionId=@item.submission_Id">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-                                                                <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
-                                                            </svg>
-                                                        </a>
+                                                        @if (item.Block == true)
+                                                        {
+                                                           
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                                                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
+                                                                </svg>
+                                                            
+                                                        }
+                                                        else
+                                                        {
+                                                            <a id="a-@item.submission_Id" href="/createiead?submissionId=@item.submission_Id">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                                                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
+                                                                </svg>
+                                                            </a>
+                                                        }
                                                     </td>
                                                 </tr>
 
