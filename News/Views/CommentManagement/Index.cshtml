@@ -1,0 +1,42 @@
+﻿@model IEnumerable<News.Entities.Comments>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.cmt_Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cmt_UpdateDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDelete)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.cmt_Content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cmt_UpdateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDelete)
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.cmt_Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

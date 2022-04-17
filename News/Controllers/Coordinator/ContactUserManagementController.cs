@@ -18,7 +18,5 @@ namespace News.Controllers.Coordinator
             var query = _context.ContactEmail;
             return View(query);
         }
-
-       
     }
 }
