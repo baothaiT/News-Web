@@ -42,6 +42,7 @@ namespace News.Data
             builder.ApplyConfiguration(new UserInDepartmentConfigurations());
             builder.ApplyConfiguration(new LikeInIdeaConfigurations());
             builder.ApplyConfiguration(new CommentsConfigurations());
+            builder.ApplyConfiguration(new ContactEmailConfigurations());
 
             builder.Seed();
 
@@ -57,5 +58,6 @@ namespace News.Data
         public DbSet<UserInDepartment> UserInDepartment { set; get; }
         public DbSet<LikeInIdea> LikeInIdea { get; set; }
         public DbSet<Comments> Comments { get; set; }
+        public DbSet<ContactEmail> ContactEmail { get; set; }
     }
 }

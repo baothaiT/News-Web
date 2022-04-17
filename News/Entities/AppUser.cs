@@ -12,7 +12,7 @@ namespace News.Entities
         public string LastName { set; get; }
         public DateTime DoB { set; get; }
 
-
+        public bool IsDelete { set; get; }
 
 
         public List<Idea> ideasList { set; get; }
@@ -20,5 +20,6 @@ namespace News.Entities
 
         public List<LikeInIdea> likeInIdea { set; get; }
         public List<Comments> Comments { set; get; }
+        public List<Submission> Submission { set; get; }
     }
 }

@@ -15,6 +15,10 @@ namespace News.Entities
         public DateTime submission_StartTime { set; get; }
         [DisplayName("Submission Due Time")]
         public DateTime submission_DueTime { set; get; }
+        public bool IsDelete { set; get; }
+
+        public string submission_UserId { set; get; }
+        public AppUser userFK { get; set; }
         public List<Idea> IdeaList { get; set; }
 
     }

@@ -123,13 +123,26 @@ namespace News.Controllers.Staff
                         idea_UserId = userId,
                         idea_View = 0
                     };
+
+                    // Check and Send Mail for Staff
                     var userEmail = User.FindFirstValue(ClaimTypes.Email);
                     if (userEmail is not null)
                     {
-                        //SendMail(userEmail, "Create Mail", " Success!");
+                        SendMail(userEmail, "Create Mail", " Success!");
                     }
-                    
 
+                    // Check and Send Mail for Coordinator
+                    // // Query CoordinatorID
+                    var queryCoordinatorId = _context.Submission.Find(idea.idea_SubmissionId);
+                    // // Query CoordinatorEmail
+                    var queryCoordinatorEmail = _context.AppUser.Find(queryCoordinatorId.submission_UserId);
+
+                    if (queryCoordinatorEmail is not null)
+                    {
+                        SendMail(queryCoordinatorEmail.Email, "Create Idea", " Success!");
+                    }
+
+                    // Insert image File
                     using (var fileStream = new FileStream(path, FileMode.Create))
                     {
                         await idea.idea_ImagePath.CopyToAsync(fileStream);

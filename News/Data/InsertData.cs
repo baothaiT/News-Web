@@ -234,7 +234,7 @@ namespace News.Data
                     cmt_UserId = userId1,
                     cmt_UpdateDate = new DateTime(2022, 02, 04),
                     cmt_IdeaId = ideaId1,
-                    cmt_IsDelete = false
+                    IsDelete = false
                 },
                 new Comments()
                 {
@@ -243,7 +243,7 @@ namespace News.Data
                     cmt_UserId = userId2,
                     cmt_UpdateDate = new DateTime(2022, 02, 05),
                     cmt_IdeaId = ideaId1,
-                    cmt_IsDelete = false
+                    IsDelete = false
                 },
                 new Comments()
                 {
@@ -252,7 +252,21 @@ namespace News.Data
                     cmt_UserId = userId1,
                     cmt_UpdateDate = new DateTime(2022, 02, 06),
                     cmt_IdeaId = ideaId1,
-                    cmt_IsDelete = false
+                    IsDelete = false
+                }
+                );
+
+            //ContactEmail Table
+            var contactEmailId1 = Guid.NewGuid().ToString();
+
+            builder.Entity<ContactEmail>().HasData(
+                new ContactEmail()
+                {
+                    Id = contactEmailId1,
+                    Name = "Name Test",
+                    Subject = "Subject Test",
+                    Email = "Email Test",
+                    Message = "Message Test"
                 }
                 );
 

@@ -33,6 +33,7 @@ namespace News.Entities
 
         [DisplayName("User")]
         public string idea_UserId { get; set; }
+        public bool IsDelete { set; get; }
         public AppUser appUserFK { get; set; }
 
         public List<LikeInIdea> likeInIdea { set; get; }

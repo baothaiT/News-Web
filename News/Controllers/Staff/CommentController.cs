@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using News.Data;
 using News.Entities;
 using System;
@@ -21,17 +22,7 @@ namespace News.Controllers.Staff
             return View();
         }
 
-        // GET: CommentController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
 
-        // GET: CommentController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
 
         // POST: CommentController/Create
         [HttpPost]
@@ -54,8 +45,20 @@ namespace News.Controllers.Staff
                         cmt_UserId = userId,
                         cmt_UpdateDate = DateTime.Now,
                         cmt_IdeaId = comments.cmt_IdeaId,
-                        cmt_IsDelete = false
+                        IsDelete = false
                     };
+
+                    //Start Mail
+                    // // Query AuthorId's idea
+                    var queryUserId = _context.Idea.Find(comments.cmt_IdeaId);
+                    // // Query Author's idea
+                    var queryUser = _context.AppUser.Find(queryUserId.idea_UserId);
+
+                    if(queryUser is not null)
+                    {
+                        SendMail(queryUser.Email, "Comment", "Success");
+                    }
+                    //End Mail
 
                     _context.Comments.Add(createComment);
                     _context.SaveChanges();
@@ -68,47 +71,24 @@ namespace News.Controllers.Staff
                 return View();
             }
         }
-
-        // GET: CommentController/Edit/5
-        public ActionResult Edit(int id)
+        public void SendMail(string Mailto, string subject, string boddy)
         {
-            return View();
-        }
+            var smtpacountJson = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("MailSettings")["Mail"];
+            var smtppasswordJson = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("MailSettings")["Password"];
 
-        // POST: CommentController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+            String mailgui = smtpacountJson.ToString();
+            string smtpacount = smtpacountJson.ToString();
+            string smtppassword = smtppasswordJson.ToString();
 
-        // GET: CommentController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+            MailUtils.MailUtils.SendMailGoogleSmtp(
+                mailgui,
+                Mailto,
+                subject,
+                boddy,
+                smtpacount,
+                smtppassword
 
-        // POST: CommentController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            ).Wait();
         }
     }
 }

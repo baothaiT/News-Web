@@ -11,6 +11,6 @@ namespace News.Entities
         public string Description { set; get; }
 
         
-
+        public bool IsDelete { set; get; }
     }
 }
