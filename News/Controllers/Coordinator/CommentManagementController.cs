@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using News.Data;
+using News.Entities;
 
 namespace News.Controllers.Coordinator
 {
@@ -21,18 +22,22 @@ namespace News.Controllers.Coordinator
 
         
         // GET: CommentManagementController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
-            return View();
+            var query = _context.Comments.Find(id);
+            return View(query);
         }
 
         // POST: CommentManagementController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(string id, Comments comments)
         {
             try
             {
+                var query = _context.Comments.Find(comments.cmt_Id);
+                _context.Comments.Remove(query);
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch

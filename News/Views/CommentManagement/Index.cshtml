@@ -15,9 +15,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.cmt_UpdateDate)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsDelete)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -29,9 +26,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.cmt_UpdateDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsDelete)
             </td>
             <td>
                 <a asp-action="Delete" asp-route-id="@item.cmt_Id">Delete</a>
