@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using News.Data;
 using News.Entities;
+using System.Linq;
 
 namespace News.Controllers.Admin
 {
@@ -16,7 +17,7 @@ namespace News.Controllers.Admin
         [Route("/rolemanagement")]
         public ActionResult Index()
         {
-            var query = _context.AppRole;
+            var query = _context.AppRole.Where(a => a.IsDelete == false);
             return View(query);
         }
 
@@ -104,7 +105,8 @@ namespace News.Controllers.Admin
             try
             {
                 var query = _context.AppRole.Find(appRole.Id);
-                _context.AppRole.Remove(query);
+                query.IsDelete = true;
+                _context.AppRole.Update(query);
                 _context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
