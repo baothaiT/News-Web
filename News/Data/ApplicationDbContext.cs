@@ -60,5 +60,6 @@ namespace News.Data
         public DbSet<Comments> Comments { get; set; }
         public DbSet<ContactEmail> ContactEmail { get; set; }
         public DbSet<News.Models.DetailIdeaModels> DetailIdeaModels { get; set; }
+        public DbSet<News.Models.AssignToRoleModels> AssignToRoleModels { get; set; }
     }
 }
