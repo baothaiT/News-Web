@@ -197,47 +197,7 @@ namespace News.Controllers.Admin
             }
         }
 
-        [Route("/assigntodepartment")]
-        [HttpGet]
-        public ActionResult AssignToDepartment()
-        {
-            try
-            {
-                //Query User
-                //var queryUser = _context.AppUser.FirstOrDefault(a => a.Id == id);
-
-
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-
-                return View();
-            }
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult AssignToDepartment(string id, AppUser appUser)
-        {
-            try
-            {
-                var query = _context.AppUser.Find(appUser.Id);
-
-                query.IsDelete = true;
-                query.EmailConfirmed = false;
-                //Error
-                _context.AppUser.Update(query);
-                _context.SaveChanges();
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        
     }
 }
  
