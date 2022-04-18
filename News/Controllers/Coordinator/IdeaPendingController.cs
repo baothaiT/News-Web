@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using News.Data;
 using News.Entities;
@@ -7,6 +8,7 @@ using System.Linq;
 
 namespace News.Controllers.Coordinator
 {
+    [Authorize(Roles = "Admin,Staff")]
     public class IdeaPendingController : Controller
     {
         private readonly ApplicationDbContext _context;

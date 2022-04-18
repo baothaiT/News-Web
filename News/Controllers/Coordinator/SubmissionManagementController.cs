@@ -5,9 +5,11 @@ using News.Entities;
 using System;
 using System.Security.Claims;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace News.Controllers.Coordinator
 {
+    [Authorize(Roles = "Admin,Staff")]
     public class SubmissionManagementController : Controller
     {
         private ApplicationDbContext _context;

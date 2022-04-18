@@ -7,9 +7,11 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using News.Entities;
 using News.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace News.Controllers.Coordinator
 {
+    [Authorize(Roles = "Admin,Staff")]
     public class IdeaManagementController : Controller
     {
         private ApplicationDbContext _context;
