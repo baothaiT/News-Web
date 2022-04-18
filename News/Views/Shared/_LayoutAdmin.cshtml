@@ -64,12 +64,12 @@
             <div class="navbar-buttons navbar-header pull-right" role="navigation">
                 <ul class="nav ace-nav">
                     <li class="grey dropdown-modal">
-                        
+
 
                         <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
-                            
 
-                            
+
+
 
                             <li class="dropdown-footer">
                                 <a href="#">
@@ -80,41 +80,31 @@
                         </ul>
                     </li>
 
-                    
+
 
                     <li class="light-blue dropdown-modal">
                         <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                             <img class="nav-user-photo" src="~/assets/images/avatars/user.jpg" alt="Jason's Photo" />
                             <span class="user-info">
                                 <small>Welcome,</small>
-                                Jason
+                                User
                             </span>
 
                             <i class="ace-icon fa fa-caret-down"></i>
                         </a>
 
                         <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                            <li>
-                                <a href="#">
-                                    <i class="ace-icon fa fa-cog"></i>
-                                    Settings
-                                </a>
-                            </li>
+
 
                             <li>
-                                <a href="profile.html">
-                                    <i class="ace-icon fa fa-user"></i>
-                                    Profile
-                                </a>
-                            </li>
-
-                            <li class="divider"></li>
-
-                            <li>
-                                <a href="#">
+@*                                <a href="/logout">
                                     <i class="ace-icon fa fa-power-off"></i>
                                     Logout
-                                </a>
+                                    
+                                </a>*@
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                                        <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                                    </form>
                             </li>
                         </ul>
                     </li>
@@ -134,9 +124,6 @@
             </script>
 
             <div class="sidebar-shortcuts" id="sidebar-shortcuts">
-
-
-
             </div><!-- /.sidebar-shortcuts -->
 
             <ul class="nav nav-list">
@@ -209,7 +196,7 @@
 
                     <b class="arrow"></b>
                 </li>
-                
+
                 <li class="">
                     <a href="/ideapendingmanagement">
                         <i class="menu-icon fa fa-list-alt"></i>
@@ -254,7 +241,7 @@
                             <i class="ace-icon fa fa-home home-icon"></i>
                             <a href="#">Home</a>
                         </li>
-                        
+
                     </ul><!-- /.breadcrumb -->
 
                 </div>
@@ -328,7 +315,6 @@
                     </div><!-- /.ace-settings-container -->
 
                     <div class="page-header">
-
                     </div><!-- /.page-header -->
                     <div class="row">
                         <div class="col-xs-12">
