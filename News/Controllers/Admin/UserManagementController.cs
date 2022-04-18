@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using News.Data;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace News.Controllers.Admin
 {
+    [Authorize(Roles = "Admin")]
     public class UserManagementController : Controller
     {
         private ApplicationDbContext _context;

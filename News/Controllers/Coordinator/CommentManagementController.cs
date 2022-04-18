@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using News.Data;
 using News.Entities;
 
 namespace News.Controllers.Coordinator
 {
+    [Authorize(Roles = "Admin,Staff")]
     public class CommentManagementController : Controller
     {
         private readonly ApplicationDbContext _context;
