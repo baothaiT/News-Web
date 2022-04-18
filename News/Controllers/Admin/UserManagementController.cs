@@ -126,5 +126,74 @@ namespace News.Controllers.Admin
                 return View();
             }
         }
+
+        [Route("/assigntorole")]
+        [HttpGet]
+        public ActionResult AssignToRole(string id)
+        {
+            try
+            {
+                //Query User
+                var queryUser = _context.AppUser.FirstOrDefault(a => a.Id == id);
+
+                ViewBag.UserInf = queryUser;
+
+                //Query Role
+                var queryRole = _context.Roles;
+                ViewBag.Rolelist = queryRole;
+
+
+
+                return View();
+            }
+            catch 
+            {
+
+                return View();
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AssignToRole(string id, AppUser appUser)
+        {
+            try
+            {
+                var query = _context.AppUser.Find(appUser.Id);
+
+                query.IsDelete = true;
+                query.EmailConfirmed = false;
+                //Error
+                _context.AppUser.Update(query);
+                _context.SaveChanges();
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        [Route("/assigntodepartment")]
+        [HttpGet]
+        public ActionResult AssignToDepartment()
+        {
+            try
+            {
+                //Query User
+                var queryUser = _context.AppUser.FirstOrDefault(a => a.Id == id);
+
+
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+
+                return View();
+            }
+        }
     }
 }
+ 
