@@ -46,14 +46,16 @@ namespace News.Data
                 new AppRole()
                 {
                     Id = IdRoleStaff,
-                    Name = "staff",
-                    Description = "Staff"
+                    Name = "Staff",
+                    Description = "Staff",
+                    NormalizedName = "staff"
                 },
                 new AppRole()
                 {
                     Id = IdRoleAdmin,
-                    Name = "admin",
-                    Description = "Admin"
+                    Name = "Admin",
+                    Description = "Admin",
+                     NormalizedName = "admin"
                 });
 
             //AppUser Data
