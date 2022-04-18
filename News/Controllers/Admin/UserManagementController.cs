@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using News.Data;
 using News.Entities;
+using News.Models;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -126,5 +127,122 @@ namespace News.Controllers.Admin
                 return View();
             }
         }
+
+        [Route("/assigntorole")]
+        [HttpGet]
+        public ActionResult AssignToRole(string id)
+        {
+            try
+            {
+                //Check and Query Infomation
+                var userQuery = _context.AppUser.FirstOrDefault(a => a.Id == id);
+                var roleQuery = from a in _context.AppRole select a;
+                roleQuery = roleQuery.Where(x => x.IsDelete == false);
+                var checkUserInRole = _context.UserRoles.FirstOrDefault(a => a.UserId == id);
+                ViewBag.RoleName = "";
+
+
+                if (checkUserInRole != null)
+                {
+                    var RoleName = _context.AppRole.FirstOrDefault(a => a.Id == checkUserInRole.RoleId);
+                    ViewBag.RoleName = RoleName.Name;
+                }
+
+
+                ViewBag.Id = id;
+                ViewBag.UserName = userQuery.UserName;
+                ViewBag.FirstName = userQuery.FirstName;
+                ViewBag.LastName = userQuery.LastName;
+                ViewBag.Email = userQuery.Email;
+
+                ViewBag.Role = roleQuery;
+                
+
+
+                return View();
+            }
+            catch 
+            {
+
+                return View();
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> AssignToRole(string id, AssignToRoleModels assignToRoleModels)
+        {
+            try
+            {
+                var roleQuery = _context.AppRole.FirstOrDefault(a => a.Id == id);
+
+                string idUser = assignToRoleModels.UserId;
+
+                string RoleName = assignToRoleModels.RoleId;
+
+                var roleQueryId = _context.AppRole.FirstOrDefault(a => a.Name == RoleName);
+                var UserQueryName = _context.AppUser.FirstOrDefault(a => a.Id == idUser);
+
+                // Delete Role
+                var checkUserInRole = _context.UserRoles.FirstOrDefault(a => a.UserId == idUser);
+                if (checkUserInRole != null)
+                {
+                    _context.UserRoles.Remove(checkUserInRole);
+                    //await _userManager.RemoveFromRoleAsync(UserQueryName, RoleName);
+                }
+                await _userManager.AddToRoleAsync(UserQueryName, RoleName);
+                //_context.UserRoles.Add(createUserRole);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        [Route("/assigntodepartment")]
+        [HttpGet]
+        public ActionResult AssignToDepartment()
+        {
+            try
+            {
+                //Query User
+                //var queryUser = _context.AppUser.FirstOrDefault(a => a.Id == id);
+
+
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+
+                return View();
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AssignToDepartment(string id, AppUser appUser)
+        {
+            try
+            {
+                var query = _context.AppUser.Find(appUser.Id);
+
+                query.IsDelete = true;
+                query.EmailConfirmed = false;
+                //Error
+                _context.AppUser.Update(query);
+                _context.SaveChanges();
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }
+ 

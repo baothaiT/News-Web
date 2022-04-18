@@ -1,0 +1,58 @@
+﻿@model News.Models.AssignToRoleModels
+
+@{
+    ViewData["Title"] = "AssignToRole";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>AssignToRole</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label class="control-label">User Name:</label>
+                <input type="text" class="form-control" value="@ViewBag.UserName" readonly />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Email:</label>
+                <input type="text" class="form-control" value="@ViewBag.Email" readonly />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Role:</label>
+                <input type="text" class="form-control" value="@ViewBag.RoleName" readonly />
+            </div>
+        
+        <h3> Select Role for User:</h3>
+        <form method="post" asp-controller="UserManagement" asp-action="AssignToRole">
+            <div class="form-group">
+                <input type="text" value="@ViewBag.Id" name="UserId" hidden />
+            </div>
+            <div class="form-group">
+                <label s>Choose role name:</label>
+
+                <select name="RoleId" >
+                    @foreach (var item in @ViewBag.Role)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Change" />
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@*@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }*@
